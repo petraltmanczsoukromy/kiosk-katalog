@@ -1,0 +1,18 @@
+{
+  "allowedRootCategories": [
+    "110",
+    "120",
+    "130",
+    "140",
+    "150",
+    "210"
+  ],
+  "showZeroAvailable": false,
+  "maxRenderedProducts": 240,
+  "headerMode": "fixed",
+  "showPrices": true,
+  "showManufacturer": true,
+  "showWebButton": true,
+  "idleWarningSeconds": 90,
+  "idleResetSeconds": 30
+}

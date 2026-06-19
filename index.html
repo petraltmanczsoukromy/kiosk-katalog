@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>VERKON prodejní kiosek – objednávka</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="app">
+    <div id="smartHeader" class="smart-header">
+      <section class="search-panel">
+        <input id="searchInput" type="search" autocomplete="off" placeholder="Hledat produkt, výrobce nebo objednací číslo…" autofocus />
+        <button id="clearSearch" type="button" aria-label="Vymazat hledání">×</button>
+      </section>
+
+      <section id="dynamicFilterBlock" class="dynamic-filter-block">
+        <nav id="dynamicGroupFilters" class="filters dynamic-filters" aria-label="Kapitoly v aktuálních výsledcích"></nav>
+      </section>
+    </div>
+
+    <button id="cartButton" class="cart-button" type="button"><span id="cartCount" class="cart-button-count">0 položek</span><span id="cartTotal" class="cart-button-total">0 Kč vč. DPH</span></button>
+
+    <main class="layout">
+      <section class="catalog-area">
+        <div class="catalog-head">
+          <h2 id="resultTitle">Kompletní sortiment</h2>
+          <div id="resultCount" class="result-count"></div>
+        </div>
+        <div id="productGrid" class="product-grid"></div>
+        <div id="emptyState" class="empty-state" hidden>
+          <h3>Nic jsme nenašli</h3>
+          <p>Zkuste jiný název, kód, výrobce nebo obecnější slovo.</p>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div id="detailDrawer" class="detail-drawer" hidden>
+    <div class="detail-backdrop" data-close-detail></div>
+    <aside id="detailPanel" class="detail-panel" aria-live="polite" aria-label="Detail produktu"></aside>
+  </div>
+
+  <div id="cartDrawer" class="cart-drawer" hidden>
+    <div class="cart-card">
+      <div class="cart-header">
+        <h2>Košík</h2>
+        <button id="closeCart" type="button" aria-label="Zavřít objednávku">×</button>
+      </div>
+      <div id="cartItems" class="cart-items"></div>
+      <div id="checkoutArea" class="checkout-area" hidden></div>
+      <div id="cartFooter" class="cart-footer">
+        <button id="clearCart" class="secondary cart-clear-left" type="button">Vyprázdnit</button>
+        <button id="exportOrder" class="primary checkout-next" type="button">Pokračovat v objednávce</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="idleModal" class="idle-modal" hidden>
+    <div class="idle-card">
+      <h2>Stále pokračujete?</h2>
+      <p>Objednávka je rozpracovaná. Pokud nebudete pokračovat, kiosk se vrátí na úvodní obrazovku a údaje budou vymazány.</p>
+      <div class="idle-actions">
+        <button id="idleContinue" class="primary" type="button">Pokračovat</button>
+        <button id="idleReset" class="secondary" type="button">Vymazat a začít znovu</button>
+      </div>
+    </div>
+  </div>
+
+<script src="sfx.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

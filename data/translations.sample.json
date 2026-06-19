@@ -1,0 +1,2485 @@
+[
+  {
+    "itemId": 18,
+    "code": "632413001125",
+    "sourceName": "Nálevka s krátkým stonkem, úhel 60°, SIMAX, Průměr [mm]: 125",
+    "sourceNameHash": "9ea3c67f2b864a89",
+    "name_en": "Funnel s short stem, angle 60°, SIMAX, Diameter [mm]: 125",
+    "keywords_en": [
+      "funnel",
+      "filtration funnel",
+      "Kavalierglass",
+      "funnel s short stem"
+    ],
+    "translator": "prototype-rule-based-demo",
+    "translatedAt": "2026-06-11T19:27:39",
+    "status": "demo"
+  },
+  {
+    "itemId": 27,
+    "code": "632413301075",
+    "sourceName": "Lodička na vážení, borosilikátové sklo, Délka [mm]: 75, Šířka [mm]: 30, Výška [mm]: 14",
+    "sourceNameHash": "20df17db828be42c",
+    "name_en": "Weighing boat, borosilicate glass, Length [mm]: 75, Width [mm]: 30, Height [mm]: 14",
+    "keywords_en": [
+      "weighing boat",
+      "weighing dish",
+      "Kavalierglass"
+    ],
+    "translator": "prototype-rule-based-demo",
+    "translatedAt": "2026-06-11T19:27:39",
+    "status": "demo"
+  },
+  {
+    "itemId": 29,
+    "code": "20001-CT0-M1000-1",
+    "sourceName": "Aceton, č., 1000 ml, Lach-Ner",
+    "sourceNameHash": "068da712b8c36c92",
+    "name_en": "Acetonee, pure, 1000 ml, Lach-Ner",
+    "keywords_en": [
+      "chemical",
+      "laboratory chemical",
+      "pure",
+      "acetonee"
+    ],
+    "translator": "prototype-rule-based-demo",
+    "translatedAt": "2026-06-11T19:27:39",
+    "status": "demo"
+  },
+  {
+    "itemId": 45,
+    "code": "20004-AT0-M1000-1",
+    "sourceName": "1-Pentanol, p.a., 1000 ml, Lach-Ner",
+    "sourceNameHash": "e35e13719e797e72",
+    "name_en": "1-Pentanol, p.a., 1000 ml, Lach-Ner",
+    "keywords_en": [
+      "chemical",
+      "laboratory chemical",
+      "analytical grade",
+      "p.a.",
+      "1-pentanol"
+    ],
+    "translator": "prototype-rule-based-demo",
+    "translatedAt": "2026-06-11T19:27:39",
+    "status": "demo"
+  },
+  {
+    "itemId": 52,
+    "code": "40012-AT0-M1000-1",
+    "sourceName": "Benzaldehyd, p.a., 1000 ml, Lach-Ner",
+    "sourceNameHash": "40e0c01748abf54d",
+    "name_en": "Benzaldehyde, p.a., 1000 ml, Lach-Ner",
+    "keywords_en": [
+      "chemical",
+      "laboratory chemical",
+      "analytical grade",
+      "p.a.",
+      "benzaldehyde"
+    ],
+    "translator": "prototype-rule-based-demo",
+    "translatedAt": "2026-06-11T19:27:39",
+    "status": "demo"
+  },
+  {
+    "itemId": 68,
+    "code": "20010-AT0-M2500-1",
+    "sourceName": "Butan-1-ol, p.a., 2500 ml, Lach-Ner",
+    "sourceNameHash": "6c7e548d46420710",
+    "name_en": "Butan-1-ol, p.a., 2500 ml, Lach-Ner",
+    "keywords_en": [
+      "chemical",
+      "laboratory chemical",
+      "analytical grade",
+      "p.a.",
+      "butan-1-ol"
+    ],
+    "translator": "prototype-rule-based-demo",
+    "translatedAt": "2026-06-11T19:27:39",
+    "status": "demo"
+  },
+  {
+    "itemId": 79,
+    "code": "30009-AP0-G1000-1",
+    "sourceName": "Citronan sodný dihydrát, p.a., 1000 g, Lach-Ner",
+    "sourceNameHash": "654a3e171b30a613",
+    "name_en": "Citronan sodium dihydrate, p.a., 1000 g, Lach-Ner",
+    "keywords_en": [
+      "chemical",
+      "laboratory chemical",
+      "analytical grade",
+      "p.a.",
+      "citronan sodium dihydrate"
+    ],
+    "translator": "prototype-rule-based-demo",
+    "translatedAt": "2026-06-11T19:27:39",
+    "status": "demo"
+  },
+  {
+    "itemId": 84,
+    "code": "40033-BP0-G0500-1",
+    "sourceName": "Černouhelný filtrační materiál FU-1, , 500 g, Lach-Ner",
+    "sourceNameHash": "ff9b93c5be088068",
+    "name_en": "Černouhelný filtrační materiál FU-1,, 500 g, Lach-Ner",
+    "keywords_en": [
+      "chemical",
+      "laboratory chemical",
+      "černouhelný filtrační materiál fu-1"
+    ],
+    "translator": "prototype-rule-based-demo",
+    "translatedAt": "2026-06-11T19:27:39",
+    "status": "demo"
+  },
+  {
+    "itemId": 93,
+    "code": "20018-AT0-M1000-1",
+    "sourceName": "Diethylether, p.a. stabilizovaný, 1000 ml, Lach-Ner",
+    "sourceNameHash": "6dfee81c8030aae3",
+    "name_en": "Diethyl ether, p.a. stabilized, 1000 ml, Lach-Ner",
+    "keywords_en": [
+      "chemical",
+      "laboratory chemical",
+      "analytical grade",
+      "p.a.",
+      "diethyl ether"
+    ],
+    "translator": "prototype-rule-based-demo",
+    "translatedAt": "2026-06-11T19:27:39",
+    "status": "demo"
+  },
+  {
+    "itemId": 102,
+    "code": "30015-AP0-G1000-1",
+    "sourceName": "Dihydrogenfosforečnan amonný, p.a., 1000 g, Lach-Ner",
+    "sourceNameHash": "34a98fa2b7f14b91",
+    "name_en": "Dihydrogenfosforečnan ammonium, p.a., 1000 g, Lach-Ner",
+    "keywords_en": [
+      "chemical",
+      "laboratory chemical",
+      "analytical grade",
+      "p.a.",
+      "dihydrogenfosforečnan ammonium"
+    ],
+    "translator": "prototype-rule-based-demo",
+    "translatedAt": "2026-06-11T19:27:39",
+    "status": "demo"
+  },
+  {
+    "itemId": 109,
+    "code": "30017-AP0-G1000-1",
+    "sourceName": "Dihydrogenfosforečnan sodný dihydrát, p.a., 1000 g, Lach-Ner",
+    "sourceNameHash": "dce20cb61b31ed16",
+    "name_en": "Dihydrogenfosforečnan sodium dihydrate, p.a., 1000 g, Lach-Ner",
+    "keywords_en": [
+      "chemical",
+      "laboratory chemical",
+      "analytical grade",
+      "p.a.",
+      "dihydrogenfosforečnan sodium dihydrate"
+    ],
+    "translator": "prototype-rule-based-demo",
+    "translatedAt": "2026-06-11T19:27:39",
+    "status": "demo"
+  },
+  {
+    "itemId": 31,
+    "code": "20001-AT0-M1000-1",
+    "sourceName": "Aceton, p.a., 1000 ml, Lach-Ner",
+    "sourceNameHash": "6089b80c51b0923f",
+    "name_en": "Acetonee, p.a., 1000 ml, Lach-Ner",
+    "keywords_en": [
+      "chemical",
+      "laboratory chemical",
+      "analytical grade",
+      "p.a.",
+      "acetonee"
+    ],
+    "translator": "prototype-rule-based-demo",
+    "translatedAt": "2026-06-11T19:27:39",
+    "status": "demo"
+  },
+  {
+    "itemId": 32,
+    "code": "20001-AT0-M2500-1",
+    "sourceName": "Aceton, p.a., 2500 ml, Lach-Ner",
+    "sourceNameHash": "2d0c3aaa8c79535a",
+    "name_en": "Acetonee, p.a., 2500 ml, Lach-Ner",
+    "keywords_en": [
+      "chemical",
+      "laboratory chemical",
+      "analytical grade",
+      "p.a.",
+      "acetonee"
+    ],
+    "translator": "prototype-rule-based-demo",
+    "translatedAt": "2026-06-11T19:27:39",
+    "status": "demo"
+  },
+  {
+    "itemId": 33,
+    "code": "20001-AT0-M5000-1",
+    "sourceName": "Aceton, p.a., 5000 ml, Lach-Ner",
+    "sourceNameHash": "ea7805a51b4b7e6a",
+    "name_en": "Acetonee, p.a., 5000 ml, Lach-Ner",
+    "keywords_en": [
+      "chemical",
+      "laboratory chemical",
+      "analytical grade",
+      "p.a.",
+      "acetonee"
+    ],
+    "translator": "prototype-rule-based-demo",
+    "translatedAt": "2026-06-11T19:27:39",
+    "status": "demo"
+  },
+  {
+    "itemId": 63,
+    "code": "30005-AP0-G1000-1",
+    "sourceName": "Bromid draselný, p.a., 1000 g, Lach-Ner",
+    "sourceNameHash": "326a716a3a09ea1b",
+    "name_en": "Bromide potassium, p.a., 1000 g, Lach-Ner",
+    "keywords_en": [
+      "chemical",
+      "laboratory chemical",
+      "analytical grade",
+      "p.a.",
+      "bromide potassium"
+    ],
+    "translator": "prototype-rule-based-demo",
+    "translatedAt": "2026-06-11T19:27:39",
+    "status": "demo"
+  },
+  {
+    "itemId": 65,
+    "code": "30006-AP0-G0500-1",
+    "sourceName": "Bromid sodný, p.a., 500 g, Lach-Ner",
+    "sourceNameHash": "2ffe3ea925d4b6d7",
+    "name_en": "Bromide sodium, p.a., 500 g, Lach-Ner",
+    "keywords_en": [
+      "chemical",
+      "laboratory chemical",
+      "analytical grade",
+      "p.a.",
+      "bromide sodium"
+    ],
+    "translator": "prototype-rule-based-demo",
+    "translatedAt": "2026-06-11T19:27:39",
+    "status": "demo"
+  },
+  {
+    "itemId": 66,
+    "code": "20010-CT0-M1000-1",
+    "sourceName": "Butan-1-ol, č., 1000 ml, Lach-Ner",
+    "sourceNameHash": "7f161f9a736066b6",
+    "name_en": "Butan-1-ol, pure, 1000 ml, Lach-Ner",
+    "keywords_en": [
+      "chemical",
+      "laboratory chemical",
+      "pure",
+      "butan-1-ol"
+    ],
+    "translator": "prototype-rule-based-demo",
+    "translatedAt": "2026-06-11T19:27:39",
+    "status": "demo"
+  },
+  {
+    "itemId": 81,
+    "code": "30011-CP0-G0100-1",
+    "sourceName": "Citronan železito-amonný, č. (zelený), 100 g, Lach-Ner",
+    "sourceNameHash": "dbdbf5002276a0eb",
+    "name_en": "Citronan ferric ammonium, pure (green), 100 g, Lach-Ner",
+    "keywords_en": [
+      "chemical",
+      "laboratory chemical",
+      "pure",
+      "citronan ferric ammonium"
+    ],
+    "translator": "prototype-rule-based-demo",
+    "translatedAt": "2026-06-11T19:27:39",
+    "status": "demo"
+  },
+  {
+    "itemId": 82,
+    "code": "20014-CT0-M1000-1",
+    "sourceName": "Cyklohexan, č., 1000 ml, Lach-Ner",
+    "sourceNameHash": "407a2c51ed6840db",
+    "name_en": "Cyclohexane, pure, 1000 ml, Lach-Ner",
+    "keywords_en": [
+      "chemical",
+      "laboratory chemical",
+      "pure",
+      "cyclohexane"
+    ],
+    "translator": "prototype-rule-based-demo",
+    "translatedAt": "2026-06-11T19:27:39",
+    "status": "demo"
+  },
+  {
+    "itemId": 83,
+    "code": "20014-AT0-M1000-1",
+    "sourceName": "Cyklohexan, p.a., 1000 ml, Lach-Ner",
+    "sourceNameHash": "8dcf7ddb31e20f8b",
+    "name_en": "Cyclohexane, p.a., 1000 ml, Lach-Ner",
+    "keywords_en": [
+      "chemical",
+      "laboratory chemical",
+      "analytical grade",
+      "p.a.",
+      "cyclohexane"
+    ],
+    "translator": "prototype-rule-based-demo",
+    "translatedAt": "2026-06-11T19:27:39",
+    "status": "demo"
+  },
+  {
+    "itemId": 100,
+    "code": "30015-CP0-G1000-1",
+    "sourceName": "Dihydrogenfosforečnan amonný, č., 1000 g, Lach-Ner",
+    "sourceNameHash": "325947c94251182c",
+    "name_en": "Dihydrogenfosforečnan ammonium, pure, 1000 g, Lach-Ner",
+    "keywords_en": [
+      "chemical",
+      "laboratory chemical",
+      "pure",
+      "dihydrogenfosforečnan ammonium"
+    ],
+    "translator": "prototype-rule-based-demo",
+    "translatedAt": "2026-06-11T19:27:39",
+    "status": "demo"
+  },
+  {
+    "itemId": 114,
+    "code": "20020-AT1-M1000-1",
+    "sourceName": "Dichlormethan, p.a., 1000 ml, Lach-Ner",
+    "sourceNameHash": "da34eb62add32d9f",
+    "name_en": "Dichloromethane, p.a., 1000 ml, Lach-Ner",
+    "keywords_en": [
+      "chemical",
+      "laboratory chemical",
+      "analytical grade",
+      "p.a.",
+      "dichloromethane"
+    ],
+    "translator": "prototype-rule-based-demo",
+    "translatedAt": "2026-06-11T19:27:39",
+    "status": "demo"
+  },
+  {
+    "itemId": 12,
+    "code": "40074-AP0-G0500-1",
+    "sourceName": "Chelaton III, p.a., 500 g, Lach-Ner",
+    "sourceNameHash": "9b6f3335a18922ba",
+    "name_en": "Chelaton III, p.a., 500 g, Lach-Ner",
+    "keywords_en": [
+      "chemical",
+      "laboratory chemical",
+      "analytical grade",
+      "p.a.",
+      "chelaton iii"
+    ],
+    "translator": "prototype-rule-based-demo",
+    "translatedAt": "2026-06-11T19:27:39",
+    "status": "demo"
+  },
+  {
+    "itemId": 19,
+    "code": "632413001200",
+    "sourceName": "Nálevka s krátkým stonkem, úhel 60°, SIMAX, Průměr [mm]: 200",
+    "sourceNameHash": "5c74e0e5d5651194",
+    "name_en": "Funnel s short stem, angle 60°, SIMAX, Diameter [mm]: 200",
+    "keywords_en": [
+      "funnel",
+      "filtration funnel",
+      "Kavalierglass",
+      "funnel s short stem"
+    ],
+    "translator": "prototype-rule-based-demo",
+    "translatedAt": "2026-06-11T19:27:39",
+    "status": "demo"
+  },
+  {
+    "itemId": 26,
+    "code": "641329252201",
+    "sourceName": "Lodička na vážení, porcelánová, Délka [mm]: 64, Šířka [mm]: 29",
+    "sourceNameHash": "bd6e252ad162415d",
+    "name_en": "Weighing boat, porcelain, Length [mm]: 64, Width [mm]: 29",
+    "keywords_en": [
+      "weighing boat",
+      "weighing dish",
+      "Jizerská porcelánka"
+    ],
+    "translator": "prototype-rule-based-demo",
+    "translatedAt": "2026-06-11T19:27:39",
+    "status": "demo"
+  },
+  {
+    "itemId": 28,
+    "code": "40001-AT0-M0250-1",
+    "sourceName": "Acetaldehyd, p.a., 250 ml, Lach-Ner",
+    "sourceNameHash": "b77c967ae2b69822",
+    "name_en": "Acetaldehyd, p.a., 250 ml, Lach-Ner",
+    "keywords_en": [
+      "chemical",
+      "laboratory chemical",
+      "analytical grade",
+      "p.a.",
+      "acetaldehyd"
+    ],
+    "translator": "prototype-rule-based-demo",
+    "translatedAt": "2026-06-11T19:27:39",
+    "status": "demo"
+  },
+  {
+    "itemId": 37,
+    "code": "40176-BP0-G0250-1",
+    "sourceName": "Aktivní uhlí SILCARBON, prášek, 250 g, Lach-Ner",
+    "sourceNameHash": "f24ca091c58b0a99",
+    "name_en": "Aktivní uhlí SILCARBON, powder, 250 g, Lach-Ner",
+    "keywords_en": [
+      "chemical",
+      "laboratory chemical",
+      "aktivní uhlí silcarbon"
+    ],
+    "translator": "prototype-rule-based-demo",
+    "translatedAt": "2026-06-11T19:27:39",
+    "status": "demo"
+  },
+  {
+    "itemId": 60,
+    "code": "30005-CP0-G0500-1",
+    "sourceName": "Bromid draselný, č., 500 g, Lach-Ner",
+    "sourceNameHash": "118df8bbede9e9f7",
+    "name_en": "Bromide potassium, pure, 500 g, Lach-Ner",
+    "keywords_en": [
+      "chemical",
+      "laboratory chemical",
+      "pure",
+      "bromide potassium"
+    ],
+    "translator": "prototype-rule-based-demo",
+    "translatedAt": "2026-06-11T19:27:39",
+    "status": "demo"
+  },
+  {
+    "itemId": 62,
+    "code": "30005-AP0-G0500-1",
+    "sourceName": "Bromid draselný, p.a., 500 g, Lach-Ner",
+    "sourceNameHash": "c575b8ed9cf732c8",
+    "name_en": "Bromide potassium, p.a., 500 g, Lach-Ner",
+    "keywords_en": [
+      "chemical",
+      "laboratory chemical",
+      "analytical grade",
+      "p.a.",
+      "bromide potassium"
+    ],
+    "translator": "prototype-rule-based-demo",
+    "translatedAt": "2026-06-11T19:27:39",
+    "status": "demo"
+  },
+  {
+    "itemId": 67,
+    "code": "20010-AT0-M1000-1",
+    "sourceName": "Butan-1-ol, p.a., 1000 ml, Lach-Ner",
+    "sourceNameHash": "cfda2447d34d694b",
+    "name_en": "Butan-1-ol, p.a., 1000 ml, Lach-Ner",
+    "keywords_en": [
+      "chemical",
+      "laboratory chemical",
+      "analytical grade",
+      "p.a.",
+      "butan-1-ol"
+    ],
+    "translator": "prototype-rule-based-demo",
+    "translatedAt": "2026-06-11T19:27:39",
+    "status": "demo"
+  },
+  {
+    "itemId": 69,
+    "code": "20011-AT0-M1000-1",
+    "sourceName": "Butan-2-ol, p.a., 1000 ml, Lach-Ner",
+    "sourceNameHash": "0d960904500f57d2",
+    "name_en": "Butan-2-ol, p.a., 1000 ml, Lach-Ner",
+    "keywords_en": [
+      "chemical",
+      "laboratory chemical",
+      "analytical grade",
+      "p.a.",
+      "butan-2-ol"
+    ],
+    "translator": "prototype-rule-based-demo",
+    "translatedAt": "2026-06-11T19:27:39",
+    "status": "demo"
+  },
+  {
+    "itemId": 71,
+    "code": "20013-CT0-M1000-1",
+    "sourceName": "n-Butyl-acetát, č., 1000 ml, Lach-Ner",
+    "sourceNameHash": "9bb515723704dc7f",
+    "name_en": "n-Butyl-acetát, pure, 1000 ml, Lach-Ner",
+    "keywords_en": [
+      "chemical",
+      "laboratory chemical",
+      "pure",
+      "n-butyl-acetát"
+    ],
+    "translator": "prototype-rule-based-demo",
+    "translatedAt": "2026-06-11T19:27:39",
+    "status": "demo"
+  },
+  {
+    "itemId": 78,
+    "code": "30009-AP0-G0500-1",
+    "sourceName": "Citronan sodný dihydrát, p.a., 500 g, Lach-Ner",
+    "sourceNameHash": "6c1533f656cf7936",
+    "name_en": "Citronan sodium dihydrate, p.a., 500 g, Lach-Ner",
+    "keywords_en": [
+      "chemical",
+      "laboratory chemical",
+      "analytical grade",
+      "p.a.",
+      "citronan sodium dihydrate"
+    ],
+    "translator": "prototype-rule-based-demo",
+    "translatedAt": "2026-06-11T19:27:39",
+    "status": "demo"
+  },
+  {
+    "itemId": 23,
+    "code": "632417011250",
+    "sourceName": "Kádinka nízká s uchem a výlevkou, SIMAX, Objem [ml]: 250",
+    "sourceNameHash": "0f0a577441cd4a59",
+    "name_en": "Beaker low form with handle a spout, SIMAX, Volume [ml]: 250",
+    "keywords_en": [
+      "beaker",
+      "laboratory beaker",
+      "Kavalierglass",
+      "beaker low form with handle a spout"
+    ],
+    "translator": "prototype-rule-based-demo",
+    "translatedAt": "2026-06-11T19:27:39",
+    "status": "demo"
+  },
+  {
+    "itemId": 24,
+    "code": "632417011940",
+    "sourceName": "Kádinka nízká s uchem a výlevkou, SIMAX, Objem [ml]: 1000",
+    "sourceNameHash": "2e18b7725512762e",
+    "name_en": "Beaker low form with handle a spout, SIMAX, Volume [ml]: 1000",
+    "keywords_en": [
+      "beaker",
+      "laboratory beaker",
+      "Kavalierglass",
+      "beaker low form with handle a spout"
+    ],
+    "translator": "prototype-rule-based-demo",
+    "translatedAt": "2026-06-11T19:27:39",
+    "status": "demo"
+  },
+  {
+    "itemId": 25,
+    "code": "331850080817",
+    "sourceName": "Válec odměrný nízký, lisovaná stupnice, PP, Objem [ml]: 100",
+    "sourceNameHash": "a847f3e04d7fc693",
+    "name_en": "Measuring cylinder nízký, molded graduation, PP, Volume [ml]: 100",
+    "keywords_en": [
+      "measuring cylinder",
+      "graduated cylinder",
+      "Kartell",
+      "measuring cylinder nízký"
+    ],
+    "translator": "prototype-rule-based-demo",
+    "translatedAt": "2026-06-11T19:27:39",
+    "status": "demo"
+  },
+  {
+    "itemId": 38,
+    "code": "40004-CP0-G0100-1",
+    "sourceName": "Amid kyseliny sulfanilové, č., 100 g, Lach-Ner",
+    "sourceNameHash": "487f0767b35b0f5f",
+    "name_en": "Amid kyseliny sulfanilové, pure, 100 g, Lach-Ner",
+    "keywords_en": [
+      "chemical",
+      "laboratory chemical",
+      "pure",
+      "amid kyseliny sulfanilové"
+    ],
+    "translator": "prototype-rule-based-demo",
+    "translatedAt": "2026-06-11T19:27:39",
+    "status": "demo"
+  },
+  {
+    "itemId": 40,
+    "code": "40006-CP0-G0050-1",
+    "sourceName": "4-Aminoantipyrin, č., 50 g, Lach-Ner",
+    "sourceNameHash": "ec2d7d851e09cac7",
+    "name_en": "4-Aminoantipyrin, pure, 50 g, Lach-Ner",
+    "keywords_en": [
+      "chemical",
+      "laboratory chemical",
+      "pure",
+      "4-aminoantipyrin"
+    ],
+    "translator": "prototype-rule-based-demo",
+    "translatedAt": "2026-06-11T19:27:39",
+    "status": "demo"
+  },
+  {
+    "itemId": 55,
+    "code": "20008-BT0-M1000-1",
+    "sourceName": "Benzin lékařský RN, dle specifikace ČL, 1000 ml, Lach-Ner",
+    "sourceNameHash": "1dc7bad535e650e9",
+    "name_en": "Benzin lékařský RN, according to specification Czech Pharmacopoeia, 1000 ml, Lach-Ner",
+    "keywords_en": [
+      "chemical",
+      "laboratory chemical",
+      "benzin lékařský rn"
+    ],
+    "translator": "prototype-rule-based-demo",
+    "translatedAt": "2026-06-11T19:27:39",
+    "status": "demo"
+  },
+  {
+    "itemId": 57,
+    "code": "20009-AT0-M1000-1",
+    "sourceName": "Benzylalkohol, p.a., 1000 ml, Lach-Ner",
+    "sourceNameHash": "698e28eeccc01f5f",
+    "name_en": "Benzylalkohol, p.a., 1000 ml, Lach-Ner",
+    "keywords_en": [
+      "chemical",
+      "laboratory chemical",
+      "analytical grade",
+      "p.a.",
+      "benzylalkohol"
+    ],
+    "translator": "prototype-rule-based-demo",
+    "translatedAt": "2026-06-11T19:27:39",
+    "status": "demo"
+  },
+  {
+    "itemId": 58,
+    "code": "30002-AP0-G0250-1",
+    "sourceName": "Bromičnan draselný, p.a., 250 g, Lach-Ner",
+    "sourceNameHash": "384ece977b818bad",
+    "name_en": "Bromičnan potassium, p.a., 250 g, Lach-Ner",
+    "keywords_en": [
+      "chemical",
+      "laboratory chemical",
+      "analytical grade",
+      "p.a.",
+      "bromičnan potassium"
+    ],
+    "translator": "prototype-rule-based-demo",
+    "translatedAt": "2026-06-11T19:27:39",
+    "status": "demo"
+  },
+  {
+    "itemId": 73,
+    "code": "20013-AT0-M1000-1",
+    "sourceName": "n-Butyl-acetát, p.a., 1000 ml, Lach-Ner",
+    "sourceNameHash": "c1c16114539b42d4",
+    "name_en": "n-Butyl-acetát, p.a., 1000 ml, Lach-Ner",
+    "keywords_en": [
+      "chemical",
+      "laboratory chemical",
+      "analytical grade",
+      "p.a.",
+      "n-butyl-acetát"
+    ],
+    "translator": "prototype-rule-based-demo",
+    "translatedAt": "2026-06-11T19:27:39",
+    "status": "demo"
+  },
+  {
+    "itemId": 75,
+    "code": "30007-CP0-G1000-1",
+    "sourceName": "Citronan draselný monohydrát, č., 1000 g, Lach-Ner",
+    "sourceNameHash": "c4408c0208debb7b",
+    "name_en": "Citronan potassium monohydrate, pure, 1000 g, Lach-Ner",
+    "keywords_en": [
+      "chemical",
+      "laboratory chemical",
+      "pure",
+      "citronan potassium monohydrate"
+    ],
+    "translator": "prototype-rule-based-demo",
+    "translatedAt": "2026-06-11T19:27:39",
+    "status": "demo"
+  },
+  {
+    "itemId": 89,
+    "code": "40023-IP0-G0100-1",
+    "sourceName": "Červeň methylová, volná kyselina, indikátor, 100 g, Lach-Ner",
+    "sourceNameHash": "2d0546259864f09c",
+    "name_en": "Červeň methylová, free acid, indicator, 100 g, Lach-Ner",
+    "keywords_en": [
+      "chemical",
+      "laboratory chemical",
+      "indicator",
+      "červeň methylová"
+    ],
+    "translator": "prototype-rule-based-demo",
+    "translatedAt": "2026-06-11T19:27:39",
+    "status": "demo"
+  },
+  {
+    "itemId": 115,
+    "code": "20020-AT1-M2500-1",
+    "sourceName": "Dichlormethan, p.a., 2500 ml, Lach-Ner",
+    "sourceNameHash": "35f7562bdae6ab6a",
+    "name_en": "Dichloromethane, p.a., 2500 ml, Lach-Ner",
+    "keywords_en": [
+      "chemical",
+      "laboratory chemical",
+      "analytical grade",
+      "p.a.",
+      "dichloromethane"
+    ],
+    "translator": "prototype-rule-based-demo",
+    "translatedAt": "2026-06-11T19:27:39",
+    "status": "demo"
+  },
+  {
+    "itemId": 116,
+    "code": "20020-AT1-M5000-1",
+    "sourceName": "Dichlormethan, p.a., 5000 ml, Lach-Ner",
+    "sourceNameHash": "047155dc7f417977",
+    "name_en": "Dichloromethane, p.a., 5000 ml, Lach-Ner",
+    "keywords_en": [
+      "chemical",
+      "laboratory chemical",
+      "analytical grade",
+      "p.a.",
+      "dichloromethane"
+    ],
+    "translator": "prototype-rule-based-demo",
+    "translatedAt": "2026-06-11T19:27:39",
+    "status": "demo"
+  },
+  {
+    "itemId": 130,
+    "code": "30024-CP0-G1000-1",
+    "sourceName": "Pyrosiřičitan sodný, č., 1000 g, Lach-Ner",
+    "sourceNameHash": "0ac24814f7fae1ed",
+    "name_en": "Pyrosiřičitan sodium, pure, 1000 g, Lach-Ner",
+    "keywords_en": [
+      "chemical",
+      "laboratory chemical",
+      "pure",
+      "pyrosiřičitan sodium"
+    ],
+    "translator": "prototype-rule-based-demo",
+    "translatedAt": "2026-06-11T19:27:39",
+    "status": "demo"
+  },
+  {
+    "itemId": 131,
+    "code": "30024-AP0-G0500-1",
+    "sourceName": "Pyrosiřičitan sodný, p.a., 500 g, Lach-Ner",
+    "sourceNameHash": "8bbbf3c4298aef0e",
+    "name_en": "Pyrosiřičitan sodium, p.a., 500 g, Lach-Ner",
+    "keywords_en": [
+      "chemical",
+      "laboratory chemical",
+      "analytical grade",
+      "p.a.",
+      "pyrosiřičitan sodium"
+    ],
+    "translator": "prototype-rule-based-demo",
+    "translatedAt": "2026-06-11T19:27:39",
+    "status": "demo"
+  },
+  {
+    "itemId": 132,
+    "code": "30024-AP0-G1000-1",
+    "sourceName": "Pyrosiřičitan sodný, p.a., 1000 g, Lach-Ner",
+    "sourceNameHash": "5289ce3d74135482",
+    "name_en": "Pyrosiřičitan sodium, p.a., 1000 g, Lach-Ner",
+    "keywords_en": [
+      "chemical",
+      "laboratory chemical",
+      "analytical grade",
+      "p.a.",
+      "pyrosiřičitan sodium"
+    ],
+    "translator": "prototype-rule-based-demo",
+    "translatedAt": "2026-06-11T19:27:39",
+    "status": "demo"
+  },
+  {
+    "itemId": 147,
+    "code": "30036-AP0-G0500-1",
+    "sourceName": "Dusičnan měďnatý trihydrát, p.a., 500 g, Lach-Ner",
+    "sourceNameHash": "e55b04ba93d9d314",
+    "name_en": "Nitrate copper(II) trihydrate, p.a., 500 g, Lach-Ner",
+    "keywords_en": [
+      "chemical",
+      "laboratory chemical",
+      "analytical grade",
+      "p.a.",
+      "nitrate copper(ii) trihydrate"
+    ],
+    "translator": "prototype-rule-based-demo",
+    "translatedAt": "2026-06-11T19:27:39",
+    "status": "demo"
+  },
+  {
+    "itemId": 164,
+    "code": "30046-CP0-G0500-1",
+    "sourceName": "Dusitan sodný, č., 500 g, Lach-Ner",
+    "sourceNameHash": "ba35e01ca592647c",
+    "name_en": "Nitrite sodium, pure, 500 g, Lach-Ner",
+    "keywords_en": [
+      "chemical",
+      "laboratory chemical",
+      "pure",
+      "nitrite sodium"
+    ],
+    "translator": "prototype-rule-based-demo",
+    "translatedAt": "2026-06-11T19:27:39",
+    "status": "demo"
+  },
+  {
+    "itemId": 165,
+    "code": "30046-CP0-G1000-1",
+    "sourceName": "Dusitan sodný, č., 1000 g, Lach-Ner",
+    "sourceNameHash": "a9329471debf3345",
+    "name_en": "Nitrite sodium, pure, 1000 g, Lach-Ner",
+    "keywords_en": [
+      "chemical",
+      "laboratory chemical",
+      "pure",
+      "nitrite sodium"
+    ],
+    "translator": "prototype-rule-based-demo",
+    "translatedAt": "2026-06-11T19:27:39",
+    "status": "demo"
+  },
+  {
+    "itemId": 166,
+    "code": "30046-AP0-G0500-1",
+    "sourceName": "Dusitan sodný, p.a., 500 g, Lach-Ner",
+    "sourceNameHash": "4c1b4fd56b3b4659",
+    "name_en": "Nitrite sodium, p.a., 500 g, Lach-Ner",
+    "keywords_en": [
+      "chemical",
+      "laboratory chemical",
+      "analytical grade",
+      "p.a.",
+      "nitrite sodium"
+    ],
+    "translator": "prototype-rule-based-demo",
+    "translatedAt": "2026-06-11T19:27:39",
+    "status": "demo"
+  },
+  {
+    "itemId": 167,
+    "code": "30046-AP0-G1000-1",
+    "sourceName": "Dusitan sodný, p.a., 1000 g, Lach-Ner",
+    "sourceNameHash": "d573ad522517ab2a",
+    "name_en": "Nitrite sodium, p.a., 1000 g, Lach-Ner",
+    "keywords_en": [
+      "chemical",
+      "laboratory chemical",
+      "analytical grade",
+      "p.a.",
+      "nitrite sodium"
+    ],
+    "translator": "prototype-rule-based-demo",
+    "translatedAt": "2026-06-11T19:27:39",
+    "status": "demo"
+  },
+  {
+    "itemId": 181,
+    "code": "20024-CT0-M5000-1",
+    "sourceName": "Ethylmethylketon, č., 5000 ml, Lach-Ner",
+    "sourceNameHash": "0a281718e45cd1ee",
+    "name_en": "Ethyl methyl ketone, pure, 5000 ml, Lach-Ner",
+    "keywords_en": [
+      "chemical",
+      "laboratory chemical",
+      "pure",
+      "ethyl methyl ketone"
+    ],
+    "translator": "prototype-rule-based-demo",
+    "translatedAt": "2026-06-11T19:27:39",
+    "status": "demo"
+  },
+  {
+    "itemId": 127,
+    "code": "30023-CP0-G1000-1",
+    "sourceName": "Disiřičitan draselný, č., 1000 g, Lach-Ner",
+    "sourceNameHash": "3718f22345ee842b",
+    "name_en": "Disiřičitan potassium, pure, 1000 g, Lach-Ner",
+    "keywords_en": [
+      "chemical",
+      "laboratory chemical",
+      "pure",
+      "disiřičitan potassium"
+    ],
+    "translator": "prototype-rule-based-demo",
+    "translatedAt": "2026-06-11T19:27:39",
+    "status": "demo"
+  },
+  {
+    "itemId": 129,
+    "code": "30023-AP0-G1000-1",
+    "sourceName": "Disiřičitan draselný, p.a., 1000 g, Lach-Ner",
+    "sourceNameHash": "45a7991945eebfb9",
+    "name_en": "Disiřičitan potassium, p.a., 1000 g, Lach-Ner",
+    "keywords_en": [
+      "chemical",
+      "laboratory chemical",
+      "analytical grade",
+      "p.a.",
+      "disiřičitan potassium"
+    ],
+    "translator": "prototype-rule-based-demo",
+    "translatedAt": "2026-06-11T19:27:39",
+    "status": "demo"
+  },
+  {
+    "itemId": 134,
+    "code": "30025-CP0-G1000-1",
+    "sourceName": "Dusičnan amonný, č., 1000 g, Lach-Ner",
+    "sourceNameHash": "39b80a9003e6dee5",
+    "name_en": "Nitrate ammonium, pure, 1000 g, Lach-Ner",
+    "keywords_en": [
+      "chemical",
+      "laboratory chemical",
+      "pure",
+      "nitrate ammonium"
+    ],
+    "translator": "prototype-rule-based-demo",
+    "translatedAt": "2026-06-11T19:27:39",
+    "status": "demo"
+  },
+  {
+    "itemId": 136,
+    "code": "30025-AP0-G1000-1",
+    "sourceName": "Dusičnan amonný, p.a., 1000 g, Lach-Ner",
+    "sourceNameHash": "99197c520fa1f2fd",
+    "name_en": "Nitrate ammonium, p.a., 1000 g, Lach-Ner",
+    "keywords_en": [
+      "chemical",
+      "laboratory chemical",
+      "analytical grade",
+      "p.a.",
+      "nitrate ammonium"
+    ],
+    "translator": "prototype-rule-based-demo",
+    "translatedAt": "2026-06-11T19:27:39",
+    "status": "demo"
+  },
+  {
+    "itemId": 143,
+    "code": "30030-AP0-G0500-1",
+    "sourceName": "Dusičnan hlinitý nonahydrát, p.a., 500 g, Lach-Ner",
+    "sourceNameHash": "e7cd75998c897309",
+    "name_en": "Nitrate aluminium nonahydrát, p.a., 500 g, Lach-Ner",
+    "keywords_en": [
+      "chemical",
+      "laboratory chemical",
+      "analytical grade",
+      "p.a.",
+      "nitrate aluminium nonahydrát"
+    ],
+    "translator": "prototype-rule-based-demo",
+    "translatedAt": "2026-06-11T19:27:39",
+    "status": "demo"
+  },
+  {
+    "itemId": 145,
+    "code": "30033-AP0-G0500-1",
+    "sourceName": "Dusičnan kobaltnatý hexahydrát, p.a., 500 g, Lach-Ner",
+    "sourceNameHash": "1745eacb3d96bc1e",
+    "name_en": "Nitrate cobalt(II) hexahydrate, p.a., 500 g, Lach-Ner",
+    "keywords_en": [
+      "chemical",
+      "laboratory chemical",
+      "analytical grade",
+      "p.a.",
+      "nitrate cobalt(ii) hexahydrate"
+    ],
+    "translator": "prototype-rule-based-demo",
+    "translatedAt": "2026-06-11T19:27:39",
+    "status": "demo"
+  },
+  {
+    "itemId": 152,
+    "code": "30038-AP0-G1000-1",
+    "sourceName": "Dusičnan olovnatý, p.a., 1000 g, Lach-Ner",
+    "sourceNameHash": "3bedf9d9874010d8",
+    "name_en": "Nitrate lead(II), p.a., 1000 g, Lach-Ner",
+    "keywords_en": [
+      "chemical",
+      "laboratory chemical",
+      "analytical grade",
+      "p.a.",
+      "nitrate lead(ii)"
+    ],
+    "translator": "prototype-rule-based-demo",
+    "translatedAt": "2026-06-11T19:27:39",
+    "status": "demo"
+  },
+  {
+    "itemId": 154,
+    "code": "30040-CP0-G1000-1",
+    "sourceName": "Dusičnan sodný, č., 1000 g, Lach-Ner",
+    "sourceNameHash": "3c2918b2e102c291",
+    "name_en": "Nitrate sodium, pure, 1000 g, Lach-Ner",
+    "keywords_en": [
+      "chemical",
+      "laboratory chemical",
+      "pure",
+      "nitrate sodium"
+    ],
+    "translator": "prototype-rule-based-demo",
+    "translatedAt": "2026-06-11T19:27:39",
+    "status": "demo"
+  },
+  {
+    "itemId": 161,
+    "code": "30044-AP0-G0500-1",
+    "sourceName": "Dusičnan zinečnatý hexahydrát, p.a., 500 g, Lach-Ner",
+    "sourceNameHash": "de04cff70a6b2a85",
+    "name_en": "Nitrate zinc hexahydrate, p.a., 500 g, Lach-Ner",
+    "keywords_en": [
+      "chemical",
+      "laboratory chemical",
+      "analytical grade",
+      "p.a.",
+      "nitrate zinc hexahydrate"
+    ],
+    "translator": "prototype-rule-based-demo",
+    "translatedAt": "2026-06-11T19:27:39",
+    "status": "demo"
+  },
+  {
+    "itemId": 168,
+    "code": "20025-B96-M1000-1",
+    "sourceName": "Ethylalkohol, dle specifikace Ph.Eur 11.0, 1000 ml, Lach-Ner",
+    "sourceNameHash": "4bbde3825962c619",
+    "name_en": "Ethanol, according to specification Ph. Eur. 11.0, 1000 ml, Lach-Ner",
+    "keywords_en": [
+      "chemical",
+      "laboratory chemical",
+      "ethanol"
+    ],
+    "translator": "prototype-rule-based-demo",
+    "translatedAt": "2026-06-11T19:27:39",
+    "status": "demo"
+  },
+  {
+    "itemId": 170,
+    "code": "20025-A96-M1000-1",
+    "sourceName": "Ethylalkohol, p.a., 1000 ml, Lach-Ner",
+    "sourceNameHash": "5fd42d5399067ea0",
+    "name_en": "Ethanol, p.a., 1000 ml, Lach-Ner",
+    "keywords_en": [
+      "chemical",
+      "laboratory chemical",
+      "analytical grade",
+      "p.a.",
+      "ethanol"
+    ],
+    "translator": "prototype-rule-based-demo",
+    "translatedAt": "2026-06-11T19:27:39",
+    "status": "demo"
+  },
+  {
+    "itemId": 92,
+    "code": "20018-FT3-M1000-9",
+    "sourceName": "Diethylether, ČL 2017, 1000 ml, Lach-Ner",
+    "sourceNameHash": "5d293f3066201c49",
+    "name_en": "Diethyl ether, Czech Pharmacopoeia 2017, 1000 ml, Lach-Ner",
+    "keywords_en": [
+      "chemical",
+      "laboratory chemical",
+      "diethyl ether"
+    ],
+    "translator": "prototype-rule-based-demo",
+    "translatedAt": "2026-06-11T19:27:39",
+    "status": "demo"
+  },
+  {
+    "itemId": 94,
+    "code": "20018-AT0-M2500-1",
+    "sourceName": "Diethylether, p.a. stabilizovaný, 2500 ml, Lach-Ner",
+    "sourceNameHash": "e6f0810d3e964687",
+    "name_en": "Diethyl ether, p.a. stabilized, 2500 ml, Lach-Ner",
+    "keywords_en": [
+      "chemical",
+      "laboratory chemical",
+      "analytical grade",
+      "p.a.",
+      "diethyl ether"
+    ],
+    "translator": "prototype-rule-based-demo",
+    "translatedAt": "2026-06-11T19:27:39",
+    "status": "demo"
+  },
+  {
+    "itemId": 101,
+    "code": "30015-AP0-G0500-1",
+    "sourceName": "Dihydrogenfosforečnan amonný, p.a., 500 g, Lach-Ner",
+    "sourceNameHash": "30099b073eae9897",
+    "name_en": "Dihydrogenfosforečnan ammonium, p.a., 500 g, Lach-Ner",
+    "keywords_en": [
+      "chemical",
+      "laboratory chemical",
+      "analytical grade",
+      "p.a.",
+      "dihydrogenfosforečnan ammonium"
+    ],
+    "translator": "prototype-rule-based-demo",
+    "translatedAt": "2026-06-11T19:27:39",
+    "status": "demo"
+  },
+  {
+    "itemId": 103,
+    "code": "30016-CP0-G0500-1",
+    "sourceName": "Dihydrogenfosforečnan draselný, č., 500 g, Lach-Ner",
+    "sourceNameHash": "8d932308f9920397",
+    "name_en": "Dihydrogenfosforečnan potassium, pure, 500 g, Lach-Ner",
+    "keywords_en": [
+      "chemical",
+      "laboratory chemical",
+      "pure",
+      "dihydrogenfosforečnan potassium"
+    ],
+    "translator": "prototype-rule-based-demo",
+    "translatedAt": "2026-06-11T19:27:39",
+    "status": "demo"
+  },
+  {
+    "itemId": 121,
+    "code": "20021-CT0-M1000-1",
+    "sourceName": "N,N-Dimethylformamid, č., 1000 ml, Lach-Ner",
+    "sourceNameHash": "68e025ba24a1d315",
+    "name_en": "N,N-Dimethylformamid, pure, 1000 ml, Lach-Ner",
+    "keywords_en": [
+      "chemical",
+      "laboratory chemical",
+      "pure",
+      "n"
+    ],
+    "translator": "prototype-rule-based-demo",
+    "translatedAt": "2026-06-11T19:27:39",
+    "status": "demo"
+  },
+  {
+    "itemId": 126,
+    "code": "20023-AT4-M1000-1",
+    "sourceName": "1,4-Dioxan, p.a., 1000 ml, Lach-Ner",
+    "sourceNameHash": "4ea62b3b8117ec0e",
+    "name_en": "1,4-Dioxan, p.a., 1000 ml, Lach-Ner",
+    "keywords_en": [
+      "chemical",
+      "laboratory chemical",
+      "analytical grade",
+      "p.a.",
+      "1"
+    ],
+    "translator": "prototype-rule-based-demo",
+    "translatedAt": "2026-06-11T19:27:39",
+    "status": "demo"
+  },
+  {
+    "itemId": 128,
+    "code": "30023-AP0-G0500-1",
+    "sourceName": "Disiřičitan draselný, p.a., 500 g, Lach-Ner",
+    "sourceNameHash": "5d4baa6bcde0e8f9",
+    "name_en": "Disiřičitan potassium, p.a., 500 g, Lach-Ner",
+    "keywords_en": [
+      "chemical",
+      "laboratory chemical",
+      "analytical grade",
+      "p.a.",
+      "disiřičitan potassium"
+    ],
+    "translator": "prototype-rule-based-demo",
+    "translatedAt": "2026-06-11T19:27:39",
+    "status": "demo"
+  },
+  {
+    "itemId": 135,
+    "code": "30025-AP0-G0500-1",
+    "sourceName": "Dusičnan amonný, p.a., 500 g, Lach-Ner",
+    "sourceNameHash": "53d1c7088ec73808",
+    "name_en": "Nitrate ammonium, p.a., 500 g, Lach-Ner",
+    "keywords_en": [
+      "chemical",
+      "laboratory chemical",
+      "analytical grade",
+      "p.a.",
+      "nitrate ammonium"
+    ],
+    "translator": "prototype-rule-based-demo",
+    "translatedAt": "2026-06-11T19:27:39",
+    "status": "demo"
+  },
+  {
+    "itemId": 144,
+    "code": "30031-AP0-G0250-1",
+    "sourceName": "Dusičnan hořečnatý hexahydrát, p.a., 250 g, Lach-Ner",
+    "sourceNameHash": "7e9da6151fb5da50",
+    "name_en": "Nitrate magnesium hexahydrate, p.a., 250 g, Lach-Ner",
+    "keywords_en": [
+      "chemical",
+      "laboratory chemical",
+      "analytical grade",
+      "p.a.",
+      "nitrate magnesium hexahydrate"
+    ],
+    "translator": "prototype-rule-based-demo",
+    "translatedAt": "2026-06-11T19:27:39",
+    "status": "demo"
+  },
+  {
+    "itemId": 151,
+    "code": "30038-AP0-G0500-1",
+    "sourceName": "Dusičnan olovnatý, p.a., 500 g, Lach-Ner",
+    "sourceNameHash": "9747451f7b92523a",
+    "name_en": "Nitrate lead(II), p.a., 500 g, Lach-Ner",
+    "keywords_en": [
+      "chemical",
+      "laboratory chemical",
+      "analytical grade",
+      "p.a.",
+      "nitrate lead(ii)"
+    ],
+    "translator": "prototype-rule-based-demo",
+    "translatedAt": "2026-06-11T19:27:39",
+    "status": "demo"
+  },
+  {
+    "itemId": 162,
+    "code": "30044-AP0-G1000-1",
+    "sourceName": "Dusičnan zinečnatý hexahydrát, p.a., 1000 g, Lach-Ner",
+    "sourceNameHash": "8b09d899c8e1ad98",
+    "name_en": "Nitrate zinc hexahydrate, p.a., 1000 g, Lach-Ner",
+    "keywords_en": [
+      "chemical",
+      "laboratory chemical",
+      "analytical grade",
+      "p.a.",
+      "nitrate zinc hexahydrate"
+    ],
+    "translator": "prototype-rule-based-demo",
+    "translatedAt": "2026-06-11T19:27:39",
+    "status": "demo"
+  },
+  {
+    "itemId": 105,
+    "code": "30016-AP0-G0500-1",
+    "sourceName": "Dihydrogenfosforečnan draselný, p.a., 500 g, Lach-Ner",
+    "sourceNameHash": "dd581c67c3719d23",
+    "name_en": "Dihydrogenfosforečnan potassium, p.a., 500 g, Lach-Ner",
+    "keywords_en": [
+      "chemical",
+      "laboratory chemical",
+      "analytical grade",
+      "p.a.",
+      "dihydrogenfosforečnan potassium"
+    ],
+    "translator": "prototype-rule-based-demo",
+    "translatedAt": "2026-06-11T19:27:39",
+    "status": "demo"
+  },
+  {
+    "itemId": 106,
+    "code": "30016-AP0-G1000-1",
+    "sourceName": "Dihydrogenfosforečnan draselný, p.a., 1000 g, Lach-Ner",
+    "sourceNameHash": "faa747c70fa1ae5b",
+    "name_en": "Dihydrogenfosforečnan potassium, p.a., 1000 g, Lach-Ner",
+    "keywords_en": [
+      "chemical",
+      "laboratory chemical",
+      "analytical grade",
+      "p.a.",
+      "dihydrogenfosforečnan potassium"
+    ],
+    "translator": "prototype-rule-based-demo",
+    "translatedAt": "2026-06-11T19:27:39",
+    "status": "demo"
+  },
+  {
+    "itemId": 108,
+    "code": "30017-AP0-G0500-1",
+    "sourceName": "Dihydrogenfosforečnan sodný dihydrát, p.a., 500 g, Lach-Ner",
+    "sourceNameHash": "f6ea9c6a737ade0d",
+    "name_en": "Dihydrogenfosforečnan sodium dihydrate, p.a., 500 g, Lach-Ner",
+    "keywords_en": [
+      "chemical",
+      "laboratory chemical",
+      "analytical grade",
+      "p.a.",
+      "dihydrogenfosforečnan sodium dihydrate"
+    ],
+    "translator": "prototype-rule-based-demo",
+    "translatedAt": "2026-06-11T19:27:39",
+    "status": "demo"
+  },
+  {
+    "itemId": 122,
+    "code": "40034-AP0-G0050-1",
+    "sourceName": "4-(Dimethylamino)benzaldehyd, p.a., 50 g, Lach-Ner",
+    "sourceNameHash": "07b0de70861757ea",
+    "name_en": "4-(Dimethylamino)benzaldehyd, p.a., 50 g, Lach-Ner",
+    "keywords_en": [
+      "chemical",
+      "laboratory chemical",
+      "analytical grade",
+      "p.a.",
+      "4-(dimethylamino)benzaldehyd"
+    ],
+    "translator": "prototype-rule-based-demo",
+    "translatedAt": "2026-06-11T19:27:39",
+    "status": "demo"
+  },
+  {
+    "itemId": 123,
+    "code": "40034-AP0-G0100-1",
+    "sourceName": "4-(Dimethylamino)benzaldehyd, p.a., 100 g, Lach-Ner",
+    "sourceNameHash": "593724b35a173f87",
+    "name_en": "4-(Dimethylamino)benzaldehyd, p.a., 100 g, Lach-Ner",
+    "keywords_en": [
+      "chemical",
+      "laboratory chemical",
+      "analytical grade",
+      "p.a.",
+      "4-(dimethylamino)benzaldehyd"
+    ],
+    "translator": "prototype-rule-based-demo",
+    "translatedAt": "2026-06-11T19:27:39",
+    "status": "demo"
+  },
+  {
+    "itemId": 124,
+    "code": "40034-AP0-G0500-1",
+    "sourceName": "4-(Dimethylamino)benzaldehyd, p.a., 500 g, Lach-Ner",
+    "sourceNameHash": "e1d7d16d2e5a48ad",
+    "name_en": "4-(Dimethylamino)benzaldehyd, p.a., 500 g, Lach-Ner",
+    "keywords_en": [
+      "chemical",
+      "laboratory chemical",
+      "analytical grade",
+      "p.a.",
+      "4-(dimethylamino)benzaldehyd"
+    ],
+    "translator": "prototype-rule-based-demo",
+    "translatedAt": "2026-06-11T19:27:39",
+    "status": "demo"
+  },
+  {
+    "itemId": 125,
+    "code": "20022-CT0-M1000-1",
+    "sourceName": "Dimethylsulfoxid, č., 1000 ml, Lach-Ner",
+    "sourceNameHash": "d3357b850e33f68e",
+    "name_en": "Dimethyl sulfoxide, pure, 1000 ml, Lach-Ner",
+    "keywords_en": [
+      "chemical",
+      "laboratory chemical",
+      "pure",
+      "dimethyl sulfoxide"
+    ],
+    "translator": "prototype-rule-based-demo",
+    "translatedAt": "2026-06-11T19:27:39",
+    "status": "demo"
+  },
+  {
+    "itemId": 139,
+    "code": "30029-CP0-G1000-1",
+    "sourceName": "Dusičnan draselný, č., 1000 g, Lach-Ner",
+    "sourceNameHash": "63fa42de96a92f7d",
+    "name_en": "Nitrate potassium, pure, 1000 g, Lach-Ner",
+    "keywords_en": [
+      "chemical",
+      "laboratory chemical",
+      "pure",
+      "nitrate potassium"
+    ],
+    "translator": "prototype-rule-based-demo",
+    "translatedAt": "2026-06-11T19:27:39",
+    "status": "demo"
+  },
+  {
+    "itemId": 140,
+    "code": "30029-AP0-G0500-1",
+    "sourceName": "Dusičnan draselný, p.a., 500 g, Lach-Ner",
+    "sourceNameHash": "f0f99f266f0fe5df",
+    "name_en": "Nitrate potassium, p.a., 500 g, Lach-Ner",
+    "keywords_en": [
+      "chemical",
+      "laboratory chemical",
+      "analytical grade",
+      "p.a.",
+      "nitrate potassium"
+    ],
+    "translator": "prototype-rule-based-demo",
+    "translatedAt": "2026-06-11T19:27:39",
+    "status": "demo"
+  },
+  {
+    "itemId": 141,
+    "code": "30029-AP0-G1000-1",
+    "sourceName": "Dusičnan draselný, p.a., 1000 g, Lach-Ner",
+    "sourceNameHash": "16ae3aac9fa7a995",
+    "name_en": "Nitrate potassium, p.a., 1000 g, Lach-Ner",
+    "keywords_en": [
+      "chemical",
+      "laboratory chemical",
+      "analytical grade",
+      "p.a.",
+      "nitrate potassium"
+    ],
+    "translator": "prototype-rule-based-demo",
+    "translatedAt": "2026-06-11T19:27:39",
+    "status": "demo"
+  },
+  {
+    "itemId": 155,
+    "code": "30040-AP0-G0500-1",
+    "sourceName": "Dusičnan sodný, p.a., 500 g, Lach-Ner",
+    "sourceNameHash": "e79575bd1cfbe886",
+    "name_en": "Nitrate sodium, p.a., 500 g, Lach-Ner",
+    "keywords_en": [
+      "chemical",
+      "laboratory chemical",
+      "analytical grade",
+      "p.a.",
+      "nitrate sodium"
+    ],
+    "translator": "prototype-rule-based-demo",
+    "translatedAt": "2026-06-11T19:27:39",
+    "status": "demo"
+  },
+  {
+    "itemId": 182,
+    "code": "20024-AT0-M1000-1",
+    "sourceName": "Ethylmethylketon, p.a., 1000 ml, Lach-Ner",
+    "sourceNameHash": "1bda05edfa658ad2",
+    "name_en": "Ethyl methyl ketone, p.a., 1000 ml, Lach-Ner",
+    "keywords_en": [
+      "chemical",
+      "laboratory chemical",
+      "analytical grade",
+      "p.a.",
+      "ethyl methyl ketone"
+    ],
+    "translator": "prototype-rule-based-demo",
+    "translatedAt": "2026-06-11T19:27:39",
+    "status": "demo"
+  },
+  {
+    "itemId": 197,
+    "code": "30049-AP0-G0500-1",
+    "sourceName": "Fluorid sodný, p.a., 500 g, Lach-Ner",
+    "sourceNameHash": "3793bbd99fd18992",
+    "name_en": "Fluoride sodium, p.a., 500 g, Lach-Ner",
+    "keywords_en": [
+      "chemical",
+      "laboratory chemical",
+      "analytical grade",
+      "p.a.",
+      "fluoride sodium"
+    ],
+    "translator": "prototype-rule-based-demo",
+    "translatedAt": "2026-06-11T19:27:39",
+    "status": "demo"
+  },
+  {
+    "itemId": 199,
+    "code": "40052-A38-M1000-1",
+    "sourceName": "Formaldehyd, p.a. stabilizovaný, 1000 ml, Lach-Ner",
+    "sourceNameHash": "71bfebc26be0fb62",
+    "name_en": "Formaldehyde, p.a. stabilized, 1000 ml, Lach-Ner",
+    "keywords_en": [
+      "chemical",
+      "laboratory chemical",
+      "analytical grade",
+      "p.a.",
+      "formaldehyde"
+    ],
+    "translator": "prototype-rule-based-demo",
+    "translatedAt": "2026-06-11T19:27:39",
+    "status": "demo"
+  },
+  {
+    "itemId": 200,
+    "code": "40052-A38-M2500-1",
+    "sourceName": "Formaldehyd, p.a. stabilizovaný, 2500 ml, Lach-Ner",
+    "sourceNameHash": "7a999664d9e3e53f",
+    "name_en": "Formaldehyde, p.a. stabilized, 2500 ml, Lach-Ner",
+    "keywords_en": [
+      "chemical",
+      "laboratory chemical",
+      "analytical grade",
+      "p.a.",
+      "formaldehyde"
+    ],
+    "translator": "prototype-rule-based-demo",
+    "translatedAt": "2026-06-11T19:27:39",
+    "status": "demo"
+  },
+  {
+    "itemId": 214,
+    "code": "40058-AT0-M1000-1",
+    "sourceName": "Glycerin bezvodý, p.a., 1000 ml, Lach-Ner",
+    "sourceNameHash": "c002ca8df2f579f8",
+    "name_en": "Glycerol anhydrous, p.a., 1000 ml, Lach-Ner",
+    "keywords_en": [
+      "chemical",
+      "laboratory chemical",
+      "analytical grade",
+      "p.a.",
+      "glycerol anhydrous"
+    ],
+    "translator": "prototype-rule-based-demo",
+    "translatedAt": "2026-06-11T19:27:39",
+    "status": "demo"
+  },
+  {
+    "itemId": 216,
+    "code": "20030-CT0-M1000-1",
+    "sourceName": "n-Heptan, č., 1000 ml, Lach-Ner",
+    "sourceNameHash": "23b774804109bcf8",
+    "name_en": "n-Heptan, pure, 1000 ml, Lach-Ner",
+    "keywords_en": [
+      "chemical",
+      "laboratory chemical",
+      "pure",
+      "n-heptan"
+    ],
+    "translator": "prototype-rule-based-demo",
+    "translatedAt": "2026-06-11T19:27:39",
+    "status": "demo"
+  },
+  {
+    "itemId": 217,
+    "code": "20030-AT0-M1000-1",
+    "sourceName": "n-Heptan, p.a., 1000 ml, Lach-Ner",
+    "sourceNameHash": "58b3b6bb1f45f985",
+    "name_en": "n-Heptan, p.a., 1000 ml, Lach-Ner",
+    "keywords_en": [
+      "chemical",
+      "laboratory chemical",
+      "analytical grade",
+      "p.a.",
+      "n-heptan"
+    ],
+    "translator": "prototype-rule-based-demo",
+    "translatedAt": "2026-06-11T19:27:39",
+    "status": "demo"
+  },
+  {
+    "itemId": 230,
+    "code": "20031-CT0-M2500-1",
+    "sourceName": "Hexan, č., 2500 ml, Lach-Ner",
+    "sourceNameHash": "47b8af8fd453fec1",
+    "name_en": "Hexane, pure, 2500 ml, Lach-Ner",
+    "keywords_en": [
+      "chemical",
+      "laboratory chemical",
+      "pure",
+      "hexane"
+    ],
+    "translator": "prototype-rule-based-demo",
+    "translatedAt": "2026-06-11T19:27:39",
+    "status": "demo"
+  },
+  {
+    "itemId": 231,
+    "code": "20031-CT0-M5000-1",
+    "sourceName": "Hexan, č., 5000 ml, Lach-Ner",
+    "sourceNameHash": "df8eb1a15a09a297",
+    "name_en": "Hexane, pure, 5000 ml, Lach-Ner",
+    "keywords_en": [
+      "chemical",
+      "laboratory chemical",
+      "pure",
+      "hexane"
+    ],
+    "translator": "prototype-rule-based-demo",
+    "translatedAt": "2026-06-11T19:27:39",
+    "status": "demo"
+  },
+  {
+    "itemId": 232,
+    "code": "20031-AT0-M1000-1",
+    "sourceName": "Hexan, p.a., 1000 ml, Lach-Ner",
+    "sourceNameHash": "a26dfe9a58de04da",
+    "name_en": "Hexane, p.a., 1000 ml, Lach-Ner",
+    "keywords_en": [
+      "chemical",
+      "laboratory chemical",
+      "analytical grade",
+      "p.a.",
+      "hexane"
+    ],
+    "translator": "prototype-rule-based-demo",
+    "translatedAt": "2026-06-11T19:27:39",
+    "status": "demo"
+  },
+  {
+    "itemId": 233,
+    "code": "30056-AP0-G1000-1",
+    "sourceName": "Hydrogencitronan amonný bezvodý, p.a., 1000 g, Lach-Ner",
+    "sourceNameHash": "9e72f7036b5db944",
+    "name_en": "Hydrogencitronan ammonium anhydrous, p.a., 1000 g, Lach-Ner",
+    "keywords_en": [
+      "chemical",
+      "laboratory chemical",
+      "analytical grade",
+      "p.a.",
+      "hydrogencitronan ammonium anhydrous"
+    ],
+    "translator": "prototype-rule-based-demo",
+    "translatedAt": "2026-06-11T19:27:39",
+    "status": "demo"
+  },
+  {
+    "itemId": 171,
+    "code": "20025-U99-M1000-1",
+    "sourceName": "Ethylalkohol, pro UV spektroskopii, 1000 ml, Lach-Ner",
+    "sourceNameHash": "aa6d675de16ad99a",
+    "name_en": "Ethanol, for UV spectroscopy, 1000 ml, Lach-Ner",
+    "keywords_en": [
+      "chemical",
+      "laboratory chemical",
+      "ethanol"
+    ],
+    "translator": "prototype-rule-based-demo",
+    "translatedAt": "2026-06-11T19:27:39",
+    "status": "demo"
+  },
+  {
+    "itemId": 176,
+    "code": "20028-AT0-M1000-1",
+    "sourceName": "Ethylacetát, p.a., 1000 ml, Lach-Ner",
+    "sourceNameHash": "23fda5113bac38ec",
+    "name_en": "Ethyl acetate, p.a., 1000 ml, Lach-Ner",
+    "keywords_en": [
+      "chemical",
+      "laboratory chemical",
+      "analytical grade",
+      "p.a.",
+      "ethyl acetate"
+    ],
+    "translator": "prototype-rule-based-demo",
+    "translatedAt": "2026-06-11T19:27:39",
+    "status": "demo"
+  },
+  {
+    "itemId": 178,
+    "code": "20028-AT0-M5000-1",
+    "sourceName": "Ethylacetát, p.a., 5000 ml, Lach-Ner",
+    "sourceNameHash": "1abaafa236f6a0e8",
+    "name_en": "Ethyl acetate, p.a., 5000 ml, Lach-Ner",
+    "keywords_en": [
+      "chemical",
+      "laboratory chemical",
+      "analytical grade",
+      "p.a.",
+      "ethyl acetate"
+    ],
+    "translator": "prototype-rule-based-demo",
+    "translatedAt": "2026-06-11T19:27:39",
+    "status": "demo"
+  },
+  {
+    "itemId": 187,
+    "code": "40043-IP0-G0100-1",
+    "sourceName": "Fenolftalein, indikátor, 100 g, Lach-Ner",
+    "sourceNameHash": "b12067f4f8d15e2f",
+    "name_en": "Phenolphthalein, indicator, 100 g, Lach-Ner",
+    "keywords_en": [
+      "chemical",
+      "laboratory chemical",
+      "indicator",
+      "phenolphthalein"
+    ],
+    "translator": "prototype-rule-based-demo",
+    "translatedAt": "2026-06-11T19:27:39",
+    "status": "demo"
+  },
+  {
+    "itemId": 194,
+    "code": "30047-AP0-G0500-1",
+    "sourceName": "Fluorid amonný, p.a., 500 g, Lach-Ner",
+    "sourceNameHash": "ad6d77f1b52ca357",
+    "name_en": "Fluoride ammonium, p.a., 500 g, Lach-Ner",
+    "keywords_en": [
+      "chemical",
+      "laboratory chemical",
+      "analytical grade",
+      "p.a.",
+      "fluoride ammonium"
+    ],
+    "translator": "prototype-rule-based-demo",
+    "translatedAt": "2026-06-11T19:27:39",
+    "status": "demo"
+  },
+  {
+    "itemId": 201,
+    "code": "40052-A38-M5000-1",
+    "sourceName": "Formaldehyd, p.a. stabilizovaný, 5000 ml, Lach-Ner",
+    "sourceNameHash": "589839cce8fb6797",
+    "name_en": "Formaldehyde, p.a. stabilized, 5000 ml, Lach-Ner",
+    "keywords_en": [
+      "chemical",
+      "laboratory chemical",
+      "analytical grade",
+      "p.a.",
+      "formaldehyde"
+    ],
+    "translator": "prototype-rule-based-demo",
+    "translatedAt": "2026-06-11T19:27:39",
+    "status": "demo"
+  },
+  {
+    "itemId": 203,
+    "code": "30051-AP0-G1000-1",
+    "sourceName": "Fosforečnan trisodný dodekahydrát, p.a., 1000 g, Lach-Ner",
+    "sourceNameHash": "34f755d8eec3ddc4",
+    "name_en": "Fosforečnan trisodium dodecahydrate, p.a., 1000 g, Lach-Ner",
+    "keywords_en": [
+      "chemical",
+      "laboratory chemical",
+      "analytical grade",
+      "p.a.",
+      "fosforečnan trisodium dodecahydrate"
+    ],
+    "translator": "prototype-rule-based-demo",
+    "translatedAt": "2026-06-11T19:27:39",
+    "status": "demo"
+  },
+  {
+    "itemId": 212,
+    "code": "40056-AP0-G1000-1",
+    "sourceName": "D-Glukosa monohydrát, p.a., 1000 g, Lach-Ner",
+    "sourceNameHash": "f90e4b0b7ff2f717",
+    "name_en": "D-Glucose monohydrate, p.a., 1000 g, Lach-Ner",
+    "keywords_en": [
+      "chemical",
+      "laboratory chemical",
+      "analytical grade",
+      "p.a.",
+      "d-glucose monohydrate"
+    ],
+    "translator": "prototype-rule-based-demo",
+    "translatedAt": "2026-06-11T19:27:39",
+    "status": "demo"
+  },
+  {
+    "itemId": 219,
+    "code": "30053-CP0-G0500-1",
+    "sourceName": "Hexakyanoželezitan tridraselný, č., 500 g, Lach-Ner",
+    "sourceNameHash": "6d9539472b09d194",
+    "name_en": "Hexakyanoželezitan tripotassium, pure, 500 g, Lach-Ner",
+    "keywords_en": [
+      "chemical",
+      "laboratory chemical",
+      "pure",
+      "hexakyanoželezitan tripotassium"
+    ],
+    "translator": "prototype-rule-based-demo",
+    "translatedAt": "2026-06-11T19:27:39",
+    "status": "demo"
+  },
+  {
+    "itemId": 226,
+    "code": "30055-CP0-G1000-1",
+    "sourceName": "Hexametafosforečnan sodný, č., 1000 g, Lach-Ner",
+    "sourceNameHash": "f2d11ea163950c0a",
+    "name_en": "Hexametafosforečnan sodium, pure, 1000 g, Lach-Ner",
+    "keywords_en": [
+      "chemical",
+      "laboratory chemical",
+      "pure",
+      "hexametafosforečnan sodium"
+    ],
+    "translator": "prototype-rule-based-demo",
+    "translatedAt": "2026-06-11T19:27:39",
+    "status": "demo"
+  },
+  {
+    "itemId": 228,
+    "code": "40060-AP0-G0500-1",
+    "sourceName": "Hexamethylentetramin, p.a., 500 g, Lach-Ner",
+    "sourceNameHash": "2648cb888384fb2f",
+    "name_en": "Hexamethylentetramin, p.a., 500 g, Lach-Ner",
+    "keywords_en": [
+      "chemical",
+      "laboratory chemical",
+      "analytical grade",
+      "p.a.",
+      "hexamethylentetramin"
+    ],
+    "translator": "prototype-rule-based-demo",
+    "translatedAt": "2026-06-11T19:27:39",
+    "status": "demo"
+  },
+  {
+    "itemId": 177,
+    "code": "20028-AT0-M2500-1",
+    "sourceName": "Ethylacetát, p.a., 2500 ml, Lach-Ner",
+    "sourceNameHash": "7c35a61ed37b624d",
+    "name_en": "Ethyl acetate, p.a., 2500 ml, Lach-Ner",
+    "keywords_en": [
+      "chemical",
+      "laboratory chemical",
+      "analytical grade",
+      "p.a.",
+      "ethyl acetate"
+    ],
+    "translator": "prototype-rule-based-demo",
+    "translatedAt": "2026-06-11T19:27:39",
+    "status": "demo"
+  },
+  {
+    "itemId": 179,
+    "code": "20024-CT0-M1000-1",
+    "sourceName": "Ethylmethylketon, č., 1000 ml, Lach-Ner",
+    "sourceNameHash": "f46083cb9d09446b",
+    "name_en": "Ethyl methyl ketone, pure, 1000 ml, Lach-Ner",
+    "keywords_en": [
+      "chemical",
+      "laboratory chemical",
+      "pure",
+      "ethyl methyl ketone"
+    ],
+    "translator": "prototype-rule-based-demo",
+    "translatedAt": "2026-06-11T19:27:39",
+    "status": "demo"
+  },
+  {
+    "itemId": 184,
+    "code": "40041-AP0-G0010-1",
+    "sourceName": "1,10-Fenantrolin monohydrát, p.a., 10 g, Lach-Ner",
+    "sourceNameHash": "10e500d316b30343",
+    "name_en": "1,10-Fenantrolin monohydrate, p.a., 10 g, Lach-Ner",
+    "keywords_en": [
+      "chemical",
+      "laboratory chemical",
+      "analytical grade",
+      "p.a.",
+      "1"
+    ],
+    "translator": "prototype-rule-based-demo",
+    "translatedAt": "2026-06-11T19:27:39",
+    "status": "demo"
+  },
+  {
+    "itemId": 186,
+    "code": "40043-IP0-G0050-1",
+    "sourceName": "Fenolftalein, indikátor, 50 g, Lach-Ner",
+    "sourceNameHash": "cd099c05954cce4a",
+    "name_en": "Phenolphthalein, indicator, 50 g, Lach-Ner",
+    "keywords_en": [
+      "chemical",
+      "laboratory chemical",
+      "indicator",
+      "phenolphthalein"
+    ],
+    "translator": "prototype-rule-based-demo",
+    "translatedAt": "2026-06-11T19:27:39",
+    "status": "demo"
+  },
+  {
+    "itemId": 195,
+    "code": "30048-AP0-G1000-1",
+    "sourceName": "Fluorid draselný, p.a., 1000 g, Lach-Ner",
+    "sourceNameHash": "48d9b83f12f4c9a7",
+    "name_en": "Fluoride potassium, p.a., 1000 g, Lach-Ner",
+    "keywords_en": [
+      "chemical",
+      "laboratory chemical",
+      "analytical grade",
+      "p.a.",
+      "fluoride potassium"
+    ],
+    "translator": "prototype-rule-based-demo",
+    "translatedAt": "2026-06-11T19:27:39",
+    "status": "demo"
+  },
+  {
+    "itemId": 204,
+    "code": "30052-CP0-G1000-1",
+    "sourceName": "Fosfornan sodný monohydrát, č., 1000 g, Lach-Ner",
+    "sourceNameHash": "61f282634793707e",
+    "name_en": "Fosfornan sodium monohydrate, pure, 1000 g, Lach-Ner",
+    "keywords_en": [
+      "chemical",
+      "laboratory chemical",
+      "pure",
+      "fosfornan sodium monohydrate"
+    ],
+    "translator": "prototype-rule-based-demo",
+    "translatedAt": "2026-06-11T19:27:39",
+    "status": "demo"
+  },
+  {
+    "itemId": 209,
+    "code": "40055-AP0-G0500-1",
+    "sourceName": "D-Glukosa bezvodá, p.a., 500 g, Lach-Ner",
+    "sourceNameHash": "cb9aab8510c6a288",
+    "name_en": "D-Glucose anhydrous, p.a., 500 g, Lach-Ner",
+    "keywords_en": [
+      "chemical",
+      "laboratory chemical",
+      "analytical grade",
+      "p.a.",
+      "d-glucose anhydrous"
+    ],
+    "translator": "prototype-rule-based-demo",
+    "translatedAt": "2026-06-11T19:27:39",
+    "status": "demo"
+  },
+  {
+    "itemId": 211,
+    "code": "40056-AP0-G0500-1",
+    "sourceName": "D-Glukosa monohydrát, p.a., 500 g, Lach-Ner",
+    "sourceNameHash": "45f5389b64f6d4a3",
+    "name_en": "D-Glucose monohydrate, p.a., 500 g, Lach-Ner",
+    "keywords_en": [
+      "chemical",
+      "laboratory chemical",
+      "analytical grade",
+      "p.a.",
+      "d-glucose monohydrate"
+    ],
+    "translator": "prototype-rule-based-demo",
+    "translatedAt": "2026-06-11T19:27:39",
+    "status": "demo"
+  },
+  {
+    "itemId": 218,
+    "code": "20030-AT0-M2500-1",
+    "sourceName": "n-Heptan, p.a., 2500 ml, Lach-Ner",
+    "sourceNameHash": "2e419d5b2cb261f5",
+    "name_en": "n-Heptan, p.a., 2500 ml, Lach-Ner",
+    "keywords_en": [
+      "chemical",
+      "laboratory chemical",
+      "analytical grade",
+      "p.a.",
+      "n-heptan"
+    ],
+    "translator": "prototype-rule-based-demo",
+    "translatedAt": "2026-06-11T19:27:39",
+    "status": "demo"
+  },
+  {
+    "itemId": 227,
+    "code": "40060-CP0-G0500-1",
+    "sourceName": "Hexamethylentetramin, č., 500 g, Lach-Ner",
+    "sourceNameHash": "4a8d8b6996eed74e",
+    "name_en": "Hexamethylentetramin, pure, 500 g, Lach-Ner",
+    "keywords_en": [
+      "chemical",
+      "laboratory chemical",
+      "pure",
+      "hexamethylentetramin"
+    ],
+    "translator": "prototype-rule-based-demo",
+    "translatedAt": "2026-06-11T19:27:39",
+    "status": "demo"
+  },
+  {
+    "itemId": 229,
+    "code": "20031-CT0-M1000-1",
+    "sourceName": "Hexan, č., 1000 ml, Lach-Ner",
+    "sourceNameHash": "6dce0f98d81bfe65",
+    "name_en": "Hexane, pure, 1000 ml, Lach-Ner",
+    "keywords_en": [
+      "chemical",
+      "laboratory chemical",
+      "pure",
+      "hexane"
+    ],
+    "translator": "prototype-rule-based-demo",
+    "translatedAt": "2026-06-11T19:27:39",
+    "status": "demo"
+  },
+  {
+    "itemId": 247,
+    "code": "30063-AP0-G1000-1",
+    "sourceName": "Hydrogensíran draselný, p.a., 1000 g, Lach-Ner",
+    "sourceNameHash": "4cc5a050ee56c55a",
+    "name_en": "Hydrogensíran potassium, p.a., 1000 g, Lach-Ner",
+    "keywords_en": [
+      "chemical",
+      "laboratory chemical",
+      "analytical grade",
+      "p.a.",
+      "hydrogensíran potassium"
+    ],
+    "translator": "prototype-rule-based-demo",
+    "translatedAt": "2026-06-11T19:27:39",
+    "status": "demo"
+  },
+  {
+    "itemId": 248,
+    "code": "30064-CP0-G0500-1",
+    "sourceName": "Hydrogensíran sodný monohydrát, č., 500 g, Lach-Ner",
+    "sourceNameHash": "b5b2f61f5a645047",
+    "name_en": "Hydrogensíran sodium monohydrate, pure, 500 g, Lach-Ner",
+    "keywords_en": [
+      "chemical",
+      "laboratory chemical",
+      "pure",
+      "hydrogensíran sodium monohydrate"
+    ],
+    "translator": "prototype-rule-based-demo",
+    "translatedAt": "2026-06-11T19:27:39",
+    "status": "demo"
+  },
+  {
+    "itemId": 249,
+    "code": "30064-AP0-G1000-1",
+    "sourceName": "Hydrogensíran sodný monohydrát, p.a., 1000 g, Lach-Ner",
+    "sourceNameHash": "f3d81a264b9c7885",
+    "name_en": "Hydrogensíran sodium monohydrate, p.a., 1000 g, Lach-Ner",
+    "keywords_en": [
+      "chemical",
+      "laboratory chemical",
+      "analytical grade",
+      "p.a.",
+      "hydrogensíran sodium monohydrate"
+    ],
+    "translator": "prototype-rule-based-demo",
+    "translatedAt": "2026-06-11T19:27:39",
+    "status": "demo"
+  },
+  {
+    "itemId": 280,
+    "code": "40075-AP0-G0010-1",
+    "sourceName": "Chelatonát hořečnato-disodný hydrát, p.a., 10 g, Lach-Ner",
+    "sourceNameHash": "27e7ff3c49f5d1ba",
+    "name_en": "Chelatonát hořečnato-disodium hydrát, p.a., 10 g, Lach-Ner",
+    "keywords_en": [
+      "chemical",
+      "laboratory chemical",
+      "analytical grade",
+      "p.a.",
+      "chelatonát hořečnato-disodium hydrát"
+    ],
+    "translator": "prototype-rule-based-demo",
+    "translatedAt": "2026-06-11T19:27:39",
+    "status": "demo"
+  },
+  {
+    "itemId": 281,
+    "code": "40075-AP0-G0100-1",
+    "sourceName": "Chelatonát hořečnato-disodný hydrát, p.a., 100 g, Lach-Ner",
+    "sourceNameHash": "833b91e30a1e107d",
+    "name_en": "Chelatonát hořečnato-disodium hydrát, p.a., 100 g, Lach-Ner",
+    "keywords_en": [
+      "chemical",
+      "laboratory chemical",
+      "analytical grade",
+      "p.a.",
+      "chelatonát hořečnato-disodium hydrát"
+    ],
+    "translator": "prototype-rule-based-demo",
+    "translatedAt": "2026-06-11T19:27:39",
+    "status": "demo"
+  },
+  {
+    "itemId": 282,
+    "code": "40078-CP0-G0250-1",
+    "sourceName": "Chloralhydrát, č., 250 g, Lach-Ner",
+    "sourceNameHash": "02814c94f11df103",
+    "name_en": "Chloralhydrát, pure, 250 g, Lach-Ner",
+    "keywords_en": [
+      "chemical",
+      "laboratory chemical",
+      "pure",
+      "chloralhydrát"
+    ],
+    "translator": "prototype-rule-based-demo",
+    "translatedAt": "2026-06-11T19:27:39",
+    "status": "demo"
+  },
+  {
+    "itemId": 283,
+    "code": "40079-CT0-M1000-1",
+    "sourceName": "Chlorbenzen, č., 1000 ml, Lach-Ner",
+    "sourceNameHash": "6068b2814206757d",
+    "name_en": "Chlorbenzen, pure, 1000 ml, Lach-Ner",
+    "keywords_en": [
+      "chemical",
+      "laboratory chemical",
+      "pure",
+      "chlorbenzen"
+    ],
+    "translator": "prototype-rule-based-demo",
+    "translatedAt": "2026-06-11T19:27:39",
+    "status": "demo"
+  },
+  {
+    "itemId": 284,
+    "code": "30068-AP0-G0500-1",
+    "sourceName": "Chlorečnan draselný, p.a., 500 g, Lach-Ner",
+    "sourceNameHash": "0ed8abb63bb5cbca",
+    "name_en": "Chlorečnan potassium, p.a., 500 g, Lach-Ner",
+    "keywords_en": [
+      "chemical",
+      "laboratory chemical",
+      "analytical grade",
+      "p.a.",
+      "chlorečnan potassium"
+    ],
+    "translator": "prototype-rule-based-demo",
+    "translatedAt": "2026-06-11T19:27:39",
+    "status": "demo"
+  },
+  {
+    "itemId": 297,
+    "code": "30075-CP0-G0500-1",
+    "sourceName": "Chlorid cínatý dihydrát, č., 500 g, Lach-Ner",
+    "sourceNameHash": "093d01afff2a3c53",
+    "name_en": "Chloride tin(II) dihydrate, pure, 500 g, Lach-Ner",
+    "keywords_en": [
+      "chemical",
+      "laboratory chemical",
+      "pure",
+      "chloride tin(ii) dihydrate"
+    ],
+    "translator": "prototype-rule-based-demo",
+    "translatedAt": "2026-06-11T19:27:39",
+    "status": "demo"
+  },
+  {
+    "itemId": 298,
+    "code": "30075-AP0-G0500-1",
+    "sourceName": "Chlorid cínatý dihydrát, p.a., 500 g, Lach-Ner",
+    "sourceNameHash": "877530998910f441",
+    "name_en": "Chloride tin(II) dihydrate, p.a., 500 g, Lach-Ner",
+    "keywords_en": [
+      "chemical",
+      "laboratory chemical",
+      "analytical grade",
+      "p.a.",
+      "chloride tin(ii) dihydrate"
+    ],
+    "translator": "prototype-rule-based-demo",
+    "translatedAt": "2026-06-11T19:27:39",
+    "status": "demo"
+  },
+  {
+    "itemId": 299,
+    "code": "30075-AP0-G1000-1",
+    "sourceName": "Chlorid cínatý dihydrát, p.a., 1000 g, Lach-Ner",
+    "sourceNameHash": "16e8124c4001ea58",
+    "name_en": "Chloride tin(II) dihydrate, p.a., 1000 g, Lach-Ner",
+    "keywords_en": [
+      "chemical",
+      "laboratory chemical",
+      "analytical grade",
+      "p.a.",
+      "chloride tin(ii) dihydrate"
+    ],
+    "translator": "prototype-rule-based-demo",
+    "translatedAt": "2026-06-11T19:27:39",
+    "status": "demo"
+  },
+  {
+    "itemId": 300,
+    "code": "30076-CP0-G1000-1",
+    "sourceName": "Chlorid draselný, č., 1000 g, Lach-Ner",
+    "sourceNameHash": "194ac76b9ef6439c",
+    "name_en": "Chloride potassium, pure, 1000 g, Lach-Ner",
+    "keywords_en": [
+      "chemical",
+      "laboratory chemical",
+      "pure",
+      "chloride potassium"
+    ],
+    "translator": "prototype-rule-based-demo",
+    "translatedAt": "2026-06-11T19:27:39",
+    "status": "demo"
+  },
+  {
+    "itemId": 314,
+    "code": "30087-AP0-G1000-1",
+    "sourceName": "Chlorid manganatý tetrahydrát, p.a., 1000 g, Lach-Ner",
+    "sourceNameHash": "ebfaf483fc1209b1",
+    "name_en": "Chloride manganese(II) tetrahydrate, p.a., 1000 g, Lach-Ner",
+    "keywords_en": [
+      "chemical",
+      "laboratory chemical",
+      "analytical grade",
+      "p.a.",
+      "chloride manganese(ii) tetrahydrate"
+    ],
+    "translator": "prototype-rule-based-demo",
+    "translatedAt": "2026-06-11T19:27:39",
+    "status": "demo"
+  },
+  {
+    "itemId": 315,
+    "code": "30088-CP0-G0500-1",
+    "sourceName": "Chlorid měďnatý dihydrát, č., 500 g, Lach-Ner",
+    "sourceNameHash": "f6dff6667649f557",
+    "name_en": "Chloride copper(II) dihydrate, pure, 500 g, Lach-Ner",
+    "keywords_en": [
+      "chemical",
+      "laboratory chemical",
+      "pure",
+      "chloride copper(ii) dihydrate"
+    ],
+    "translator": "prototype-rule-based-demo",
+    "translatedAt": "2026-06-11T19:27:39",
+    "status": "demo"
+  },
+  {
+    "itemId": 316,
+    "code": "30088-CP0-G1000-1",
+    "sourceName": "Chlorid měďnatý dihydrát, č., 1000 g, Lach-Ner",
+    "sourceNameHash": "c4283387ef887210",
+    "name_en": "Chloride copper(II) dihydrate, pure, 1000 g, Lach-Ner",
+    "keywords_en": [
+      "chemical",
+      "laboratory chemical",
+      "pure",
+      "chloride copper(ii) dihydrate"
+    ],
+    "translator": "prototype-rule-based-demo",
+    "translatedAt": "2026-06-11T19:27:39",
+    "status": "demo"
+  },
+  {
+    "itemId": 317,
+    "code": "30088-AP0-G1000-1",
+    "sourceName": "Chlorid měďnatý dihydrát, p.a., 1000 g, Lach-Ner",
+    "sourceNameHash": "d021ea6eae970b2d",
+    "name_en": "Chloride copper(II) dihydrate, p.a., 1000 g, Lach-Ner",
+    "keywords_en": [
+      "chemical",
+      "laboratory chemical",
+      "analytical grade",
+      "p.a.",
+      "chloride copper(ii) dihydrate"
+    ],
+    "translator": "prototype-rule-based-demo",
+    "translatedAt": "2026-06-11T19:27:39",
+    "status": "demo"
+  },
+  {
+    "itemId": 331,
+    "code": "30097-AP0-G1000-1",
+    "sourceName": "Chlorid vápenatý dihydrát, p.a., 1000 g, Lach-Ner",
+    "sourceNameHash": "3cdc19d41cbf3ee3",
+    "name_en": "Chloride calcium dihydrate, p.a., 1000 g, Lach-Ner",
+    "keywords_en": [
+      "chemical",
+      "laboratory chemical",
+      "analytical grade",
+      "p.a.",
+      "chloride calcium dihydrate"
+    ],
+    "translator": "prototype-rule-based-demo",
+    "translatedAt": "2026-06-11T19:27:39",
+    "status": "demo"
+  },
+  {
+    "itemId": 332,
+    "code": "30099-CP0-G0500-1",
+    "sourceName": "Chlorid zinečnatý bezvodý, č., 500 g, Lach-Ner",
+    "sourceNameHash": "4bb4d28e9c2e3db3",
+    "name_en": "Chloride zinc anhydrous, pure, 500 g, Lach-Ner",
+    "keywords_en": [
+      "chemical",
+      "laboratory chemical",
+      "pure",
+      "chloride zinc anhydrous"
+    ],
+    "translator": "prototype-rule-based-demo",
+    "translatedAt": "2026-06-11T19:27:39",
+    "status": "demo"
+  },
+  {
+    "itemId": 333,
+    "code": "30099-CP0-G1000-1",
+    "sourceName": "Chlorid zinečnatý bezvodý, č., 1000 g, Lach-Ner",
+    "sourceNameHash": "5a813b600688c186",
+    "name_en": "Chloride zinc anhydrous, pure, 1000 g, Lach-Ner",
+    "keywords_en": [
+      "chemical",
+      "laboratory chemical",
+      "pure",
+      "chloride zinc anhydrous"
+    ],
+    "translator": "prototype-rule-based-demo",
+    "translatedAt": "2026-06-11T19:27:39",
+    "status": "demo"
+  },
+  {
+    "itemId": 334,
+    "code": "30099-AP0-G1000-1",
+    "sourceName": "Chlorid zinečnatý bezvodý, p.a., 1000 g, Lach-Ner",
+    "sourceNameHash": "9c3c4a0dbeb6dcfc",
+    "name_en": "Chloride zinc anhydrous, p.a., 1000 g, Lach-Ner",
+    "keywords_en": [
+      "chemical",
+      "laboratory chemical",
+      "analytical grade",
+      "p.a.",
+      "chloride zinc anhydrous"
+    ],
+    "translator": "prototype-rule-based-demo",
+    "translatedAt": "2026-06-11T19:27:39",
+    "status": "demo"
+  },
+  {
+    "itemId": 364,
+    "code": "30115-AP0-G0500-1",
+    "sourceName": "Jodid draselný, p.a., 500 g, Lach-Ner",
+    "sourceNameHash": "5e4cab8c474d118c",
+    "name_en": "Iodide potassium, p.a., 500 g, Lach-Ner",
+    "keywords_en": [
+      "chemical",
+      "laboratory chemical",
+      "analytical grade",
+      "p.a.",
+      "iodide potassium"
+    ],
+    "translator": "prototype-rule-based-demo",
+    "translatedAt": "2026-06-11T19:27:39",
+    "status": "demo"
+  },
+  {
+    "itemId": 365,
+    "code": "30115-AP0-G1000-1",
+    "sourceName": "Jodid draselný, p.a., 1000 g, Lach-Ner",
+    "sourceNameHash": "056f12d576537d39",
+    "name_en": "Iodide potassium, p.a., 1000 g, Lach-Ner",
+    "keywords_en": [
+      "chemical",
+      "laboratory chemical",
+      "analytical grade",
+      "p.a.",
+      "iodide potassium"
+    ],
+    "translator": "prototype-rule-based-demo",
+    "translatedAt": "2026-06-11T19:27:39",
+    "status": "demo"
+  },
+  {
+    "itemId": 156,
+    "code": "30040-AP0-G1000-1",
+    "sourceName": "Dusičnan sodný, p.a., 1000 g, Lach-Ner",
+    "sourceNameHash": "0df432f7fdd6f2d7",
+    "name_en": "Nitrate sodium, p.a., 1000 g, Lach-Ner",
+    "keywords_en": [
+      "chemical",
+      "laboratory chemical",
+      "analytical grade",
+      "p.a.",
+      "nitrate sodium"
+    ],
+    "translator": "prototype-rule-based-demo",
+    "translatedAt": "2026-06-11T19:27:39",
+    "status": "demo"
+  },
+  {
+    "itemId": 157,
+    "code": "30042-AP0-G0050-1",
+    "sourceName": "Dusičnan stříbrný, p.a., 50 g, Lach-Ner",
+    "sourceNameHash": "426b70e12647b54d",
+    "name_en": "Nitrate stříbrný, p.a., 50 g, Lach-Ner",
+    "keywords_en": [
+      "chemical",
+      "laboratory chemical",
+      "analytical grade",
+      "p.a.",
+      "nitrate stříbrný"
+    ],
+    "translator": "prototype-rule-based-demo",
+    "translatedAt": "2026-06-11T19:27:39",
+    "status": "demo"
+  },
+  {
+    "itemId": 158,
+    "code": "30042-AP0-G0100-1",
+    "sourceName": "Dusičnan stříbrný, p.a., 100 g, Lach-Ner",
+    "sourceNameHash": "01fc3ca8b4239d70",
+    "name_en": "Nitrate stříbrný, p.a., 100 g, Lach-Ner",
+    "keywords_en": [
+      "chemical",
+      "laboratory chemical",
+      "analytical grade",
+      "p.a.",
+      "nitrate stříbrný"
+    ],
+    "translator": "prototype-rule-based-demo",
+    "translatedAt": "2026-06-11T19:27:39",
+    "status": "demo"
+  },
+  {
+    "itemId": 173,
+    "code": "20026-AT0-M1000-1",
+    "sourceName": "Ethylenglykol, p.a., 1000 ml, Lach-Ner",
+    "sourceNameHash": "c38b904036b166b5",
+    "name_en": "Ethylenglykol, p.a., 1000 ml, Lach-Ner",
+    "keywords_en": [
+      "chemical",
+      "laboratory chemical",
+      "analytical grade",
+      "p.a.",
+      "ethylenglykol"
+    ],
+    "translator": "prototype-rule-based-demo",
+    "translatedAt": "2026-06-11T19:27:39",
+    "status": "demo"
+  },
+  {
+    "itemId": 174,
+    "code": "20028-CT0-M1000-1",
+    "sourceName": "Ethylacetát, č., 1000 ml, Lach-Ner",
+    "sourceNameHash": "f0fc68a61ba3d83c",
+    "name_en": "Ethyl acetate, pure, 1000 ml, Lach-Ner",
+    "keywords_en": [
+      "chemical",
+      "laboratory chemical",
+      "pure",
+      "ethyl acetate"
+    ],
+    "translator": "prototype-rule-based-demo",
+    "translatedAt": "2026-06-11T19:27:39",
+    "status": "demo"
+  },
+  {
+    "itemId": 189,
+    "code": "40046-BT0-M0250-1",
+    "sourceName": "Ferroin roztok cca 1/40 M (0,025 mol/l), indikátor, 250 ml, Lach-Ner",
+    "sourceNameHash": "e73ba46cda06f8fa",
+    "name_en": "Ferroin solution approx. 1/40 M (0,025 mol/l), indicator, 250 ml, Lach-Ner",
+    "keywords_en": [
+      "chemical",
+      "laboratory chemical",
+      "indicator",
+      "ferroin solution approx. 1/40 m (0"
+    ],
+    "translator": "prototype-rule-based-demo",
+    "translatedAt": "2026-06-11T19:27:39",
+    "status": "demo"
+  },
+  {
+    "itemId": 190,
+    "code": "40047-XT0-G0800-1",
+    "sourceName": "Fischerovo činidlo - roztok A, , 800 g, Lach-Ner",
+    "sourceNameHash": "ae52c0924385e6bc",
+    "name_en": "Fischerovo činidlo - solution A,, 800 g, Lach-Ner",
+    "keywords_en": [
+      "chemical",
+      "laboratory chemical",
+      "fischerovo činidlo - solution a"
+    ],
+    "translator": "prototype-rule-based-demo",
+    "translatedAt": "2026-06-11T19:27:39",
+    "status": "demo"
+  }
+]

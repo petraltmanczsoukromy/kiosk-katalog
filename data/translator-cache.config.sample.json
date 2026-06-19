@@ -1,0 +1,14 @@
+{
+  "sourceProducts": "products.json",
+  "matchKey": "id + sourceNameHash",
+  "translateOnlyWhen": [
+    "missing itemId in translation cache",
+    "sourceNameHash differs from cached value"
+  ],
+  "outputFields": [
+    "name_en",
+    "keywords_en"
+  ],
+  "productionTranslator": "OpenAI/DeepL to be decided",
+  "prototypeTranslator": "rule-based demo; no online translation was called"
+}

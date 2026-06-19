@@ -1,0 +1,12 @@
+# Staré zdroje, zálohy, archivy - neverzujeme
+/zdroje/
+*.bak
+*.zip
+
+# Systémové/editor soubory
+.DS_Store
+Thumbs.db
+*.log
+
+# Lokální konfigurace (pokud bys časem oddělil API klíče do vlastního souboru)
+.env
