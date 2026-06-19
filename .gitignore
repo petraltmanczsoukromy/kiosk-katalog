@@ -3,6 +3,11 @@
 *.bak
 *.zip
 
+# Velká/často se měnící datová úložiště produktů - řešeno mimo git
+/data/
+products.json
+product-images.json
+
 # Systémové/editor soubory
 .DS_Store
 Thumbs.db
