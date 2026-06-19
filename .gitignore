@@ -15,3 +15,6 @@ Thumbs.db
 
 # Lokální konfigurace (pokud bys časem oddělil API klíče do vlastního souboru)
 .env
+
+# Testovací skripty s natvrdo zapsaným API heslem - nepatří do gitu
+test-*.php
