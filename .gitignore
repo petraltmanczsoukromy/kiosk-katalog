@@ -18,3 +18,7 @@ Thumbs.db
 
 # Testovací skripty s natvrdo zapsaným API heslem - nepatří do gitu
 test-*.php
+sync-*.php
+
+# Výstupy testovacích synchronizačních skriptů
+/sync-output/

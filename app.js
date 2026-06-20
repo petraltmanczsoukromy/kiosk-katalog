@@ -67,6 +67,7 @@ const state = {
   detailOpen: false,
   checkoutStep: 0,
   checkoutType: 'private',
+  pendingCartUpdate: null,
   checkoutDraft: loadCheckoutDraft(),
   cart: loadCart(),
   updatedAt: '',
@@ -459,6 +460,7 @@ function bindEvents() {
   el.clearCart.addEventListener('click', () => {
     state.cart = [];
     state.checkoutStep = 0;
+    state.pendingCartUpdate = null;
     clearCheckoutDraft();
     saveCart();
     renderCart();
@@ -794,8 +796,6 @@ function renderDetail() {
           <div class="detail-clean-actions">
             <button class="primary order-primary" type="button" id="addToCart">Vložit do košíku</button>
             ${product.url ? '<button class="secondary" type="button" id="openWeb">Technické údaje / web</button>' : ''}
-            <button class="secondary" type="button" id="verifyOnline">Ověřit aktuální dostupnost</button>
-            <div id="verifyResult" class="verify-result"></div>
             <button class="secondary" type="button" id="showCart">Zobrazit košík${qtyInCart ? ` (${qtyInCart}× v košíku)` : ''}</button>
           </div>
         </section>
@@ -813,9 +813,7 @@ function renderDetail() {
   document.getElementById('showCart').addEventListener('click', openCart);
 
   const openWeb = document.getElementById('openWeb');
-  const verifyOnline = document.getElementById('verifyOnline');
   if (openWeb) openWeb.addEventListener('click', () => openProductWeb(product));
-  if (verifyOnline) verifyOnline.addEventListener('click', () => verifyProductOnline(product));
 
   function getQty() {
     const value = Number(qtyInput.value);
@@ -833,42 +831,148 @@ function renderDetail() {
   }
 }
 
-async function verifyProductOnline(product) {
-  const resultEl = document.getElementById('verifyResult');
-  const btn = document.getElementById('verifyOnline');
-  if (!resultEl || !btn) return;
+/**
+ * Ověří všechny položky košíku proti živému API těsně před vstupem
+ * do checkout flow. Pokud se cena nebo dostupnost liší, zobrazí
+ * přehled změn a zablokuje pokračování, dokud zákazník nepotvrdí.
+ *
+ * Vrací true, pokud lze pokračovat (vše sedí, nebo zákazník potvrdil
+ * aktualizovaný košík), false pokud má kiosek počkat na potvrzení.
+ */
+async function verifyCartBeforeCheckout() {
+  if (!state.cart.length) return true;
 
-  btn.disabled = true;
-  btn.textContent = 'Ověřuji…';
-  resultEl.className = 'verify-result';
-  resultEl.textContent = '';
+  const exportBtn = el.exportOrder;
+  const originalLabel = exportBtn ? exportBtn.textContent : '';
+  if (exportBtn) {
+    exportBtn.disabled = true;
+    exportBtn.textContent = 'Ověřuji dostupnost…';
+  }
+
+  const changes = [];
+  const removed = [];
 
   try {
-    const res = await fetch(`verify-product.php?id=${encodeURIComponent(product.id)}`);
-    const data = await res.json();
+    for (const item of state.cart) {
+      let data;
+      try {
+        const res = await fetch(`verify-product.php?id=${encodeURIComponent(item.id)}`);
+        data = await res.json();
+      } catch (err) {
+        data = null;
+      }
 
-    if (!data.ok) {
-      throw new Error(data.error || 'Neznámá chyba');
+      // Pokud se API nepodaří ověřit, necháme položku být (neblokujeme
+      // celou objednávku kvůli výpadku sítě) - jen ji přeskočíme.
+      if (!data || !data.ok) continue;
+
+      const priceChanged = Math.abs(data.price - item.priceValue) > 0.001;
+      const qtyTooLow = data.available_qty < item.qty;
+
+      if (data.available_qty <= 0) {
+        removed.push({ item, reason: 'Již není skladem' });
+        continue;
+      }
+
+      if (priceChanged || qtyTooLow) {
+        changes.push({
+          item,
+          newPrice: data.price,
+          newAvailableQty: data.available_qty,
+          priceChanged,
+          qtyTooLow,
+        });
+      }
     }
-
-    const priceChanged = Math.abs(data.price - Number(product.price)) > 0.001;
-    const qtyText = data.available_qty > 0
-      ? `Skladem: ${formatNumber(data.available_qty)} ks`
-      : 'Aktuálně není skladem';
-
-    resultEl.classList.add(data.available_qty > 0 ? 'is-ok' : 'is-warning');
-    resultEl.innerHTML = `
-      <strong>${qtyText}</strong><br>
-      Aktuální cena: ${formatNumber(data.price)} Kč
-      ${priceChanged ? ` <span class="price-changed">(změna z ${formatNumber(product.price)} Kč)</span>` : ''}
-    `;
-  } catch (err) {
-    resultEl.classList.add('is-error');
-    resultEl.textContent = 'Ověření se nezdařilo, zkuste to prosím znovu.';
   } finally {
-    btn.disabled = false;
-    btn.textContent = 'Ověřit aktuální dostupnost';
+    if (exportBtn) {
+      exportBtn.disabled = false;
+      exportBtn.textContent = originalLabel;
+    }
   }
+
+  if (changes.length === 0 && removed.length === 0) {
+    return true; // vše sedí, lze pokračovat
+  }
+
+  showCartUpdateNotice(changes, removed);
+  return false;
+}
+
+/**
+ * Zobrazí přehled rozdílů mezi košíkem a aktuálním stavem v API.
+ * Po potvrzení aktualizuje state.cart na nové hodnoty a znovu
+ * spustí přechod do checkoutu.
+ */
+function showCartUpdateNotice(changes, removed) {
+  if (!el.checkoutArea) return;
+
+  el.checkoutArea.hidden = false;
+  if (el.exportOrder) el.exportOrder.textContent = 'Rozumím, pokračovat';
+
+  const rows = [
+    ...changes.map(c => {
+      const parts = [];
+      if (c.priceChanged) {
+        parts.push(`nová cena ${formatNumber(c.newPrice)} Kč (místo ${formatNumber(c.item.priceValue)} Kč)`);
+      }
+      if (c.qtyTooLow) {
+        parts.push(`skladem už jen ${formatNumber(c.newAvailableQty)} ks (objednáno ${c.item.qty} ks)`);
+      }
+      return `<li><strong>${escapeHtml(c.item.name)}</strong><br>${parts.join(', ')}</li>`;
+    }),
+    ...removed.map(r => `<li><strong>${escapeHtml(r.item.name)}</strong><br>${r.reason} — bude odebráno z objednávky</li>`),
+  ].join('');
+
+  el.checkoutArea.innerHTML = `
+    <div class="checkout-box">
+      <h3>Některé položky se od přidání do košíku změnily</h3>
+      <ul class="cart-update-list">${rows}</ul>
+      <p class="checkout-note">Zkontrolujte prosím změny. Po potvrzení se košík aktualizuje.</p>
+    </div>
+  `;
+
+  state.pendingCartUpdate = { changes, removed };
+}
+
+function applyPendingCartUpdate() {
+  const pending = state.pendingCartUpdate;
+  if (!pending) return;
+
+  for (const c of pending.changes) {
+    const cartItem = state.cart.find(row => row.id === c.item.id);
+    const catalogProduct = state.products.find(row => row.id === c.item.id);
+
+    if (c.priceChanged) {
+      if (cartItem) {
+        cartItem.priceValue = c.newPrice;
+        cartItem.price = formatPrice(c.newPrice, 'CZK');
+      }
+      if (catalogProduct) {
+        catalogProduct.price = c.newPrice;
+      }
+    }
+    if (c.qtyTooLow && cartItem) {
+      cartItem.qty = Math.max(1, Math.floor(c.newAvailableQty));
+    }
+    // Skladovou dostupnost v katalogu aktualizujeme vždy, když ji známe -
+    // i když nebyla nižší než objednané množství (např. právě naskladněno víc).
+    if (catalogProduct && typeof c.newAvailableQty === 'number') {
+      catalogProduct.available_qty = c.newAvailableQty;
+    }
+  }
+
+  for (const r of pending.removed) {
+    state.cart = state.cart.filter(row => row.id !== r.item.id);
+    const catalogProduct = state.products.find(row => row.id === r.item.id);
+    if (catalogProduct) {
+      catalogProduct.available_qty = 0;
+    }
+  }
+
+  saveCart();
+  renderCartCount();
+  state.pendingCartUpdate = null;
 }
 
 function openProductWeb(product) {
@@ -902,7 +1006,7 @@ function addToCart(product, qty = 1) {
   }
 
   if (existing) existing.qty = Math.min(currentQty + amount, Math.floor(availableQty));
-  else state.cart.push({ id: product.id, code: product.code, name: product.name, price: product.priceText, url: product.url || '', unit: product.package || product.unit || '', qty: amount });
+  else state.cart.push({ id: product.id, code: product.code, name: product.name, price: product.priceText, priceValue: Number(product.price) || 0, url: product.url || '', unit: product.package || product.unit || '', qty: amount });
   saveCart();
   renderCartCount();
   pulseCartButton();
@@ -912,6 +1016,7 @@ function addToCart(product, qty = 1) {
 function openCart() {
   closeDetail();
   state.checkoutStep = 0;
+  state.pendingCartUpdate = null;
   renderCart();
   renderCheckout();
   updateCheckoutButtons();
@@ -920,6 +1025,7 @@ function openCart() {
 
 function closeCart() {
   state.checkoutStep = 0;
+  state.pendingCartUpdate = null;
   renderCheckout();
   el.cartDrawer.hidden = true;
 }
@@ -1055,13 +1161,30 @@ function renderCartCount() {
   }
 }
 
-function handleCheckoutNext() {
+async function handleCheckoutNext() {
   if (!state.cart.length) {
     alert('Objednávka je prázdná.');
     return;
   }
 
+  // Zákazník právě potvrdil zobrazené změny v košíku (cena/dostupnost) -
+  // aplikujeme je a zůstaneme na košíku, ať si změny může zkontrolovat.
+  // Teprve další kliknutí na "Pokračovat" ho posune na krok 1.
+  if (state.pendingCartUpdate) {
+    applyPendingCartUpdate();
+    state.checkoutStep = 0;
+    if (!state.cart.length) {
+      alert('Po aktualizaci je objednávka prázdná.');
+    }
+    renderCart();
+    renderCheckout();
+    return;
+  }
+
   if (state.checkoutStep === 0) {
+    const canProceed = await verifyCartBeforeCheckout();
+    if (!canProceed) return; // zobrazeno upozornění, čeká se na potvrzení
+
     state.checkoutStep = 1;
     renderCheckout();
     return;
@@ -1794,6 +1917,7 @@ function resetKioskSession() {
   state.selectedId = null;
   state.detailOpen = false;
   state.checkoutStep = 0;
+  state.pendingCartUpdate = null;
   state.checkoutType = 'private';
   state.activeDynamicGroup = 'all';
 

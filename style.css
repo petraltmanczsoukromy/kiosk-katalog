@@ -2964,31 +2964,20 @@ h2 {
   background: #fff !important;
 }
 
-.verify-result {
-  margin-top: 8px;
-  padding: 10px 14px;
+.cart-update-list {
+  list-style: none;
+  margin: 16px 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.cart-update-list li {
+  padding: 12px 14px;
   border-radius: 8px;
+  background: #fff4e0;
+  border: 1px solid #ffd98c;
+  color: #8a5a00;
   font-size: 0.95em;
   line-height: 1.4;
-}
-.verify-result:empty {
-  display: none;
-}
-.verify-result.is-ok {
-  background: #e6f7ec;
-  color: #1e7a3f;
-  border: 1px solid #b6e6c5;
-}
-.verify-result.is-warning {
-  background: #fff4e0;
-  color: #8a5a00;
-  border: 1px solid #ffd98c;
-}
-.verify-result.is-error {
-  background: #fdeaea;
-  color: #a82a2a;
-  border: 1px solid #f5b5b5;
-}
-.verify-result .price-changed {
-  font-weight: 600;
 }
