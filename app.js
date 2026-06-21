@@ -917,7 +917,8 @@ function showCartUpdateNotice(changes, removed) {
         parts.push(`nová cena ${formatNumber(c.newPrice)} Kč (místo ${formatNumber(c.item.priceValue)} Kč)`);
       }
       if (c.qtyTooLow) {
-        parts.push(`skladem už jen ${formatNumber(c.newAvailableQty)} ks (objednáno ${c.item.qty} ks)`);
+        const unit = c.item.unit || 'ks';
+        parts.push(`skladem už jen ${formatNumber(c.newAvailableQty)} ${unit} (objednáno ${c.item.qty} ${unit})`);
       }
       return `<li><strong>${escapeHtml(c.item.name)}</strong><br>${parts.join(', ')}</li>`;
     }),

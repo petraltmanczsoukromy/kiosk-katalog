@@ -22,3 +22,6 @@ sync-*.php
 
 # Výstupy testovacích synchronizačních skriptů
 /sync-output/
+
+# Logy odeslaných objednávek (obsahují osobní údaje zákazníků)
+/order-logs/
