@@ -98,6 +98,9 @@ const el = {
   checkoutArea: document.getElementById('checkoutArea'),
   exportOrder: document.getElementById('exportOrder'),
   clearCart: document.getElementById('clearCart'),
+  cartSummary: document.getElementById('cartSummary'),
+  cartBottomBar: document.getElementById('cartBottomBar'),
+  checkoutBack: document.getElementById('checkoutBack'),
   idleModal: document.getElementById('idleModal'),
   idleContinue: document.getElementById('idleContinue'),
   idleReset: document.getElementById('idleReset'),
@@ -457,6 +460,7 @@ function bindEvents() {
     else closeCart();
   });
   el.exportOrder.addEventListener('click', handleCheckoutNext);
+  if (el.checkoutBack) el.checkoutBack.addEventListener('click', handleCheckoutBack);
   el.clearCart.addEventListener('click', () => {
     state.cart = [];
     state.checkoutStep = 0;
@@ -1035,11 +1039,13 @@ function closeCart() {
 function renderCart() {
   if (!state.cart.length) {
     if (el.cartFooter) el.cartFooter.hidden = true;
+    if (el.cartBottomBar) el.cartBottomBar.hidden = true;
     el.cartItems.innerHTML = '<p class="cart-empty">Košík je prázdný.<br><span>Vyberte produkty z katalogu.</span></p>';
     return;
   }
 
   if (el.cartFooter) el.cartFooter.hidden = false;
+  if (el.cartBottomBar) el.cartBottomBar.hidden = false;
 
   const totals = getCartTotals();
   const vat = totals.net * VAT_RATE;
@@ -1092,13 +1098,15 @@ function renderCart() {
         `;
       }).join('')}
     </div>
+  `;
 
-    <div class="cart-summary">
+  if (el.cartSummary) {
+    el.cartSummary.innerHTML = `
       <div><span>Celkem bez DPH</span><strong>${escapeHtml(formatMoney(totals.net))}</strong></div>
       <div><span>DPH 21 %</span><strong>${escapeHtml(formatMoney(vat))}</strong></div>
       <div class="cart-summary-total"><span>Celkem vč. DPH</span><strong>${escapeHtml(formatMoney(gross))}</strong></div>
-    </div>
-  `;
+    `;
+  }
 
   el.cartItems.querySelectorAll('[data-cart-minus]').forEach(button => {
     button.addEventListener('click', () => changeCartQty(button.dataset.cartMinus, -1));
@@ -1389,36 +1397,29 @@ function finishCheckout() {
 
 
 function updateCheckoutButtons() {
-  const clearBtn = document.getElementById('clearCart');
   const nextBtn = document.getElementById('exportOrder');
-  if (!clearBtn || !nextBtn) return;
+  const backBtn = document.getElementById('checkoutBack');
+  const bottomBar = document.getElementById('cartBottomBar');
+  if (!nextBtn || !backBtn) return;
 
-  let backBtn = document.getElementById('checkoutBack');
+  // "Zpět" je v patě vždy přítomné, jen ho v kroku 0 deaktivujeme -
+  // díky tomu má pata stejné rozložení napříč všemi kroky.
+  backBtn.disabled = state.checkoutStep === 0;
 
-  if (state.checkoutStep > 0) {
-    clearBtn.hidden = true;
-    clearBtn.style.display = 'none';
-
-    if (!backBtn) {
-      backBtn = document.createElement('button');
-      backBtn.id = 'checkoutBack';
-      backBtn.className = 'secondary checkout-back';
-      backBtn.type = 'button';
-      backBtn.textContent = '← Zpět';
-      nextBtn.parentNode.insertBefore(backBtn, nextBtn);
-
-      backBtn.addEventListener('click', () => {
-        state.checkoutStep = Math.max(0, state.checkoutStep - 1);
-        renderCart();
-        renderCheckout();
-        updateCheckoutButtons();
-      });
-    }
-  } else {
-    clearBtn.hidden = false;
-    clearBtn.style.display = '';
-    if (backBtn) backBtn.remove();
+  // Spodní lišta s "Vyprázdnit košík" a souhrnem ceny má smysl jen
+  // v kroku 0 (samotný košík) - ve zbylých krocích (vyplňování údajů,
+  // souhrn) se celá schovává.
+  if (bottomBar && state.cart.length) {
+    bottomBar.hidden = state.checkoutStep !== 0;
   }
+}
+
+function handleCheckoutBack() {
+  if (state.checkoutStep === 0) return;
+  state.checkoutStep = Math.max(0, state.checkoutStep - 1);
+  renderCart();
+  renderCheckout();
+  updateCheckoutButtons();
 }
 
 function exportOrder() {
