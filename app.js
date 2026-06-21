@@ -14,6 +14,15 @@ const DEFAULT_DATA_CONFIG = {
   showDataStatus: true
 };
 
+const DEFAULT_ORDER_CONFIG = {
+  documentSeries: '220',
+  warehouse: '100',
+  itemWarehouse: '20000010',
+  source: 'kiosek',
+  vatRate: 21,
+  defaultUnit: 'ks'
+};
+
 let APP_CONFIG = {
   allowedRootCategories: [],
   showZeroAvailable: false,
@@ -21,7 +30,8 @@ let APP_CONFIG = {
   headerMode: 'fixed',
   idleWarningSeconds: 90,
   idleResetSeconds: 30,
-  data: { ...DEFAULT_DATA_CONFIG }
+  data: { ...DEFAULT_DATA_CONFIG },
+  order: { ...DEFAULT_ORDER_CONFIG }
 };
 
 let PRODUCT_IMAGES = {};
@@ -249,6 +259,10 @@ async function loadConfig() {
       data: {
         ...DEFAULT_DATA_CONFIG,
         ...(config.data && typeof config.data === 'object' ? config.data : {})
+      },
+      order: {
+        ...DEFAULT_ORDER_CONFIG,
+        ...(config.order && typeof config.order === 'object' ? config.order : {})
       }
     };
   } catch (error) {
@@ -1231,7 +1245,7 @@ async function handleCheckoutNext() {
   }
 
   if (state.checkoutStep === 3) {
-    finishCheckout();
+    await finishCheckout();
   }
 }
 
@@ -1404,9 +1418,158 @@ function validateCheckoutForm() {
   return true;
 }
 
-function finishCheckout() {
-  alert('Objednávka je připravena. Předejte prosím obrazovku obsluze prodejny.');
-  resetKioskSession();
+/**
+ * Rozdělí "Jméno Příjmení" na samostatná pole. Pokud je zadané jen
+ * jedno slovo, použije ho jako příjmení (API first_name/surname
+ * jsou oba vyžadované).
+ */
+function splitFullName(fullName) {
+  const trimmed = String(fullName || '').trim().replace(/\s+/g, ' ');
+  if (!trimmed) return { first_name: '—', surname: '—' };
+
+  const parts = trimmed.split(' ');
+  if (parts.length === 1) {
+    return { first_name: '—', surname: parts[0] };
+  }
+  return {
+    first_name: parts.slice(0, -1).join(' '),
+    surname: parts[parts.length - 1],
+  };
+}
+
+/**
+ * Rozparsuje volný text adresy (např. z ARES nebo ručně zadaný)
+ * do struktury, kterou vyžaduje API. Formát očekávaný na vstupu:
+ * "Ulice 123, 60200 Brno" - není to spolehlivé pro každý možný
+ * zápis, ale pokrývá běžné případy.
+ */
+function parseAddressText(addressText) {
+  const result = { street: '', house_number: '', zip: '', city: '', country: 'CZ' };
+  const text = String(addressText || '').trim();
+  if (!text) return result;
+
+  const zipCityMatch = text.match(/(\d{3}\s?\d{2})\s+(.+)$/);
+  let streetPart = text;
+
+  if (zipCityMatch) {
+    result.zip = zipCityMatch[1].replace(/\s+/g, '');
+    result.city = zipCityMatch[2].trim().replace(/,$/, '');
+    streetPart = text.slice(0, zipCityMatch.index).trim().replace(/,$/, '');
+  }
+
+  const streetMatch = streetPart.match(/^(.*?)\s+(\d+[a-zA-Z]?(?:\/\d+)?)$/);
+  if (streetMatch) {
+    result.street = streetMatch[1].trim();
+    result.house_number = streetMatch[2].trim();
+  } else {
+    result.street = streetPart;
+  }
+
+  return result;
+}
+
+/**
+ * Vygeneruje dočasné order_number jako čisté číslo (API vyžaduje
+ * numerický string). Toto je PROVIZORNÍ řešení do testovacího skladu -
+ * čeká se na odpověď od Jakuba, jak má kiosek čísla získávat
+ * (přidělování z Heliosu vs. vlastní rozsah).
+ */
+function generateTempOrderNumber() {
+  return String(Date.now()).slice(-9);
+}
+
+/**
+ * Sestaví tělo objednávky pro POST /v1/orders z aktuálního stavu košíku
+ * a vyplněného formuláře (state.checkoutDraft).
+ */
+function buildOrderPayload() {
+  const orderConfig = APP_CONFIG.order || DEFAULT_ORDER_CONFIG;
+  const draft = state.checkoutDraft || {};
+  const isCompany = draft.checkoutType === 'company';
+
+  const { first_name, surname } = splitFullName(draft.name);
+  const addressSource = isCompany ? draft.address : (draft.address || '');
+  const address = parseAddressText(addressSource);
+
+  const customer = {
+    first_name,
+    surname,
+    email: draft.email || '',
+    phone: draft.phone || '',
+    address,
+  };
+
+  if (isCompany && draft.ico) {
+    customer.ico = String(draft.ico).trim();
+    customer.dic = 'CZ' + String(draft.ico).trim();
+  }
+
+  const items = state.cart.map(item => {
+    const product = state.products.find(row => row.id === item.id);
+    const unitPrice = getPriceNumberFromProduct(product);
+    return {
+      product_id: parseInt(item.id, 10),
+      quantity: Number(item.qty || 0),
+      unit_price: unitPrice,
+      vat_rate: orderConfig.vatRate,
+      unit: item.unit || orderConfig.defaultUnit,
+      warehouse: orderConfig.itemWarehouse,
+    };
+  });
+
+  const totals = getCartTotals();
+  const totalWithVat = Math.round(totals.net * (1 + VAT_RATE) * 100) / 100;
+
+  const orderId = 'KIOSK-' + Date.now();
+  const orderNumber = generateTempOrderNumber();
+
+  return {
+    order_id: orderId,
+    order_number: orderNumber,
+    order_date: new Date().toISOString().slice(0, 19),
+    customer,
+    items,
+    shipping: { method_code: '' },
+    payment: { method_code: '' },
+    total_with_vat: totalWithVat,
+    document_series: orderConfig.documentSeries,
+    warehouse: orderConfig.warehouse,
+    source: orderConfig.source,
+  };
+}
+
+async function finishCheckout() {
+  const exportBtn = el.exportOrder;
+  const originalLabel = exportBtn ? exportBtn.textContent : '';
+  if (exportBtn) {
+    exportBtn.disabled = true;
+    exportBtn.textContent = 'Odesílám objednávku…';
+  }
+
+  const payload = buildOrderPayload();
+
+  try {
+    const res = await fetch('submit-order.php', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json; charset=utf-8' },
+      body: JSON.stringify(payload),
+    });
+    const data = await res.json();
+
+    if (!data.ok) {
+      throw new Error(data.error || 'Objednávku se nepodařilo založit.');
+    }
+
+    alert('Objednávka byla úspěšně založena. Předejte prosím obrazovku obsluze prodejny.');
+    resetKioskSession();
+  } catch (err) {
+    alert('Objednávku se nepodařilo odeslat: ' + (err.message || 'neznámá chyba') + '\n\nZkuste to prosím znovu nebo přivolejte obsluhu.');
+  } finally {
+    if (exportBtn) {
+      exportBtn.disabled = false;
+      exportBtn.textContent = originalLabel;
+    }
+  }
 }
 
 
