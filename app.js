@@ -1072,7 +1072,7 @@ function renderCart() {
         return `
           <div class="cart-row" data-id="${escapeHtml(item.id)}">
             <div class="cart-thumb">
-              ${image ? `<img src="${escapeHtml(image)}" alt="${escapeHtml(item.name)}" loading="lazy" onerror="this.replaceWith(createPlaceholder('${escapeHtml(group)}'))" />` : `<div class="cart-thumb-placeholder">${escapeHtml(getGroupLabel(group))}</div>`}
+              ${image ? `<img src="${escapeHtml(image)}" alt="${escapeHtml(item.name)}" loading="lazy" onerror="this.onerror=null;this.src='assets/no-image.png';this.className='fallback-image';" />` : `<img class="fallback-image" src="assets/no-image.png" alt="Bez fotografie" />`}
             </div>
 
             <div class="cart-main">
