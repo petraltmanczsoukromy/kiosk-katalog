@@ -559,6 +559,7 @@ function renderDynamicFilters(queryProducts) {
       state.activeDynamicGroup = button.dataset.group;
       closeDetail();
       render();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     });
   });
 }
