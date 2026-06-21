@@ -510,7 +510,7 @@ function getFilteredProducts() {
   const query = parseQuery(state.query);
 
   if (!query.normalized) {
-    const baseProducts = state.products;
+    const baseProducts = [...state.products].sort((a, b) => a.name.localeCompare(b.name, 'cs'));
     const products = state.activeDynamicGroup === 'all'
       ? baseProducts
       : baseProducts.filter(product => product.group === state.activeDynamicGroup);
