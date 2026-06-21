@@ -828,6 +828,23 @@ h2 {
   font-size: 15px;
 }
 
+.qty-help-soldout {
+  color: #a82a2a;
+  font-weight: 800;
+}
+
+.qty-button:disabled,
+.qty-input:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.order-primary:disabled {
+  opacity: 0.5;
+  cursor: default;
+  pointer-events: none;
+}
+
 .qty-box {
   display: grid;
   grid-template-columns: 76px 130px 76px;

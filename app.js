@@ -740,7 +740,11 @@ function renderDetail() {
   const cartItem = state.cart.find(item => item.id === product.id);
   const qtyInCart = cartItem ? cartItem.qty : 0;
   const availableQty = getAvailableQty(product);
-  const maxQty = availableQty > 0 ? Math.max(1, Math.floor(availableQty - qtyInCart)) : 1;
+  const remainingQty = availableQty > 0 ? Math.max(0, Math.floor(availableQty - qtyInCart)) : 0;
+  const isSoldOut = availableQty > 0 && remainingQty <= 0;
+  // maxQty pro атрибut input[max] musí být aspoň 1, jinak je input nepoužitelný -
+  // ale samotné rozhodování (disabled tlačítko, text hlášky) se řídí remainingQty.
+  const maxQty = remainingQty > 0 ? remainingQty : 1;
   const unitText = String(product.package || product.unit || '').trim();
 
   const priceNet = Number(product.price || 0);
@@ -786,15 +790,15 @@ function renderDetail() {
           <div class="detail-clean-qty">
             <div class="qty-label">Množství${unitText ? ` <span>(${escapeHtml(unitText)})</span>` : ''}</div>
             <div class="qty-box" aria-label="Množství">
-              <button class="qty-button" type="button" id="qtyMinus">−</button>
-              <input id="qtyInput" class="qty-input" type="number" min="1" max="${escapeHtml(maxQty)}" step="1" value="1" inputmode="numeric" pattern="[0-9]*" />
-              <button class="qty-button" type="button" id="qtyPlus">+</button>
+              <button class="qty-button" type="button" id="qtyMinus" ${isSoldOut ? 'disabled' : ''}>−</button>
+              <input id="qtyInput" class="qty-input" type="number" min="1" max="${escapeHtml(maxQty)}" step="1" value="1" inputmode="numeric" pattern="[0-9]*" ${isSoldOut ? 'disabled' : ''} />
+              <button class="qty-button" type="button" id="qtyPlus" ${isSoldOut ? 'disabled' : ''}>+</button>
             </div>
-            <div class="qty-help">Maximum pro přidání: ${escapeHtml(formatNumber(maxQty))}${unitText ? ` ${escapeHtml(unitText)}` : ''}</div>
+            <div class="qty-help${isSoldOut ? ' qty-help-soldout' : ''}">${isSoldOut ? 'Veškeré dostupné množství už máte v košíku.' : `Maximum pro přidání: ${escapeHtml(formatNumber(remainingQty))}${unitText ? ` ${escapeHtml(unitText)}` : ''}`}</div>
           </div>
 
           <div class="detail-clean-actions">
-            <button class="primary order-primary" type="button" id="addToCart">Vložit do košíku</button>
+            <button class="primary order-primary" type="button" id="addToCart" ${isSoldOut ? 'disabled' : ''}>${isSoldOut ? 'Vše v košíku' : 'Vložit do košíku'}</button>
             ${product.url ? '<button class="secondary" type="button" id="openWeb">Technické údaje / web</button>' : ''}
             <button class="secondary" type="button" id="showCart">Zobrazit košík${qtyInCart ? ` (${qtyInCart}× v košíku)` : ''}</button>
           </div>
