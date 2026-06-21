@@ -104,6 +104,9 @@ const el = {
   idleModal: document.getElementById('idleModal'),
   idleContinue: document.getElementById('idleContinue'),
   idleReset: document.getElementById('idleReset'),
+  clearCartModal: document.getElementById('clearCartModal'),
+  clearCartCancel: document.getElementById('clearCartCancel'),
+  clearCartConfirm: document.getElementById('clearCartConfirm'),
   loadingOverlay: document.getElementById('loadingOverlay'),
   loadingText: document.getElementById('loadingText'),
   dataStatus: document.getElementById('dataStatus')
@@ -461,17 +464,9 @@ function bindEvents() {
   });
   el.exportOrder.addEventListener('click', handleCheckoutNext);
   if (el.checkoutBack) el.checkoutBack.addEventListener('click', handleCheckoutBack);
-  el.clearCart.addEventListener('click', () => {
-    state.cart = [];
-    state.checkoutStep = 0;
-    state.pendingCartUpdate = null;
-    clearCheckoutDraft();
-    saveCart();
-    renderCart();
-    renderCheckout();
-    updateCheckoutButtons();
-    renderCartCount();
-  });
+  el.clearCart.addEventListener('click', openClearCartConfirm);
+  if (el.clearCartCancel) el.clearCartCancel.addEventListener('click', closeClearCartConfirm);
+  if (el.clearCartConfirm) el.clearCartConfirm.addEventListener('click', confirmClearCart);
 
   document.addEventListener('input', (event) => {
     if (event.target && event.target.matches && event.target.matches('.checkout-form input')) {
@@ -1910,6 +1905,27 @@ function showIdleWarning() {
 function hideIdleWarning() {
   if (el.idleModal) el.idleModal.hidden = true;
   clearTimeout(idleResetTimer);
+}
+
+function openClearCartConfirm() {
+  if (el.clearCartModal) el.clearCartModal.hidden = false;
+}
+
+function closeClearCartConfirm() {
+  if (el.clearCartModal) el.clearCartModal.hidden = true;
+}
+
+function confirmClearCart() {
+  state.cart = [];
+  state.checkoutStep = 0;
+  state.pendingCartUpdate = null;
+  clearCheckoutDraft();
+  saveCart();
+  renderCart();
+  renderCheckout();
+  updateCheckoutButtons();
+  renderCartCount();
+  closeClearCartConfirm();
 }
 
 function resetKioskSession() {
