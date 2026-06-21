@@ -518,6 +518,18 @@ h2 {
   border: 1px solid var(--border);
   border-radius: var(--radius);
   padding: 16px;
+  cursor: pointer;
+  transition: border-color 0.15s ease, background-color 0.15s ease;
+}
+
+.cart-row:hover,
+.cart-row:focus-visible {
+  border-color: var(--blue-2);
+  background: var(--blue-soft);
+}
+
+.cart-row-actions {
+  cursor: default;
 }
 
 .cart-row strong {

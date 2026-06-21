@@ -1104,13 +1104,28 @@ function renderCart() {
   }
 
   el.cartItems.querySelectorAll('[data-cart-minus]').forEach(button => {
-    button.addEventListener('click', () => changeCartQty(button.dataset.cartMinus, -1));
+    button.addEventListener('click', (event) => {
+      event.stopPropagation();
+      changeCartQty(button.dataset.cartMinus, -1);
+    });
   });
   el.cartItems.querySelectorAll('[data-cart-plus]').forEach(button => {
-    button.addEventListener('click', () => changeCartQty(button.dataset.cartPlus, 1));
+    button.addEventListener('click', (event) => {
+      event.stopPropagation();
+      changeCartQty(button.dataset.cartPlus, 1);
+    });
   });
   el.cartItems.querySelectorAll('[data-cart-remove]').forEach(button => {
-    button.addEventListener('click', () => removeCartItem(button.dataset.cartRemove));
+    button.addEventListener('click', (event) => {
+      event.stopPropagation();
+      removeCartItem(button.dataset.cartRemove);
+    });
+  });
+  el.cartItems.querySelectorAll('.cart-row').forEach(row => {
+    row.addEventListener('click', () => {
+      closeCart();
+      openDetail(row.dataset.id);
+    });
   });
 }
 
