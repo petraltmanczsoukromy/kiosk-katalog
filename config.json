@@ -16,7 +16,7 @@
   "idleWarningSeconds": 90,
   "idleResetSeconds": 30,
   "order": {
-    "documentSeries": "220",
+    "documentSeries": "420",
     "warehouse": "20000010",
     "itemWarehouse": "20000010",
     "source": "kiosek",
