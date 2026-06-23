@@ -15,12 +15,14 @@ const DEFAULT_DATA_CONFIG = {
 };
 
 const DEFAULT_ORDER_CONFIG = {
-  documentSeries: '220',
-  warehouse: '100',
+  documentSeries: '420',
+  warehouse: '20000010',
   itemWarehouse: '20000010',
   source: 'kiosek',
   vatRate: 21,
-  defaultUnit: 'ks'
+  defaultUnit: 'ks',
+  shippingMethodCode: '',
+  paymentMethodCode: ''
 };
 
 let APP_CONFIG = {
@@ -1529,8 +1531,8 @@ function buildOrderPayload() {
     order_date: new Date().toISOString().slice(0, 19),
     customer,
     items,
-    shipping: { method_code: '' },
-    payment: { method_code: '' },
+    shipping: { method_code: orderConfig.shippingMethodCode || '' },
+    payment: { method_code: orderConfig.paymentMethodCode || '' },
     total_with_vat: totalWithVat,
     document_series: orderConfig.documentSeries,
     warehouse: orderConfig.warehouse,
