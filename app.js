@@ -1520,12 +1520,12 @@ function buildOrderPayload() {
   const totals = getCartTotals();
   const totalWithVat = Math.round(totals.net * (1 + VAT_RATE) * 100) / 100;
 
-  const orderId = 'KIOSK-' + Date.now();
-  const orderNumber = generateTempOrderNumber();
+  // order_id = naše interní ID pro párování, order_number NEposíláme
+  // - Helios si přiděluje číslo dokladu sám (zjištěno testováním 2026-06-22)
+  const orderId = String(Math.floor(10000 + Math.random() * 90000));
 
   return {
     order_id: orderId,
-    order_number: orderNumber,
     order_date: new Date().toISOString().slice(0, 19),
     customer,
     items,
