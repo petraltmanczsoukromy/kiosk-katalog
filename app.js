@@ -166,8 +166,7 @@ async function init() {
   setLoadingState(true, 'Načítám nastavení kiosku…');
 
   await loadConfig();
-  setLoadingState(true, 'Načítám obrázky a katalog…');
-  await loadProductImages();
+  setLoadingState(true, 'Načítám katalog…');
   await loadCatalog();
 
   render();
@@ -365,16 +364,6 @@ function startDataRefreshTimers() {
       if (ok) render();
     }, catalogInterval);
   }
-
-  if (imagesInterval > 0) {
-    window.setInterval(async () => {
-      const ok = await loadProductImages({ silent: true });
-      if (ok) {
-        state.products = state.products.map((product, index) => normalizeProduct(product, index));
-        render();
-      }
-    }, imagesInterval);
-  }
 }
 
 
@@ -415,7 +404,9 @@ function normalizeProduct(product, index) {
     priceText: formatPrice(product.price, 'CZK'),
     stock: formatStock(product),
     description: '',
-    image: String(PRODUCT_IMAGES[String(product.code || '')] || ''),
+    image: String(product.image_url_detail || product.image_url || ''),
+    imageDetail: String(product.image_url_detail || product.image_url || ''),
+    icoOnly: Boolean(product.ico_only),
     url: String(product.product_url || ''),
     package: String(product.unit || ''),
     quality: '',
@@ -779,7 +770,7 @@ function renderDetail() {
 
       <div class="detail-clean-body">
         <section class="detail-clean-visual">
-          ${product.image ? `<img src="${escapeHtml(product.image)}" alt="${escapeHtml(product.name)}" onerror="this.onerror=null;this.src='assets/no-image.png'" />` : `<img class="fallback-image" src="assets/no-image.png" alt="Bez fotografie" />`}
+          ${(product.imageDetail || product.image) ? `<img src="${escapeHtml(product.imageDetail || product.image)}" alt="${escapeHtml(product.name)}" onerror="this.onerror=null;this.src='assets/no-image.png'" />` : `<img class="fallback-image" src="assets/no-image.png" alt="Bez fotografie" />`}
         </section>
 
         <section class="detail-clean-info">
