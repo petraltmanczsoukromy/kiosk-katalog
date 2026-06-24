@@ -70,6 +70,14 @@ function getCartTotals() {
   }, { net: 0 });
 }
 
+// Vrátí true pokud košík obsahuje alespoň jeden produkt "jen na IČ"
+function cartHasIcoOnly() {
+  return state.cart.some(item => {
+    const product = state.products.find(row => row.id === item.id);
+    return product?.icoOnly === true;
+  });
+}
+
 
 const state = {
   products: [],
@@ -779,6 +787,7 @@ function renderDetail() {
             ${(product.assortment_root_name || product.assortment_name) ? `<div><span>Sortiment</span><strong>${escapeHtml(product.assortment_root_name ? (product.assortment_root_name + (product.assortment_name ? ' / ' + product.assortment_name : '')) : product.assortment_name)}</strong></div>` : ''}
             ${product.code ? `<div><span>Kód</span><strong>${escapeHtml(product.code)}</strong></div>` : ''}
             <div><span>Dostupnost</span><strong class="${Number(product.available_qty ?? 0) > 0 ? 'is-available' : 'is-unavailable'}">${escapeHtml(product.stock)}</strong></div>
+            ${product.icoOnly ? `<div class="detail-ico-only"><span>Omezení prodeje</span><strong>Jen pro organizace a podnikatele</strong></div>` : ''}
           </div>
 
           <div class="detail-clean-price">
@@ -1086,6 +1095,7 @@ function renderCart() {
               <div class="cart-meta-line">
                 ${codeText ? `<span>${escapeHtml(codeText)}</span>` : ''}
                 ${stockText ? `<span class="cart-stock-inline">${escapeHtml(stockText)}</span>` : ''}
+                ${product?.icoOnly ? `<span class="cart-ico-tag">Jen na IČO</span>` : ''}
               </div>
               <div class="cart-prices compact-prices">
                 <strong>${escapeHtml(formatMoney(lineNet))}</strong><span>bez DPH</span>
@@ -1256,6 +1266,12 @@ function renderCheckout() {
 
   if (state.checkoutStep === 1) {
     el.exportOrder.textContent = 'Pokračovat na údaje';
+    const icoOnly = cartHasIcoOnly();
+    // Pokud košík obsahuje icoOnly položky a zákazník je nastaven jako soukromá osoba,
+    // automaticky přepneme na firmu - soukromá osoba nemůže tyto produkty koupit
+    if (icoOnly && state.checkoutType === 'private') {
+      state.checkoutType = 'company';
+    }
     el.checkoutArea.innerHTML = `
       <div class="checkout-box">
         <div class="checkout-progress">
@@ -1264,16 +1280,17 @@ function renderCheckout() {
           <span>3 Potvrzení</span>
         </div>
         <h3>Objednávka pro firmu nebo soukromě?</h3>
+        ${icoOnly ? `<p class="checkout-ico-note">⚠️ Košík obsahuje zboží dostupné pouze pro organizace a podnikatele. Nákup jako soukromá osoba není možný. Nebo odstraňte z košíku položky „Jen na IČO".</p>` : ''}
         <div class="customer-type-grid">
           <label class="customer-type-card">
             <input type="radio" name="customerType" value="company" ${state.checkoutType === 'company' ? 'checked' : ''}>
-            <strong>Firma</strong>
+            <strong>Firma / podnikatel</strong>
             <span>Název firmy, IČO a kontakt</span>
           </label>
-          <label class="customer-type-card">
-            <input type="radio" name="customerType" value="private" ${state.checkoutType === 'private' ? 'checked' : ''}>
+          <label class="customer-type-card${icoOnly ? ' customer-type-disabled' : ''}">
+            <input type="radio" name="customerType" value="private" ${icoOnly ? 'disabled' : (state.checkoutType === 'private' ? 'checked' : '')}>
             <strong>Soukromá osoba</strong>
-            <span>Jméno a kontakt</span>
+            <span>${icoOnly ? 'Nedostupné – košík obsahuje zboží jen pro firmy' : 'Jméno a kontakt'}</span>
           </label>
         </div>
         <p class="checkout-note">Platba proběhne na prodejně. Převzetí je osobně ihned na prodejně.</p>

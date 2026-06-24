@@ -2109,14 +2109,32 @@ h2 {
 }
 
 .cart-meta-line span + span::before {
-  content: "•";
-  margin-right: 8px;
-  color: var(--muted);
+  content: "";
+  margin-right: 0;
 }
 
-.cart-stock-inline {
+.cart-meta-line .cart-stock-inline {
+  display: inline-block;
+  padding: 3px 8px;
+  border-radius: 4px;
+  background: #e8f5e9;
   color: #1d7f4f !important;
-  font-weight: 900 !important;
+  border: 1px solid #b7dfc1;
+  font-size: 13px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.cart-meta-line .cart-ico-tag {
+  display: inline-block;
+  padding: 3px 8px;
+  border-radius: 4px;
+  background: #fdeaea;
+  color: #9b2c2c !important;
+  border: 1px solid #e5bcbc;
+  font-size: 13px;
+  font-weight: 700;
+  white-space: nowrap;
 }
 
 .cart-prices.compact-prices {
@@ -3055,4 +3073,47 @@ h2 {
   color: #8a5a00;
   font-size: 0.95em;
   line-height: 1.4;
+}
+
+/* ── Jen na IČ ───────────────────────────────────────────── */
+
+/* Badge v detailu produktu */
+.detail-ico-only span {
+  color: var(--muted);
+}
+.detail-ico-only strong {
+  color: #a82a2a !important;
+  font-weight: 800;
+}
+
+/* Upozornění v kroku 0 košíku */
+.cart-ico-warning {
+  padding: 10px 14px;
+  background: #fff4e0;
+  border: 1px solid #ffd98c;
+  border-radius: var(--radius);
+  color: #8a5a00;
+  font-size: 15px;
+  line-height: 1.5;
+  margin-bottom: 8px;
+  flex-shrink: 0;
+}
+
+/* Upozornění v kroku 1 checkoutu */
+.checkout-ico-note {
+  padding: 10px 14px;
+  background: #fdeaea;
+  border: 1px solid #e5bcbc;
+  border-radius: var(--radius);
+  color: #9b2c2c;
+  font-size: 15px;
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+/* Zablokovaná karta typu zákazníka */
+.customer-type-disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  pointer-events: none;
 }
