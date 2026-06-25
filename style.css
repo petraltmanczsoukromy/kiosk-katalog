@@ -515,17 +515,21 @@ h2 {
   display: grid;
   grid-template-columns: 1fr auto;
   gap: 14px;
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 16px;
+  border: none;
+  border-bottom: 1px solid var(--border);
+  border-radius: 0;
+  padding: 16px 4px;
   cursor: pointer;
-  transition: border-color 0.15s ease, background-color 0.15s ease;
+  transition: background-color 0.15s ease;
 }
 
 .cart-row:hover,
 .cart-row:focus-visible {
-  border-color: var(--blue-2);
   background: var(--blue-soft);
+}
+
+.cart-row:last-child {
+  border-bottom: none !important;
 }
 
 .cart-row:hover .cart-main > strong,
@@ -904,7 +908,7 @@ h2 {
 .cart-empty {
   margin: 0;
   padding: 20px;
-  border: 1px solid var(--border);
+  border: none;
   border-radius: var(--radius);
   color: var(--muted);
   background: #fff;
@@ -1025,8 +1029,11 @@ h2 {
   grid-template-columns: 96px minmax(0, 1fr) auto;
   align-items: center;
   gap: 18px;
-  padding: 18px;
+  padding: 18px 4px;
   background: #fff;
+  border: none;
+  border-bottom: 1px solid var(--border);
+  border-radius: 0;
 }
 
 .cart-thumb {
@@ -1169,6 +1176,7 @@ h2 {
   max-width: none;
   background: #fff;
   border: 1px solid var(--border);
+  border-bottom: none;
   border-radius: 16px;
   padding: 28px;
   box-shadow: 0 24px 70px rgba(0, 0, 0, .28);
@@ -1295,7 +1303,6 @@ h2 {
   gap: 16px;
   flex-shrink: 0;
   padding: 10px 0;
-  border-top: 1px solid var(--border);
 }
 
 .cart-summary {
@@ -1367,7 +1374,7 @@ h2 {
 }
 
 .checkout-area {
-  border-top: 1px solid var(--border);
+  border-top: none;
   padding: 18px 0 0;
 }
 
@@ -1947,8 +1954,8 @@ h2 {
   margin-top:4px !important;
 }
 
-.cart-item + .cart-item{
-  border-top:1px solid #e5e7eb;
+.cart-item + .cart-item {
+  border-top: none;
 }
 
 
@@ -1967,6 +1974,7 @@ h2 {
   padding: 10px 0 !important;
 
   border: 0 !important;
+  border-top: none !important;
   border-bottom: 1px solid var(--border) !important;
   border-radius: 0 !important;
   background: transparent !important;
@@ -2063,6 +2071,7 @@ h2 {
   margin: 0 !important;
   padding: 18px 0 !important;
   border: 0 !important;
+  border-top: none !important;
   border-bottom: 1px solid var(--border) !important;
   border-radius: 0 !important;
   background: transparent !important;
@@ -3124,3 +3133,30 @@ h2 {
   cursor: not-allowed;
   pointer-events: none;
 }
+
+/* Oprava čar v košíku */
+.cart-list .cart-row:first-child {
+  border-top: none !important;
+}
+
+.cart-footer.checkout-mode {
+  border-top: none !important;
+}
+
+#cartFooter {
+  border-top: none !important;
+  padding-top: 18px !important;
+}
+
+
+/* === Odstranění nadbytečných čar v košíku === */
+.cart-card { border-top: none !important; }
+.cart-row { border-top: none !important; }
+#cartFooter { border-top: none !important; }
+
+
+/* Konzistentní mezery v seznamu košíku */
+#cartItems { padding: 0 !important; }
+.cart-list { padding: 0 !important; }
+.cart-row:first-child { border-top: 1px solid var(--border) !important; }
+.cart-row:last-child { border-bottom: 1px solid var(--border) !important; }
