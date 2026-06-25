@@ -465,7 +465,7 @@ function bindEvents() {
   el.cartButton.addEventListener('click', openCart);
   el.closeCart.addEventListener('click', closeCart);
   el.cartDrawer.addEventListener('click', (event) => {
-    if (event.target === el.cartDrawer) closeCart();
+    if (event.target === el.cartDrawer || event.target.hasAttribute('data-close-cart')) closeCart();
   });
   if (el.detailDrawer) {
     el.detailDrawer.addEventListener('click', (event) => {
@@ -1280,7 +1280,7 @@ function renderCheckout() {
           <span>3 Potvrzení</span>
         </div>
         <h3>Objednávka pro firmu nebo soukromě?</h3>
-        ${icoOnly ? `<p class="checkout-ico-note">⚠️ Košík obsahuje zboží dostupné pouze pro organizace a podnikatele. Nákup jako soukromá osoba není možný. Nebo odstraňte z košíku položky „Jen na IČO".</p>` : ''}
+        ${icoOnly ? `<p class="checkout-ico-note">⚠️ Košík obsahuje položky pouze pro firemní zákazníky (označené „Jen na IČO"). Pokračujte jako firma, nebo tyto položky z košíku odeberte.</p>` : ''}
         <div class="customer-type-grid">
           <label class="customer-type-card">
             <input type="radio" name="customerType" value="company" ${state.checkoutType === 'company' ? 'checked' : ''}>

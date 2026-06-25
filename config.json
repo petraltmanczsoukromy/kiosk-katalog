@@ -8,7 +8,7 @@
     "210"
   ],
   "showZeroAvailable": false,
-  "maxRenderedProducts": 240,
+  "maxRenderedProducts": 1500,
   "headerMode": "fixed",
   "showPrices": true,
   "showManufacturer": true,
