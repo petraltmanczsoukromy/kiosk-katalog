@@ -24,7 +24,7 @@ function makeClick(ctx) {
 
 function installTapSound({
   enabled = true,
-  selector = 'button, .product-card, .filter'
+  selector = 'button, .product-card, .filter, .cart-row, .customer-type-card, .detail-backdrop'
 } = {}) {
   if (!enabled) return;
 
