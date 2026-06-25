@@ -1555,7 +1555,7 @@ h2 {
   display: grid;
   grid-template-columns: minmax(220px, auto) 1fr;
   gap: 12px;
-  align-items: center;
+  align-items: end;
 }
 
 .ares-row span {
@@ -1566,7 +1566,7 @@ h2 {
 
 .ares-button {
   padding: 15px 16px;
-  font-size: 18px;
+  font-size: 21px;
 }
 
 @media (max-width: 1350px) {

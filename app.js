@@ -113,6 +113,7 @@ const el = {
   cartTotal: document.getElementById('cartTotal'),
   cartDrawer: document.getElementById('cartDrawer'),
   closeCart: document.getElementById('closeCart'),
+  cartTitle: document.getElementById('cartTitle'),
   cartItems: document.getElementById('cartItems'),
   cartFooter: document.getElementById('cartFooter'),
   checkoutArea: document.getElementById('checkoutArea'),
@@ -1589,13 +1590,13 @@ function updateCheckoutButtons() {
   const bottomBar = document.getElementById('cartBottomBar');
   if (!nextBtn || !backBtn) return;
 
-  // "Zpět" je v patě vždy přítomné, jen ho v kroku 0 deaktivujeme -
-  // díky tomu má pata stejné rozložení napříč všemi kroky.
+  // Nadpis: krok 0 = "Košík", kroky 1-3 = "Objednávka"
+  if (el.cartTitle) {
+    el.cartTitle.textContent = state.checkoutStep === 0 ? 'Košík' : 'Objednávka';
+  }
+
   backBtn.disabled = state.checkoutStep === 0;
 
-  // Spodní lišta s "Vyprázdnit košík" a souhrnem ceny má smysl jen
-  // v kroku 0 (samotný košík) - ve zbylých krocích (vyplňování údajů,
-  // souhrn) se celá schovává.
   if (bottomBar && state.cart.length) {
     bottomBar.hidden = state.checkoutStep !== 0;
   }
