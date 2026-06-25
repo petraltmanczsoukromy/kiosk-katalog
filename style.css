@@ -528,6 +528,13 @@ h2 {
   background: var(--blue-soft);
 }
 
+.cart-row:hover .cart-main > strong,
+.cart-row:focus-visible .cart-main > strong {
+  color: var(--blue-2);
+  text-decoration: underline;
+  opacity: 1;
+}
+
 .cart-row-actions {
   cursor: default;
 }
