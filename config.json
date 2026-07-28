@@ -15,6 +15,9 @@
   "showWebButton": true,
   "idleWarningSeconds": 90,
   "idleResetSeconds": 30,
+  "data": {
+    "refreshIntervalMs": 0
+  },
   "order": {
     "documentSeries": "420",
     "warehouse": "20000010",
