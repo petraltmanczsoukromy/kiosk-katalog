@@ -167,6 +167,12 @@ init();
 
 async function init() {
 
+  // Při každém startu kiosku vymazat košík a rozdělanou objednávku.
+  // Idle timeout řeší nečinnost během běhu, ale pokud byl prohlížeč
+  // zavřen uprostřed nákupu, košík by jinak zůstal předchozímu zákazníkovi.
+  localStorage.removeItem('kioskCart');
+  localStorage.removeItem('kioskCheckoutDraft');
+
   if (typeof installTapSound === 'function') {
     installTapSound();
   }
