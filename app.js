@@ -125,6 +125,10 @@ const el = {
   idleModal: document.getElementById('idleModal'),
   idleContinue: document.getElementById('idleContinue'),
   idleReset: document.getElementById('idleReset'),
+  noticeModal: document.getElementById('noticeModal'),
+  noticeTitle: document.getElementById('noticeTitle'),
+  noticeText: document.getElementById('noticeText'),
+  noticeOk: document.getElementById('noticeOk'),
   clearCartModal: document.getElementById('clearCartModal'),
   clearCartCancel: document.getElementById('clearCartCancel'),
   clearCartConfirm: document.getElementById('clearCartConfirm'),
@@ -507,6 +511,7 @@ function bindEvents() {
   el.clearCart.addEventListener('click', openClearCartConfirm);
   if (el.clearCartCancel) el.clearCartCancel.addEventListener('click', closeClearCartConfirm);
   if (el.clearCartConfirm) el.clearCartConfirm.addEventListener('click', confirmClearCart);
+  if (el.noticeOk) el.noticeOk.addEventListener('click', hideNotice);
 
   document.addEventListener('input', (event) => {
     if (event.target && event.target.matches && event.target.matches('.checkout-form input')) {
@@ -1046,7 +1051,7 @@ function addToCart(product, qty = 1) {
   const amount = Math.min(clampQty(qty, remainingQty || 1), remainingQty || 1);
 
   if (availableQty > 0 && remainingQty <= 0) {
-    alert('Tento produkt už máte v objednávce v maximálním skladovém množství.');
+    showNotice('Maximální množství', 'Tento produkt už máte v objednávce v maximálním skladovém množství.');
     openCart();
     return;
   }
@@ -1229,7 +1234,7 @@ function renderCartCount() {
 
 async function handleCheckoutNext() {
   if (!state.cart.length) {
-    alert('Objednávka je prázdná.');
+    showNotice('Prázdná objednávka', 'Objednávka je prázdná.');
     return;
   }
 
@@ -1240,7 +1245,7 @@ async function handleCheckoutNext() {
     applyPendingCartUpdate();
     state.checkoutStep = 0;
     if (!state.cart.length) {
-      alert('Po aktualizaci je objednávka prázdná.');
+      showNotice('Objednávka prázdná', 'Po aktualizaci je objednávka prázdná.');
     }
     renderCart();
     renderCheckout();
@@ -1595,10 +1600,9 @@ async function finishCheckout() {
       throw new Error(data.error || 'Objednávku se nepodařilo založit.');
     }
 
-    alert('Objednávka byla úspěšně založena. Předejte prosím obrazovku obsluze prodejny.');
-    resetKioskSession();
+    showNotice('Objednávka odeslána', 'Objednávka byla úspěšně založena. Předejte prosím obrazovku obsluze prodejny.', () => resetKioskSession());
   } catch (err) {
-    alert('Objednávku se nepodařilo odeslat: ' + (err.message || 'neznámá chyba') + '\n\nZkuste to prosím znovu nebo přivolejte obsluhu.');
+    showNotice('Chyba odeslání', 'Objednávku se nepodařilo odeslat: ' + (err.message || 'neznámá chyba') + '\n\nZkuste to prosím znovu nebo přivolejte obsluhu.');
   } finally {
     if (exportBtn) {
       exportBtn.disabled = false;
@@ -1821,7 +1825,7 @@ async function loadCompanyFromAres() {
     });
 
     if (response.status === 404) {
-      alert('Subjekt s tímto IČ nebyl v ARES nalezen.');
+      showNotice('IČO nenalezeno', 'Subjekt s tímto IČ nebyl v ARES nalezen.');
       return;
     }
 
@@ -1850,7 +1854,7 @@ async function loadCompanyFromAres() {
 
   } catch (error) {
     console.error(error);
-    alert('ARES se nepodařilo načíst. Zkontrolujte připojení k internetu nebo údaje doplňte ručně.');
+    showNotice('ARES nedostupný', 'ARES se nepodařilo načíst. Zkontrolujte připojení k internetu nebo údaje doplňte ručně.');
   } finally {
     button.disabled = false;
     button.textContent = previousText;
@@ -2122,6 +2126,28 @@ function showIdleWarning() {
 function hideIdleWarning() {
   if (el.idleModal) el.idleModal.hidden = true;
   clearTimeout(idleResetTimer);
+}
+
+/**
+ * Zobrazí informační modal místo systémového alert().
+ * @param {string} title - Nadpis
+ * @param {string} text - Text zprávy
+ * @param {function} [onOk] - Callback po kliknutí OK (volitelný)
+ */
+function showNotice(title, text, onOk = null) {
+  if (!el.noticeModal) { alert(text); if (onOk) onOk(); return; }
+  el.noticeTitle.textContent = title;
+  el.noticeText.textContent = text;
+  el.noticeModal.hidden = false;
+  el._noticeOkCallback = onOk;
+}
+
+function hideNotice() {
+  if (!el.noticeModal) return;
+  el.noticeModal.hidden = true;
+  const cb = el._noticeOkCallback;
+  el._noticeOkCallback = null;
+  if (cb) cb();
 }
 
 function openClearCartConfirm() {
