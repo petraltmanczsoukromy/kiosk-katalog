@@ -341,10 +341,28 @@ async function loadCatalog(options = {}) {
   const useCacheFallback = options.useCacheFallback !== false && dataConfig.useCachedCatalogOnError;
 
   try {
-    const data = await fetchJson(url);
+    const response = await fetch(url);
+    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+
+    const data = await response.json();
     applyCatalogData(data, { fromCache: false });
     writeCache(CACHE_KEYS.catalog, data);
-    setDataStatus(state.updatedAt ? `Data Helios: ${state.updatedAt}` : 'Katalog aktuální', 'ok');
+
+    // Zjistíme čas aktualizace souboru přes catalog-info.php
+    // (musí být AŽ PO applyCatalogData, která by přepsala state.updatedAt)
+    try {
+      const infoRes = await fetch('catalog-info.php');
+      const info = await infoRes.json();
+      if (info.ok && info.updated_at) {
+        const date = new Date(info.updated_at);
+        state.updatedAt = date.toLocaleString('cs-CZ', {
+          day: '2-digit', month: '2-digit', year: 'numeric',
+          hour: '2-digit', minute: '2-digit'
+        });
+      }
+    } catch (e) { /* ignorujeme chybu info */ }
+
+    setDataStatus(`Data aktualizována: ${state.updatedAt || 'neznámo'}`, 'ok');
     return true;
   } catch (error) {
     const cached = useCacheFallback ? readCache(CACHE_KEYS.catalog) : null;
