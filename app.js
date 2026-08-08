@@ -362,7 +362,7 @@ async function loadCatalog(options = {}) {
       }
     } catch (e) { /* ignorujeme chybu info */ }
 
-    setDataStatus(`Data aktualizována: ${state.updatedAt || 'neznámo'}`, 'ok');
+    setDataStatus('', 'ok');
     return true;
   } catch (error) {
     const cached = useCacheFallback ? readCache(CACHE_KEYS.catalog) : null;

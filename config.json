@@ -16,7 +16,9 @@
   "idleWarningSeconds": 90,
   "idleResetSeconds": 30,
   "data": {
-    "refreshIntervalMs": 0
+    "refreshIntervalMs": 0,
+    "apiSyncIntervalMs": 3600000,
+    "apiSyncLookbackMs": 3600000
   },
   "order": {
     "documentSeries": "420",
