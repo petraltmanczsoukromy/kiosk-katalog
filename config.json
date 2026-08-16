@@ -28,6 +28,7 @@
     "vatRate": 21,
     "defaultUnit": "ks",
     "shippingMethodCode": "OSOBNE-PRAHA",
-    "paymentMethodCode": "HOTOVE"
+    "paymentMethodCode": "HOTOVE",
+    "testMode": true
   }
 }

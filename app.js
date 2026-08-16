@@ -187,6 +187,8 @@ async function init() {
   await loadConfig();
   setLoadingState(true, 'Načítám katalog…');
   await loadCatalog();
+  setLoadingState(true, 'Aktualizuji data…');
+  await syncFromApi();
 
   render();
   updateHeaderHeight();
@@ -393,13 +395,51 @@ async function loadCatalog(options = {}) {
 function startDataRefreshTimers() {
   const dataConfig = getDataConfig();
   const catalogInterval = Number(dataConfig.refreshIntervalMs || 0);
-  const imagesInterval = Number(dataConfig.imagesRefreshIntervalMs || 0);
 
   if (catalogInterval > 0) {
     window.setInterval(async () => {
       const ok = await loadCatalog({ silent: true });
       if (ok) render();
     }, catalogInterval);
+  }
+}
+
+/**
+ * Stáhne změny z API za poslední hodinu a aplikuje je do paměti.
+ * Běží na pozadí — neblokuje UI.
+ */
+async function syncFromApi() {
+  try {
+    const since = new Date(Date.now() - 3600000).toISOString();
+    const res = await fetch(`sync-catalog.php?since=${encodeURIComponent(since)}`);
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const data = await res.json();
+    if (!data.ok) throw new Error(data.error || 'Sync selhal');
+
+    const changed = data.products || [];
+    if (changed.length === 0) {
+      console.log('[sync] Žádné změny za poslední hodinu.');
+      return;
+    }
+
+    const changedMap = new Map(changed.map(p => [String(p.product_id ?? p.id), p]));
+    state.products = state.products.map(product => {
+      const update = changedMap.get(String(product.id));
+      if (!update) return product;
+      return normalizeProduct({
+        ...product,
+        price: update.price ?? product.price,
+        stock_qty: update.stock_qty ?? product.stock_qty,
+        available_qty: update.available_qty ?? product.available_qty,
+        reserved_qty: update.reserved_qty ?? product.reserved_qty,
+        ordered_qty: update.ordered_qty ?? product.ordered_qty,
+      });
+    });
+
+    render();
+    console.log(`[sync] Aplikováno ${changed.length} změn z API.`);
+  } catch (err) {
+    console.warn('[sync] Chyba při synchronizaci:', err);
   }
 }
 
@@ -1575,6 +1615,7 @@ function buildOrderPayload() {
     document_series: orderConfig.documentSeries,
     warehouse: orderConfig.warehouse,
     source: orderConfig.source,
+    test_mode: orderConfig.testMode === true,
   };
 }
 
