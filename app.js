@@ -1421,24 +1421,27 @@ function renderCheckout() {
     const itemsHtml = state.cart.map(item => {
       const product = state.products.find(p => p.id === item.id);
       const unitPrice = getPriceNumberFromProduct(product);
-      const lineGross = unitPrice * item.qty * (1 + VAT_RATE);
+      const lineNet = unitPrice * item.qty;
+      const lineGross = lineNet * (1 + VAT_RATE);
       const unit = item.unit || product?.unit || '';
 
       return `
-        <div class="summary-item">
-          <span class="summary-item-name">${escapeHtml(item.name)}</span>
-          <span class="summary-item-qty">${item.qty} ${escapeHtml(unit)}</span>
-          <span class="summary-item-price">${escapeHtml(formatMoney(lineGross))}</span>
+        <div class="summary-row">
+          <div class="summary-row-name">${escapeHtml(item.name)}</div>
+          <div class="summary-row-meta">
+            <span class="summary-row-qty">${item.qty} ${escapeHtml(unit)}</span>
+            <span class="summary-row-price">${escapeHtml(formatMoney(lineGross))}</span>
+          </div>
         </div>`;
     }).join('');
 
     const contactHtml = isCompany ? `
-      <p><strong>${escapeHtml(draft.company || '—')}</strong>${draft.ico ? ` · IČO: ${escapeHtml(draft.ico)}` : ''}</p>
-      <p>${escapeHtml(draft.name || '—')} · ${escapeHtml(draft.email || '—')} · ${escapeHtml(draft.phone || '—')}</p>
-      ${draft.address ? `<p>${escapeHtml(draft.address)}</p>` : ''}
+      <div class="summary-contact-row"><strong>${escapeHtml(draft.company || '—')}</strong>${draft.ico ? `<span>IČO: ${escapeHtml(draft.ico)}</span>` : ''}</div>
+      <div class="summary-contact-row"><span>${escapeHtml(draft.name || '—')}</span><span>${escapeHtml(draft.email || '—')}</span><span>${escapeHtml(draft.phone || '—')}</span></div>
+      ${draft.address ? `<div class="summary-contact-row"><span>${escapeHtml(draft.address)}</span></div>` : ''}
     ` : `
-      <p><strong>${escapeHtml(draft.name || '—')}</strong></p>
-      <p>${escapeHtml(draft.email || '—')} · ${escapeHtml(draft.phone || '—')}</p>
+      <div class="summary-contact-row"><strong>${escapeHtml(draft.name || '—')}</strong></div>
+      <div class="summary-contact-row"><span>${escapeHtml(draft.email || '—')}</span><span>${escapeHtml(draft.phone || '—')}</span></div>
     `;
 
     el.checkoutArea.innerHTML = `
@@ -1448,18 +1451,13 @@ function renderCheckout() {
           <span>2 Údaje</span>
           <span class="active">3 Souhrn</span>
         </div>
-        <div class="checkout-confirm-summary">
-          <div class="summary-items">${itemsHtml}</div>
-          <div class="checkout-confirm-totals">
-            <span>Celkem bez DPH: ${escapeHtml(formatMoney(totals.net))}</span>
-            <span>DPH 21 %: ${escapeHtml(formatMoney(vat))}</span>
-            <strong>Celkem vč. DPH: ${escapeHtml(formatMoney(gross))}</strong>
-          </div>
-          <div class="checkout-confirm-contact">
-            ${contactHtml}
-          </div>
+        <div class="summary-items">${itemsHtml}</div>
+        <div class="summary-totals">
+          <span>Bez DPH: ${escapeHtml(formatMoney(totals.net))}</span>
+          <span>DPH 21 %: ${escapeHtml(formatMoney(vat))}</span>
+          <div class="summary-totals-gross">Celkem vč. DPH: <strong>${escapeHtml(formatMoney(gross))}</strong></div>
         </div>
-        <p class="checkout-note">Platba proběhne při převzetí na prodejně.</p>
+        <p class="checkout-note">Platba i převzetí proběhne na prodejně.</p>
       </div>
     `;
   }

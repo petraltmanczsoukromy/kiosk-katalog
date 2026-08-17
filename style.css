@@ -3160,3 +3160,100 @@ h2 {
 .cart-list { padding: 0 !important; }
 .cart-row:first-child { border-top: 1px solid var(--border) !important; }
 .cart-row:last-child { border-bottom: 1px solid var(--border) !important; }
+
+/* === Souhrn objednávky (krok 3) === */
+.summary-items {
+  margin: 8px 0;
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 16px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.summary-row:first-child {
+  border-top: 1px solid var(--border);
+}
+
+.summary-row-name {
+  flex: 1;
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--blue);
+}
+
+.summary-row-meta {
+  display: flex;
+  gap: 16px;
+  align-items: baseline;
+  flex-shrink: 0;
+}
+
+.summary-row-qty {
+  color: var(--muted);
+  font-size: 15px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.summary-row-price {
+  font-size: 17px;
+  font-weight: 800;
+  white-space: nowrap;
+  min-width: 100px;
+  text-align: right;
+}
+
+.summary-totals {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 12px 0;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--muted);
+  flex-wrap: wrap;
+}
+
+.summary-totals-gross {
+  margin-left: auto;
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--text);
+}
+
+.summary-totals-gross strong {
+  color: var(--blue);
+  font-size: 24px;
+  font-weight: 900;
+}
+
+.summary-contact {
+  background: var(--blue-soft-2);
+  border-radius: var(--radius);
+  padding: 12px 16px;
+  margin: 12px 0 0;
+  font-size: 16px;
+}
+
+.summary-contact-row {
+  display: flex;
+  gap: 16px;
+  align-items: baseline;
+  padding: 3px 0;
+  flex-wrap: wrap;
+}
+
+.summary-contact-row strong {
+  color: var(--blue);
+  font-size: 18px;
+}
+
+.summary-contact-row span {
+  color: var(--muted);
+  font-weight: 700;
+}
