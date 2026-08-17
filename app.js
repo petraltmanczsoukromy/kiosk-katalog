@@ -1674,7 +1674,9 @@ async function finishCheckout() {
       throw new Error(data.error || 'Objednávku se nepodařilo založit.');
     }
 
-    showNotice('Objednávka odeslána', 'Objednávka byla úspěšně založena. Předejte prosím obrazovku obsluze prodejny.', () => resetKioskSession());
+    closeCart();
+    resetKioskSession();
+    showNotice('Objednávka odeslána', 'Objednávka byla úspěšně založena, skladníci ji již připravují.');
   } catch (err) {
     showNotice('Chyba odeslání', 'Objednávku se nepodařilo odeslat: ' + (err.message || 'neznámá chyba') + '\n\nZkuste to prosím znovu nebo přivolejte obsluhu.');
   } finally {
