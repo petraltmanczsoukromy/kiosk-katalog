@@ -885,7 +885,7 @@ function renderDetail() {
 
           <div class="detail-clean-actions">
             <button class="primary order-primary" type="button" id="addToCart" ${isSoldOut ? 'disabled' : ''}>${isSoldOut ? 'Vše v košíku' : 'Vložit do košíku'}</button>
-            ${product.url ? '<button class="secondary" type="button" id="openWeb">Technické údaje / web</button>' : ''}
+            ${(product.url && APP_CONFIG.showWebButton !== false) ? '<button class="secondary" type="button" id="openWeb">Technické údaje / web</button>' : ''}
             <button class="secondary" type="button" id="showCart">Zobrazit košík${qtyInCart ? ` (${qtyInCart}× v košíku)` : ''}</button>
           </div>
         </section>
@@ -1347,7 +1347,7 @@ function renderCheckout() {
         <div class="checkout-progress">
           <span class="active">1 Typ zákazníka</span>
           <span>2 Údaje</span>
-          <span>3 Potvrzení</span>
+          <span>3 Souhrn</span>
         </div>
         <h3>Objednávka pro firmu nebo soukromě?</h3>
         ${icoOnly ? `<p class="checkout-ico-note">⚠️ Košík obsahuje položky pouze pro firemní zákazníky (označené „Jen na IČO"). Pokračujte jako firma, nebo tyto položky z košíku odeberte.</p>` : ''}
@@ -1370,7 +1370,7 @@ function renderCheckout() {
   }
 
   if (state.checkoutStep === 2) {
-    el.exportOrder.textContent = 'Pokračovat na potvrzení';
+    el.exportOrder.textContent = 'Pokračovat na souhrn';
 
     const companyFields = `
       <label>IČO *<input id="checkoutIco" type="text" inputmode="numeric" autocomplete="off"></label>
@@ -1396,7 +1396,7 @@ function renderCheckout() {
         <div class="checkout-progress">
           <span>1 Typ zákazníka</span>
           <span class="active">2 Údaje</span>
-          <span>3 Potvrzení</span>
+          <span>3 Souhrn</span>
         </div>
         <h3>Kontaktní údaje</h3>
         <div class="checkout-form">
@@ -1410,21 +1410,56 @@ function renderCheckout() {
   }
 
   if (state.checkoutStep === 3) {
-    el.exportOrder.textContent = 'Potvrdit objednávku';
+    el.exportOrder.textContent = 'Odeslat objednávku';
+
+    const draft = state.checkoutDraft || {};
+    const isCompany = draft.checkoutType === 'company';
+    const totals = getCartTotals();
+    const vat = totals.net * VAT_RATE;
+    const gross = totals.net + vat;
+
+    const itemsHtml = state.cart.map(item => {
+      const product = state.products.find(p => p.id === item.id);
+      const unitPrice = getPriceNumberFromProduct(product);
+      const lineGross = unitPrice * item.qty * (1 + VAT_RATE);
+      const unit = item.unit || product?.unit || '';
+
+      return `
+        <div class="summary-item">
+          <span class="summary-item-name">${escapeHtml(item.name)}</span>
+          <span class="summary-item-qty">${item.qty} ${escapeHtml(unit)}</span>
+          <span class="summary-item-price">${escapeHtml(formatMoney(lineGross))}</span>
+        </div>`;
+    }).join('');
+
+    const contactHtml = isCompany ? `
+      <p><strong>${escapeHtml(draft.company || '—')}</strong>${draft.ico ? ` · IČO: ${escapeHtml(draft.ico)}` : ''}</p>
+      <p>${escapeHtml(draft.name || '—')} · ${escapeHtml(draft.email || '—')} · ${escapeHtml(draft.phone || '—')}</p>
+      ${draft.address ? `<p>${escapeHtml(draft.address)}</p>` : ''}
+    ` : `
+      <p><strong>${escapeHtml(draft.name || '—')}</strong></p>
+      <p>${escapeHtml(draft.email || '—')} · ${escapeHtml(draft.phone || '—')}</p>
+    `;
 
     el.checkoutArea.innerHTML = `
       <div class="checkout-box">
         <div class="checkout-progress">
           <span>1 Typ zákazníka</span>
           <span>2 Údaje</span>
-          <span class="active">3 Potvrzení</span>
+          <span class="active">3 Souhrn</span>
         </div>
-        <h3>Potvrzení objednávky</h3>
-        <p class="checkout-confirm">
-          Platba proběhne při převzetí na prodejně.<br>
-          Převzetí je osobně ihned na prodejně podle aktuální skladové dostupnosti.
-        </p>
-        <p class="checkout-note">Po potvrzení předejte objednávku obsluze prodejny.</p>
+        <div class="checkout-confirm-summary">
+          <div class="summary-items">${itemsHtml}</div>
+          <div class="checkout-confirm-totals">
+            <span>Celkem bez DPH: ${escapeHtml(formatMoney(totals.net))}</span>
+            <span>DPH 21 %: ${escapeHtml(formatMoney(vat))}</span>
+            <strong>Celkem vč. DPH: ${escapeHtml(formatMoney(gross))}</strong>
+          </div>
+          <div class="checkout-confirm-contact">
+            ${contactHtml}
+          </div>
+        </div>
+        <p class="checkout-note">Platba proběhne při převzetí na prodejně.</p>
       </div>
     `;
   }

@@ -12,7 +12,7 @@
   "headerMode": "fixed",
   "showPrices": true,
   "showManufacturer": true,
-  "showWebButton": true,
+  "showWebButton": false,
   "idleWarningSeconds": 90,
   "idleResetSeconds": 30,
   "data": {
