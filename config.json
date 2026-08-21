@@ -29,6 +29,6 @@
     "defaultUnit": "ks",
     "shippingMethodCode": "OSOBNE-PRAHA",
     "paymentMethodCode": "HOTOVE",
-    "testMode": false
+    "testMode": true
   }
 }

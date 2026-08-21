@@ -176,6 +176,11 @@ async function init() {
   // zavřen uprostřed nákupu, košík by jinak zůstal předchozímu zákazníkovi.
   localStorage.removeItem('kioskCart');
   localStorage.removeItem('kioskCheckoutDraft');
+  // state.cart se naplnil z localStorage při inicializaci objektu (před init()),
+  // musíme ho tedy vymazat i v paměti
+  state.cart = [];
+  state.checkoutDraft = {};
+  state.checkoutStep = 0;
 
   if (typeof installTapSound === 'function') {
     installTapSound();
@@ -1538,11 +1543,11 @@ function validateCheckoutForm() {
  */
 function splitFullName(fullName) {
   const trimmed = String(fullName || '').trim().replace(/\s+/g, ' ');
-  if (!trimmed) return { first_name: '—', surname: '—' };
+  if (!trimmed) return { first_name: '', surname: '' };
 
   const parts = trimmed.split(' ');
   if (parts.length === 1) {
-    return { first_name: '—', surname: parts[0] };
+    return { first_name: '', surname: parts[0] };
   }
   return {
     first_name: parts.slice(0, -1).join(' '),
