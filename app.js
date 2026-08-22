@@ -1631,7 +1631,6 @@ function buildOrderPayload() {
       unit_price: unitPrice,
       vat_rate: orderConfig.vatRate,
       unit: item.unit || orderConfig.defaultUnit,
-      warehouse: orderConfig.itemWarehouse,
     };
   });
 
