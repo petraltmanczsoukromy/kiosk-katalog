@@ -1618,6 +1618,7 @@ function buildOrderPayload() {
   };
 
   if (isCompany && draft.ico) {
+    customer.company = draft.company || '';
     customer.ico = String(draft.ico).trim();
     customer.dic = 'CZ' + String(draft.ico).trim();
   }

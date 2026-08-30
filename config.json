@@ -16,6 +16,7 @@
   "idleWarningSeconds": 90,
   "idleResetSeconds": 30,
   "data": {
+    "catalogUrl": "products_test.json",
     "refreshIntervalMs": 0,
     "apiSyncIntervalMs": 3600000,
     "apiSyncLookbackMs": 3600000
