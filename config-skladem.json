@@ -1,0 +1,27 @@
+{
+  "catalogOnly": true,
+  "soundEnabled": false,
+  "detailEnabled": false,
+  "allowedRootCategories": [
+    "110",
+    "120",
+    "130",
+    "140",
+    "150",
+    "210"
+  ],
+  "showZeroAvailable": false,
+  "maxRenderedProducts": 1500,
+  "headerMode": "fixed",
+  "showPrices": true,
+  "showManufacturer": true,
+  "showWebButton": true,
+  "idleWarningSeconds": 0,
+  "idleResetSeconds": 0,
+  "data": {
+    "catalogUrl": "../kiosk/products.json",
+    "refreshIntervalMs": 3600000,
+    "apiSyncIntervalMs": 0,
+    "apiSyncLookbackMs": 3600000
+  }
+}

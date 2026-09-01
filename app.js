@@ -182,14 +182,15 @@ async function init() {
   state.checkoutDraft = {};
   state.checkoutStep = 0;
 
-  if (typeof installTapSound === 'function') {
-    installTapSound();
-  }
-
   bindEvents();
   setLoadingState(true, 'Načítám nastavení kiosku…');
 
   await loadConfig();
+
+  if (typeof installTapSound === 'function' && APP_CONFIG.soundEnabled !== false) {
+    installTapSound();
+  }
+
   setLoadingState(true, 'Načítám katalog…');
   await loadCatalog();
   setLoadingState(true, 'Aktualizuji data…');
@@ -201,6 +202,15 @@ async function init() {
   installIdleWatcher();
   startDataRefreshTimers();
   setLoadingState(false);
+
+  // Katalogový režim — skryje košík a vše co se týká objednávek
+  if (APP_CONFIG.catalogOnly) {
+    if (el.cartButton) {
+      el.cartButton.hidden = true;
+      el.cartButton.style.setProperty('display', 'none', 'important');
+    }
+    if (el.cartDrawer) el.cartDrawer.hidden = true;
+  }
 
   window.addEventListener('resize', updateHeaderHeight);
 
@@ -362,7 +372,11 @@ async function loadCatalog(options = {}) {
     // Zjistíme čas aktualizace souboru přes catalog-info.php
     // (musí být AŽ PO applyCatalogData, která by přepsala state.updatedAt)
     try {
-      const infoRes = await fetch('catalog-info.php');
+      const catalogUrl = getDataConfig().catalogUrl || 'products.json';
+      const infoUrl = catalogUrl !== 'products.json'
+        ? `catalog-info.php?file=${encodeURIComponent(catalogUrl)}`
+        : 'catalog-info.php';
+      const infoRes = await fetch(infoUrl);
       const info = await infoRes.json();
       if (info.ok && info.updated_at) {
         const date = new Date(info.updated_at);
@@ -753,6 +767,7 @@ function renderGrid(products) {
 
   el.productGrid.querySelectorAll('.product-card').forEach(card => {
     card.addEventListener('click', () => {
+      if (APP_CONFIG.detailEnabled === false) return;
       openDetail(card.dataset.id);
     });
   });
@@ -796,7 +811,7 @@ function renderTitle(count, totalBeforeDynamic = count) {
     : '';
 
   const updated = state.updatedAt
-    ? ` · data ${state.updatedAt}`
+    ? ` · aktualizováno ${state.updatedAt}`
     : '';
 
   el.resultCount.textContent =
@@ -889,7 +904,7 @@ function renderDetail() {
           </div>
 
           <div class="detail-clean-actions">
-            <button class="primary order-primary" type="button" id="addToCart" ${isSoldOut ? 'disabled' : ''}>${isSoldOut ? 'Vše v košíku' : 'Vložit do košíku'}</button>
+            ${APP_CONFIG.catalogOnly ? '' : `<button class="primary order-primary" type="button" id="addToCart" ${isSoldOut ? 'disabled' : ''}>${isSoldOut ? 'Vše v košíku' : 'Vložit do košíku'}</button>`}
             ${(product.url && APP_CONFIG.showWebButton !== false) ? '<button class="secondary" type="button" id="openWeb">Technické údaje / web</button>' : ''}
             <button class="secondary" type="button" id="showCart">Zobrazit košík${qtyInCart ? ` (${qtyInCart}× v košíku)` : ''}</button>
           </div>
@@ -1127,6 +1142,12 @@ function closeCart() {
 }
 
 function renderCart() {
+  // V katalogovém režimu košík vůbec nerendrujeme
+  if (APP_CONFIG.catalogOnly) {
+    if (el.cartButton) el.cartButton.style.setProperty('display', 'none', 'important');
+    return;
+  }
+
   if (!state.cart.length) {
     if (el.cartFooter) el.cartFooter.hidden = true;
     if (el.cartBottomBar) el.cartBottomBar.hidden = true;
@@ -1377,6 +1398,23 @@ function renderCheckout() {
   if (state.checkoutStep === 2) {
     el.exportOrder.textContent = 'Pokračovat na souhrn';
 
+    if (state.checkoutType === 'private') {
+      el.checkoutArea.innerHTML = `
+        <div class="checkout-box">
+          <div class="checkout-progress">
+            <span>1 Typ zákazníka</span>
+            <span class="active">2 Údaje</span>
+            <span>3 Souhrn</span>
+          </div>
+          <div class="checkout-private-info">
+            <p>Osobní údaje nezadáváme.</p>
+            <p class="checkout-note">Platba i převzetí proběhne na prodejně.</p>
+          </div>
+        </div>
+      `;
+      return;
+    }
+
     const companyFields = `
       <label>IČO *<input id="checkoutIco" type="text" inputmode="numeric" autocomplete="off"></label>
       <div class="ares-row">
@@ -1390,12 +1428,6 @@ function renderCheckout() {
       <label>Telefon<input id="checkoutPhone" type="tel" autocomplete="tel"></label>
     `;
 
-    const privateFields = `
-      <label>Jméno a příjmení *<input id="checkoutName" type="text" autocomplete="name"></label>
-      <label class="email-field">E-mail *<span class="email-input-wrap email-insert-wrap"><input id="checkoutContact" type="email" autocomplete="email"><button type="button" class="email-at-button" data-insert-at="checkoutContact">@</button></span></label>
-      <label>Telefon<input id="checkoutPhone" type="tel" autocomplete="tel"></label>
-    `;
-
     el.checkoutArea.innerHTML = `
       <div class="checkout-box">
         <div class="checkout-progress">
@@ -1405,7 +1437,7 @@ function renderCheckout() {
         </div>
         <h3>Kontaktní údaje</h3>
         <div class="checkout-form">
-          ${state.checkoutType === 'company' ? companyFields : privateFields}
+          ${companyFields}
         </div>
         <p class="checkout-note">Vyplňujeme jen minimum údajů. Platba i převzetí proběhne na prodejně.</p>
       </div>
@@ -1453,7 +1485,7 @@ function renderCheckout() {
       <div class="checkout-box">
         <div class="checkout-progress">
           <span>1 Typ zákazníka</span>
-          <span>2 Údaje</span>
+          <span${!isCompany ? ' class="skipped"' : ''}>2 Údaje</span>
           <span class="active">3 Souhrn</span>
         </div>
         <div class="summary-items">${itemsHtml}</div>
@@ -1499,7 +1531,7 @@ function validateCheckoutForm() {
 
   const requiredIds = state.checkoutType === 'company'
     ? ['checkoutIco', 'checkoutName', 'checkoutContact']
-    : ['checkoutName', 'checkoutContact'];
+    : [];
 
   document.querySelectorAll('.checkout-form input').forEach(field => {
     field.classList.remove('checkout-field-error');

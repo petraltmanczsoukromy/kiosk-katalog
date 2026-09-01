@@ -3316,3 +3316,16 @@ h2 {
   margin-left: auto;
   margin-right: auto;
 }
+/* Přeskočený krok v progress baru */
+.checkout-progress span.skipped {
+  opacity: 0.35;
+}
+
+/* Krok 2 pro soukromou osobu - informační text */
+.checkout-private-info {
+  padding: 32px 0;
+  text-align: center;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--blue);
+}
