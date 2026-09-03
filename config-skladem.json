@@ -27,5 +27,13 @@
     "refreshIntervalMs": 3600000,
     "apiSyncIntervalMs": 0,
     "apiSyncLookbackMs": 3600000
-  }
+  },
+  "stockDisplay": "interval",
+  "stockIntervals": [
+    1,
+    2,
+    3,
+    4,
+    10
+  ]
 }

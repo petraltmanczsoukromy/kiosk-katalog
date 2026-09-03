@@ -1809,12 +1809,37 @@ function clampQty(value, maxQty = Infinity) {
 function formatStock(product) {
   const qty = Number(product.available_qty ?? 0);
 
-  if (Number.isFinite(qty) && qty > 0) {
-    const unit = product.unit ? ` ${product.unit}` : '';
-    return `Skladem: ${formatNumber(qty)}${unit}`;
+  if (!Number.isFinite(qty) || qty <= 0) return 'Na objednávku';
+
+  const unit = product.unit ? ` ${product.unit}` : '';
+
+  // Intervalové zobrazení pokud je nakonfigurováno
+  if (APP_CONFIG.stockDisplay === 'interval') {
+    const intervals = APP_CONFIG.stockIntervals;
+    if (Array.isArray(intervals) && intervals.length > 0) {
+      const sorted = [...intervals].sort((a, b) => a - b);
+      for (let i = 0; i < sorted.length; i++) {
+        const boundary = sorted[i];
+        if (qty <= boundary) {
+          const prev = i > 0 ? sorted[i - 1] : 0;
+          if (prev + 1 === boundary) {
+            // Jednobodový interval (např. hranice jsou 3 a 4 → zobrazí "4")
+            return `Skladem: ${boundary}${unit}`;
+          }
+          if (qty === boundary) {
+            // Přesná shoda s horní hranicí → zobrazí celý rozsah
+            return `Skladem: ${prev + 1}–${boundary}${unit}`;
+          }
+          // Někde uvnitř rozsahu
+          return `Skladem: ${prev + 1}–${boundary}${unit}`;
+        }
+      }
+      // Nad poslední hranicí
+      return `Skladem: více než ${sorted[sorted.length - 1]}${unit}`;
+    }
   }
 
-  return 'Na objednávku';
+  return `Skladem: ${formatNumber(qty)}${unit}`;
 }
 
 function formatNumber(value) {
