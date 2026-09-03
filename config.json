@@ -15,6 +15,9 @@
   "showWebButton": false,
   "idleWarningSeconds": 90,
   "idleResetSeconds": 30,
+  "banner": {
+    "enabled": false
+  },
   "data": {
     "catalogUrl": "products_test.json",
     "refreshIntervalMs": 0,

@@ -2,6 +2,10 @@
   "catalogOnly": true,
   "soundEnabled": false,
   "detailEnabled": false,
+  "banner": {
+    "enabled": true,
+    "file": "banner-skladem.html"
+  },
   "allowedRootCategories": [
     "110",
     "120",

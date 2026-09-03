@@ -1,3 +1,12 @@
+<?php
+// Načtení konfigurace a banneru
+$config = json_decode(file_get_contents(__DIR__ . '/config.json'), true);
+$bannerFile = '';
+if (!empty($config['banner']['enabled']) && !empty($config['banner']['file'])) {
+    $bannerFile = __DIR__ . '/' . $config['banner']['file'];
+}
+$banner = ($bannerFile && file_exists($bannerFile)) ? file_get_contents($bannerFile) : '';
+?>
 <!doctype html>
 <html lang="cs">
 <head>
@@ -9,6 +18,7 @@
 <body>
   <div id="app">
     <div id="smartHeader" class="smart-header">
+      <?= $banner ?>
       <section class="search-panel">
         <input id="searchInput" type="search" autocomplete="off" placeholder="Hledat produkt, výrobce nebo objednací číslo…" autofocus />
         <button id="clearSearch" type="button" aria-label="Vymazat hledání">×</button>
