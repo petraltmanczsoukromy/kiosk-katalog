@@ -1,11 +1,11 @@
 <?php
-// Načtení konfigurace a banneru
 $config = json_decode(file_get_contents(__DIR__ . '/config.json'), true);
 $bannerFile = '';
 if (!empty($config['banner']['enabled']) && !empty($config['banner']['file'])) {
     $bannerFile = __DIR__ . '/' . $config['banner']['file'];
 }
 $banner = ($bannerFile && file_exists($bannerFile)) ? file_get_contents($bannerFile) : '';
+$noDetail = (isset($config['detailEnabled']) && $config['detailEnabled'] === false) ? 'no-detail' : '';
 ?>
 <!doctype html>
 <html lang="cs">
@@ -15,7 +15,7 @@ $banner = ($bannerFile && file_exists($bannerFile)) ? file_get_contents($bannerF
   <title>VERKON prodejní kiosek – objednávka</title>
   <link rel="stylesheet" href="style.css" />
 </head>
-<body>
+<body class="<?= $noDetail ?>">
   <div id="app">
     <div id="smartHeader" class="smart-header">
       <?= $banner ?>
@@ -23,7 +23,6 @@ $banner = ($bannerFile && file_exists($bannerFile)) ? file_get_contents($bannerF
         <input id="searchInput" type="search" autocomplete="off" placeholder="Hledat produkt, výrobce nebo objednací číslo…" autofocus />
         <button id="clearSearch" type="button" aria-label="Vymazat hledání">×</button>
       </section>
-
       <section id="dynamicFilterBlock" class="dynamic-filter-block">
         <nav id="dynamicGroupFilters" class="filters dynamic-filters" aria-label="Kapitoly v aktuálních výsledcích"></nav>
       </section>

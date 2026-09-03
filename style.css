@@ -3329,3 +3329,27 @@ h2 {
   font-weight: 700;
   color: var(--blue);
 }
+
+/* === Katalogový režim bez detailu (no-detail) === */
+body.no-detail .product-card {
+  cursor: default !important;
+  pointer-events: none;
+}
+
+body.no-detail .product-card:hover,
+body.no-detail .product-card:focus-visible {
+  box-shadow: none !important;
+  transform: none !important;
+  z-index: auto !important;
+  color: inherit !important;
+}
+
+body.no-detail .product-card:hover h3,
+body.no-detail .product-card:focus-visible h3 {
+  color: var(--blue) !important;
+  text-decoration: none !important;
+}
+
+body.no-detail .product-card:active {
+  transform: none !important;
+}

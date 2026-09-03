@@ -3,11 +3,11 @@
     <img src="assets/logo2.svg" alt="VERKON" class="site-banner-logo-img" />
   </div>
   <div class="site-banner-center">
-    SKLADOVÁ ZÁSOBA <img src="assets/ctverecek.svg" class="banner-sep"> IHNED K ODBĚRU <img src="assets/ctverecek.svg" class="banner-sep"> PRODEJNA TOUŽIMSKÁ 889, PRAHA 9-LETŇANY
+    SKLADOVÁ ZÁSOBA <span class="sq">▪</span> IHNED K ODBĚRU <span class="sq">▪</span> PRODEJNA TOUŽIMSKÁ 889, PRAHA 9-LETŇANY
   </div>
   <div class="site-banner-right">
     <span>Po–Pá &nbsp;8:00–14:30</span>
-    <span>284 813 034 <img src="assets/ctverecek.svg" class="banner-sep"> 777 913 387</span>
+    <span>284 813 034 <span class="sq">▪</span> 777 913 387</span>
   </div>
 </div>
 
@@ -19,19 +19,25 @@
   margin: -14px -30px 12px -30px;
   border-bottom: 3px solid #378FD2;
   display: grid;
-  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-columns: auto 1fr auto;
   align-items: center;
-  padding: 12px 32px;
+  padding: 10px 24px;
   gap: 16px;
+}
+
+.sq {
+  color: #4CAF50;
+  margin: 0 6px;
 }
 
 .site-banner-left {
   display: flex;
   align-items: center;
+  flex-shrink: 0;
 }
 
 .site-banner-logo-img {
-  height: 70px;
+  height: 90px;
   width: auto;
 }
 
@@ -44,20 +50,14 @@
   margin: 0 8px;
 }
 
-.site-banner-logo {
-  font-size: 28px;
-  font-weight: 900;
-  letter-spacing: 3px;
-  color: #fff;
-}
-
 .site-banner-center {
   text-align: center;
-  font-size: 20px;
+  font-size: clamp(11px, 1.4vw, 20px);
   font-weight: 900;
-  letter-spacing: 1.5px;
+  letter-spacing: 1px;
   color: #fff;
-  white-space: nowrap;
+  white-space: normal;
+  line-height: 1.4;
 }
 
 .site-banner-right {
@@ -65,9 +65,37 @@
   flex-direction: column;
   align-items: flex-end;
   gap: 4px;
-  font-size: 17px;
+  font-size: clamp(12px, 1.2vw, 17px);
   font-weight: 700;
   color: rgba(255,255,255,0.9);
   white-space: nowrap;
+  flex-shrink: 0;
+}
+
+@media (max-width: 600px) {
+  .site-banner {
+    grid-template-columns: 1fr;
+    padding: 10px 16px;
+    gap: 6px;
+    text-align: center;
+  }
+
+  .site-banner-left {
+    justify-content: center;
+  }
+
+  .site-banner-logo-img {
+    height: 50px;
+  }
+
+  .site-banner-center {
+    white-space: normal;
+    font-size: 12px;
+  }
+
+  .site-banner-right {
+    align-items: center;
+    font-size: 12px;
+  }
 }
 </style>
