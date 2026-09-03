@@ -10,7 +10,7 @@
 header('Content-Type: application/json; charset=utf-8');
 header('Cache-Control: no-store');
 
-$base_url = 'http://84.242.90.2/v1';
+$base_url = 'http://84.242.90.2:8091/v1';
 $login    = 'verkonapi';
 $heslo    = 'YT$$$xxkj748g!5H';
 
