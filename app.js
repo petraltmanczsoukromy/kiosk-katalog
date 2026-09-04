@@ -5,9 +5,7 @@ let GROUPS = [
 
 const DEFAULT_DATA_CONFIG = {
   catalogUrl: 'products.json',
-  imagesUrl: 'product-images.json',
   refreshIntervalMs: 180000,
-  imagesRefreshIntervalMs: 3600000,
   cacheEnabled: true,
   useCachedCatalogOnError: true,
   maxCatalogAgeMinutes: 30,
@@ -36,7 +34,8 @@ let APP_CONFIG = {
   order: { ...DEFAULT_ORDER_CONFIG }
 };
 
-let PRODUCT_IMAGES = {};
+
+
 
 const DEFAULT_MAX_RENDERED_PRODUCTS = 240;
 
@@ -307,29 +306,6 @@ async function loadConfig() {
   }
 }
 
-async function loadProductImages(options = {}) {
-  const dataConfig = getDataConfig();
-  const url = dataConfig.imagesUrl || DEFAULT_DATA_CONFIG.imagesUrl;
-
-  try {
-    const data = await fetchJson(url);
-    PRODUCT_IMAGES = data && typeof data === 'object' ? data : {};
-    writeCache(CACHE_KEYS.images, PRODUCT_IMAGES);
-    if (!options.silent) setDataStatus('Obrázky načteny', 'ok');
-    return true;
-  } catch (error) {
-    console.warn(`${url} se nepodařilo načíst, zkouším cache obrázků.`, error);
-    const cached = readCache(CACHE_KEYS.images);
-    if (cached && cached.data && typeof cached.data === 'object') {
-      PRODUCT_IMAGES = cached.data;
-      if (!options.silent) setDataStatus('Obrázky z poslední uložené verze', 'warn');
-      return true;
-    }
-    PRODUCT_IMAGES = {};
-    if (!options.silent) setDataStatus('Obrázky nejsou dostupné', 'warn');
-    return false;
-  }
-}
 
 function applyCatalogData(data, options = {}) {
   const products = Array.isArray(data) ? data : (Array.isArray(data.products) ? data.products : []);
