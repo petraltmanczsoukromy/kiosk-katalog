@@ -47,7 +47,7 @@ unset($item);
 // ale neodešle do Heliosu. Pro ostré nasazení nastavit testMode: false.
 if (!empty($order['test_mode'])) {
     $log_dir = __DIR__ . '/order-logs';
-    if (!is_dir($log_dir)) @mkdir($log_dir, 0777, true);
+    if (!is_dir($log_dir)) @mkdir($log_dir, 0750, true);
     $log_line = sprintf(
         "[%s] TEST MODE - order_id=%s\nrequest_full=%s\n\n",
         date('c'),
@@ -89,7 +89,7 @@ curl_close($ch);
 $log_dir = __DIR__ . '/order-logs';
 $log_write_error = null;
 if (!is_dir($log_dir)) {
-    if (!@mkdir($log_dir, 0777, true) && !is_dir($log_dir)) {
+    if (!@mkdir($log_dir, 0750, true) && !is_dir($log_dir)) {
         $log_write_error = 'Nepodařilo se vytvořit složku order-logs (chybí práva zápisu?)';
     }
 }

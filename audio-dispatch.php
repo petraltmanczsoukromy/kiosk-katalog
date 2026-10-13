@@ -8,6 +8,14 @@
  * Pokud selže, objednávka je již odeslána — chyba se jen zaloguje.
  */
 
+// ── Ochrana: soubor smí jen načíst submit-order.php (include) ──
+// Když ho někdo otevře přímo v prohlížeči, je SCRIPT_FILENAME tento soubor.
+// Při include ze submit-order.php je SCRIPT_FILENAME submit-order.php.
+if (realpath($_SERVER['SCRIPT_FILENAME'] ?? '') === __FILE__) {
+    http_response_code(403);
+    exit('Přímý přístup není povolen.');
+}
+
 $config_file = __DIR__ . '/config-aws.php';
 if (!file_exists($config_file)) return; // config chybí, tiché přeskočení
 
@@ -37,7 +45,7 @@ $s3_key = $S3_PREFIX . $dispatch_id . '.json';
 
 // ── Logování ─────────────────────────────────────────────────
 $log_dir = __DIR__ . '/order-logs';
-if (!is_dir($log_dir)) @mkdir($log_dir, 0777, true);
+if (!is_dir($log_dir)) @mkdir($log_dir, 0750, true);
 
 try {
     $s3 = new S3Client([
