@@ -1450,7 +1450,7 @@ function renderCheckout() {
     }).join('');
 
     const contactHtml = isCompany ? `
-      <div class="summary-contact-row"><strong>${escapeHtml(draft.company || '—')}</strong>${draft.ico ? `<span>IČO: ${escapeHtml(draft.ico)}</span>` : ''}</div>
+      <div class="summary-contact-row"><strong>${escapeHtml(draft.company || '—')}</strong>${draft.ico ? `<span>IČO: ${escapeHtml(draft.ico)}</span>` : ''}${(draft.dic && draft.dicForIco === draft.ico) ? `<span>DIČ: ${escapeHtml(draft.dic)}</span>` : ''}</div>
       <div class="summary-contact-row"><span>${escapeHtml(draft.name || '—')}</span><span>${escapeHtml(draft.email || '—')}</span><span>${escapeHtml(draft.phone || '—')}</span></div>
       ${draft.address ? `<div class="summary-contact-row"><span>${escapeHtml(draft.address)}</span></div>` : ''}
     ` : `
@@ -1629,7 +1629,9 @@ function buildOrderPayload() {
   if (isCompany && draft.ico) {
     customer.company = draft.company || '';
     customer.ico = String(draft.ico).trim();
-    customer.dic = 'CZ' + String(draft.ico).trim();
+    // DIČ jen z ARES a jen pokud patří k aktuálně zadanému IČO.
+    // Neplátce DPH žádné DIČ nemá -> posíláme prázdné.
+    customer.dic = (draft.dic && draft.dicForIco === customer.ico) ? draft.dic : '';
   }
 
   const items = state.cart.map(item => {
@@ -1649,11 +1651,14 @@ function buildOrderPayload() {
 
   // order_id = naše interní ID pro párování, order_number NEposíláme
   // - Helios si přiděluje číslo dokladu sám (zjištěno testováním 2026-06-22)
-  const orderId = String(Math.floor(10000 + Math.random() * 90000));
+  // Jedno ID na celou objednávku - při opakovaném odeslání (po chybě
+  // sítě) se pošle stejné, takže jde dohledat případný duplikát.
+  if (!state.orderId) state.orderId = generateOrderId();
+  const orderId = state.orderId;
 
   return {
     order_id: orderId,
-    order_date: new Date().toISOString().slice(0, 19),
+    order_date: localIsoNow(),
     customer,
     items,
     shipping: { method_code: orderConfig.shippingMethodCode || '' },
@@ -1664,6 +1669,26 @@ function buildOrderPayload() {
     source: orderConfig.source,
     test_mode: orderConfig.testMode === true,
   };
+}
+
+/**
+ * Místní čas ve formátu 2026-10-13T21:45:00 (bez časové zóny).
+ * toISOString() vrací UTC - v létě by byl čas o 2 hodiny posunutý.
+ * Posuneme proto datum o rozdíl časové zóny a teprve pak ho naformátujeme.
+ */
+function localIsoNow() {
+  const d = new Date();
+  return new Date(d.getTime() - d.getTimezoneOffset() * 60000).toISOString().slice(0, 19);
+}
+
+/**
+ * Unikátní číselné ID objednávky = počet sekund od 1. 1. 2026.
+ * Každou sekundu jiné, takže se neopakuje (na rozdíl od 5 náhodných číslic).
+ * Vejde se do int v databázi (max 2 147 483 647) na desítky let.
+ */
+function generateOrderId() {
+  const EPOCH_2026 = Date.UTC(2026, 0, 1);
+  return String(Math.floor((Date.now() - EPOCH_2026) / 1000));
 }
 
 async function finishCheckout() {
@@ -1951,6 +1976,15 @@ async function loadCompanyFromAres() {
     const data = await response.json();
 
     companyField.value = data.obchodniJmeno || data.jmeno || '';
+
+    // DIČ si zapamatujeme i s IČO, ke kterému patří (kdyby zákazník
+    // IČO potom přepsal, staré DIČ se nepoužije)
+    state.checkoutDraft = {
+      ...(state.checkoutDraft || {}),
+      dic: data.dic || '',
+      dicForIco: ico
+    };
+    saveCheckoutDraft();
     companyField.dispatchEvent(new Event('input', { bubbles: true }));
 
     const address = buildAresAddress(data.sidlo);
@@ -2275,6 +2309,7 @@ function closeClearCartConfirm() {
 
 function confirmClearCart() {
   state.cart = [];
+  state.orderId = null;
   state.checkoutStep = 0;
   state.pendingCartUpdate = null;
   clearCheckoutDraft();
@@ -2288,6 +2323,7 @@ function confirmClearCart() {
 
 function resetKioskSession() {
   hideIdleWarning();
+  state.orderId = null;
 
   state.cart = [];
   state.query = '';
