@@ -4,15 +4,22 @@
  * Kiosek (JS v prohlížeči) volá tento soubor, ne API přímo —
  * login/heslo k API tak zůstanou jen na serveru.
  *
+ * Přístupové údaje se načítají z config-api.php (není v gitu).
+ *
  * Použití:  GET verify-product.php?id=897
  */
 
 header('Content-Type: application/json; charset=utf-8');
 header('Cache-Control: no-store');
 
-$base_url = 'http://84.242.90.2:8091/v1';
-$login    = 'verkonapi';
-$heslo    = 'YT$$$xxkj748g!5H';
+// ── Načtení konfigurace ──────────────────────────────────────
+$configFile = __DIR__ . '/config-api.php';
+if (!is_file($configFile)) {
+    http_response_code(500);
+    echo json_encode(['ok' => false, 'error' => 'Chybí konfigurace API']);
+    exit;
+}
+$api = require $configFile;
 
 $product_id = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
 
@@ -22,11 +29,12 @@ if (!$product_id) {
     exit;
 }
 
-$ch = curl_init("$base_url/products/$product_id");
+$ch = curl_init(rtrim($api['base_url'], '/') . "/products/$product_id");
 curl_setopt_array($ch, [
     CURLOPT_RETURNTRANSFER => true,
-    CURLOPT_TIMEOUT        => 6,
-    CURLOPT_USERPWD        => "$login:$heslo",
+    CURLOPT_CONNECTTIMEOUT => 3,
+    CURLOPT_TIMEOUT        => $api['timeout'] ?? 6,
+    CURLOPT_USERPWD        => $api['login'] . ':' . $api['password'],
     CURLOPT_HTTPAUTH       => CURLAUTH_BASIC,
     CURLOPT_HTTPHEADER     => ['Accept: application/json'],
 ]);
@@ -36,8 +44,10 @@ $err    = curl_error($ch);
 curl_close($ch);
 
 if ($err || $status !== 200) {
+    // Detail chyby jen do logu serveru, ne ven do prohlížeče
+    error_log("verify-product.php: id=$product_id " . ($err ?: "HTTP $status"));
     http_response_code(502);
-    echo json_encode(['ok' => false, 'error' => 'API nedostupné', 'detail' => $err ?: "HTTP $status"]);
+    echo json_encode(['ok' => false, 'error' => 'API nedostupné']);
     exit;
 }
 
