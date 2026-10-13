@@ -1,4 +1,5 @@
 const FALLBACK_IMAGE = 'assets/no-image.png';
+const CHECKOUT_DRAFT_KEY = 'kioskCheckoutDraft';
 let GROUPS = [
   { id: 'all', label: 'Vše' }
 ];
@@ -35,12 +36,22 @@ let APP_CONFIG = {
 };
 
 
-
-
 const DEFAULT_MAX_RENDERED_PRODUCTS = 240;
 
 
-const VAT_RATE = 0.21;
+/**
+ * Sazba DPH jako desetinné číslo (21 % -> 0.21).
+ * Bere se z config.json (order.vatRate), výchozí 21 %.
+ */
+function getVatRate() {
+  const percent = Number(APP_CONFIG.order?.vatRate ?? 21);
+  return Number.isFinite(percent) ? percent / 100 : 0.21;
+}
+
+/** Sazba DPH pro zobrazení, např. "21 %" */
+function getVatLabel() {
+  return `${Math.round(getVatRate() * 100)} %`;
+}
 
 function getPriceNumberFromProduct(product) {
   const price = Number(product?.price ?? 0);
@@ -51,12 +62,6 @@ function formatMoney(value, currency = 'CZK') {
   const number = Number(value);
   if (!Number.isFinite(number) || number <= 0) return 'Cena na dotaz';
   return new Intl.NumberFormat('cs-CZ', { style: 'currency', currency }).format(number);
-}
-
-function formatMoneyWithVat(value, currency = 'CZK') {
-  const number = Number(value);
-  if (!Number.isFinite(number) || number <= 0) return 'Cena na dotaz';
-  return new Intl.NumberFormat('cs-CZ', { style: 'currency', currency }).format(number * (1 + VAT_RATE));
 }
 
 function getCartTotals() {
@@ -757,14 +762,6 @@ function renderProductVisual(product) {
   return `<img class="fallback-image" src="${FALLBACK_IMAGE}" alt="Bez fotografie" />`;
 }
 
-function createPlaceholder(label = '') {
-  const img = document.createElement('img');
-  img.src = 'assets/no-image.png';
-  img.alt = 'Bez fotografie';
-  img.className = 'fallback-image';
-  return img;
-}
-
 function renderTitle(count, totalBeforeDynamic = count) {
   const limit = Number(
     APP_CONFIG.maxRenderedProducts || DEFAULT_MAX_RENDERED_PRODUCTS
@@ -830,7 +827,7 @@ function renderDetail() {
   const unitText = String(product.package || product.unit || '').trim();
 
   const priceNet = Number(product.price || 0);
-  const priceGross = Number.isFinite(priceNet) && priceNet > 0 ? priceNet * (1 + (typeof VAT_RATE !== 'undefined' ? VAT_RATE : 0.21)) : 0;
+  const priceGross = Number.isFinite(priceNet) && priceNet > 0 ? priceNet * (1 + getVatRate()) : 0;
   const priceNetText = Number.isFinite(priceNet) && priceNet > 0
     ? formatMoney(priceNet)
     : String(product.priceText || 'Cena na dotaz').replace(' bez DPH', '');
@@ -1071,15 +1068,6 @@ function openProductWeb(product) {
   window.open(product.url, '_blank', 'noopener');
 }
 
-function fact(label, value) {
-  const text = String(value ?? '').trim();
-
-  if (!text) return '';
-  if (text.toLowerCase() === 'neurčeno') return '';
-
-  return `<div><dt>${escapeHtml(label)}</dt><dd>${escapeHtml(text)}</dd></div>`;
-}
-
 function addToCart(product, qty = 1) {
   const availableQty = getAvailableQty(product);
   const existing = state.cart.find(item => item.id === product.id);
@@ -1136,7 +1124,7 @@ function renderCart() {
   if (el.cartBottomBar) el.cartBottomBar.hidden = false;
 
   const totals = getCartTotals();
-  const vat = totals.net * VAT_RATE;
+  const vat = totals.net * getVatRate();
   const gross = totals.net + vat;
 
   el.cartItems.innerHTML = `
@@ -1154,7 +1142,7 @@ function renderCart() {
         const unitPrice = getPriceNumberFromProduct(product);
         const qty = Number(item.qty || 0);
         const lineNet = unitPrice * qty;
-        const lineGross = lineNet * (1 + VAT_RATE);
+        const lineGross = lineNet * (1 + getVatRate());
         const codeText = item.code ? `Kód: ${item.code}` : '';
 
         return `
@@ -1192,7 +1180,7 @@ function renderCart() {
   if (el.cartSummary) {
     el.cartSummary.innerHTML = `
       <div><span>Celkem bez DPH</span><strong>${escapeHtml(formatMoney(totals.net))}</strong></div>
-      <div><span>DPH 21 %</span><strong>${escapeHtml(formatMoney(vat))}</strong></div>
+      <div><span>DPH ${getVatLabel()}</span><strong>${escapeHtml(formatMoney(vat))}</strong></div>
       <div class="cart-summary-total"><span>Celkem vč. DPH</span><strong>${escapeHtml(formatMoney(gross))}</strong></div>
     `;
   }
@@ -1265,8 +1253,8 @@ function renderCartCount() {
   }
 
   if (el.cartTotal) {
-    const totals = typeof getCartTotals === 'function' ? getCartTotals() : { net: 0 };
-    const gross = Number(totals.net || 0) * (1 + (typeof VAT_RATE !== 'undefined' ? VAT_RATE : 0.21));
+    const totals = getCartTotals();
+    const gross = Number(totals.net || 0) * (1 + getVatRate());
     el.cartTotal.textContent = `${formatMoney(gross)} vč. DPH`;
   }
 
@@ -1325,7 +1313,21 @@ async function handleCheckoutNext() {
   }
 }
 
+/**
+ * Vykreslí aktuální krok objednávky a srovná okolní UI
+ * (seznam zboží jen v košíku, tlačítka Zpět/Pokračovat, tlačítko ARES).
+ */
 function renderCheckout() {
+  renderCheckoutContent();
+
+  // V krocích objednávky (1-3) se seznam zboží nezobrazuje
+  if (el.cartItems) el.cartItems.style.display = state.checkoutStep > 0 ? 'none' : '';
+
+  updateCheckoutButtons();
+  updateAresButtonState();
+}
+
+function renderCheckoutContent() {
   if (!el.checkoutArea || !el.exportOrder) return;
 
   if (state.checkoutStep === 0) {
@@ -1429,14 +1431,14 @@ function renderCheckout() {
     const draft = state.checkoutDraft || {};
     const isCompany = draft.checkoutType === 'company';
     const totals = getCartTotals();
-    const vat = totals.net * VAT_RATE;
+    const vat = totals.net * getVatRate();
     const gross = totals.net + vat;
 
     const itemsHtml = state.cart.map(item => {
       const product = state.products.find(p => p.id === item.id);
       const unitPrice = getPriceNumberFromProduct(product);
       const lineNet = unitPrice * item.qty;
-      const lineGross = lineNet * (1 + VAT_RATE);
+      const lineGross = lineNet * (1 + getVatRate());
       const unit = item.unit || product?.unit || '';
 
       return `
@@ -1468,7 +1470,7 @@ function renderCheckout() {
         <div class="summary-items">${itemsHtml}</div>
         <div class="summary-totals">
           <span>Bez DPH: ${escapeHtml(formatMoney(totals.net))}</span>
-          <span>DPH 21 %: ${escapeHtml(formatMoney(vat))}</span>
+          <span>DPH ${getVatLabel()}: ${escapeHtml(formatMoney(vat))}</span>
           <div class="summary-totals-gross">Celkem vč. DPH: <strong>${escapeHtml(formatMoney(gross))}</strong></div>
         </div>
         <p class="checkout-note">Platba i převzetí proběhne na prodejně.</p>
@@ -1596,16 +1598,6 @@ function parseAddressText(addressText) {
 }
 
 /**
- * Vygeneruje dočasné order_number jako čisté číslo (API vyžaduje
- * numerický string). Toto je PROVIZORNÍ řešení do testovacího skladu -
- * čeká se na odpověď od Jakuba, jak má kiosek čísla získávat
- * (přidělování z Heliosu vs. vlastní rozsah).
- */
-function generateTempOrderNumber() {
-  return String(Date.now()).slice(-9);
-}
-
-/**
  * Sestaví tělo objednávky pro POST /v1/orders z aktuálního stavu košíku
  * a vyplněného formuláře (state.checkoutDraft).
  */
@@ -1647,7 +1639,7 @@ function buildOrderPayload() {
   });
 
   const totals = getCartTotals();
-  const totalWithVat = Math.round(totals.net * (1 + VAT_RATE) * 100) / 100;
+  const totalWithVat = Math.round(totals.net * (1 + getVatRate()) * 100) / 100;
 
   // order_id = naše interní ID pro párování, order_number NEposíláme
   // - Helios si přiděluje číslo dokladu sám (zjištěno testováním 2026-06-22)
@@ -1753,21 +1745,6 @@ function handleCheckoutBack() {
   updateCheckoutButtons();
 }
 
-function exportOrder() {
-  const order = {
-    createdAt: new Date().toISOString(),
-    source: 'verkon-kiosk-pilot-full-json',
-    items: state.cart
-  };
-  const blob = new Blob([JSON.stringify(order, null, 2)], { type: 'application/json' });
-  const url = URL.createObjectURL(blob);
-  const link = document.createElement('a');
-  link.href = url;
-  link.download = 'kiosk-poptavka.json';
-  link.click();
-  URL.revokeObjectURL(url);
-}
-
 function saveCart() {
   localStorage.setItem('kioskCart', JSON.stringify(state.cart));
 }
@@ -1793,7 +1770,6 @@ function tokenize(value) {
 function compact(value) {
   return normalize(value).replace(/\s+/g, '');
 }
-
 
 
 function getAvailableQty(product) {
@@ -1870,57 +1846,6 @@ function escapeHtml(value) {
 }
 
 
-function formatPriceWithVat(price, currency = 'CZK') {
-  const number = Number(price);
-  if (!Number.isFinite(number) || number <= 0) return '';
-  return new Intl.NumberFormat('cs-CZ', { style: 'currency', currency }).format(number * 1.21);
-}
-
-
-// TODO: Checkout wizard (Firma/Soukromá osoba -> Kontaktní údaje -> Potvrzení)
-
-
-// UX override: v krocích objednávky nezobrazovat seznam zboží
-const _renderCheckoutOriginal = renderCheckout;
-renderCheckout = function() {
-  _renderCheckoutOriginal();
-  if (!el?.cartItems) return;
-  if (state.checkoutStep > 0) {
-    el.cartItems.style.display = 'none';
-  } else {
-    el.cartItems.style.display = '';
-  }
-};
-
-
-
-
-const _renderCheckoutForFooterOriginal = renderCheckout;
-renderCheckout = function() {
-  _renderCheckoutForFooterOriginal();
-  updateCheckoutButtons();
-};
-
-
-document.addEventListener('input', (event) => {
-  const field = event.target;
-  if (!field) return;
-
-  if (field.id === 'checkoutIco') {
-    field.value = normalizeIc(field.value).slice(0, 8);
-    const aresButton = document.getElementById('loadAres');
-    const validIco = field.value.length === 8 && isValidCzechIc(field.value);
-    field.classList.toggle('checkout-field-error', field.value.length === 8 && !validIco);
-    if (aresButton) aresButton.disabled = !validIco;
-  }
-
-  if (field.id === 'checkoutContact') {
-    const value = String(field.value || '').trim();
-    field.classList.toggle('checkout-field-error', value.length > 3 && !isValidEmail(value));
-  }
-});
-
-
 function buildAresAddress(sidlo) {
   if (!sidlo || typeof sidlo !== 'object') return '';
 
@@ -1988,14 +1913,7 @@ async function loadCompanyFromAres() {
     companyField.dispatchEvent(new Event('input', { bubbles: true }));
 
     const address = buildAresAddress(data.sidlo);
-    let addressField = document.getElementById('checkoutCompanyAddress');
-
-    if (address && !addressField) {
-      const wrapper = document.createElement('label');
-      
-      companyField.closest('label')?.insertAdjacentElement('afterend', wrapper);
-      addressField = document.getElementById('checkoutCompanyAddress');
-    }
+    const addressField = document.getElementById('checkoutCompanyAddress');
 
     if (addressField && address) {
       addressField.value = address;
@@ -2034,7 +1952,8 @@ function insertAtSignIntoEmailField(fieldId) {
   field.value = value.slice(0, start) + '@' + value.slice(end);
   const nextPos = start + 1;
   field.focus();
-  field.setSelectionRange(nextPos, nextPos);
+  // type="email" pozici kurzoru nastavit nedovolí (vyhodí chybu) - pak nevadí
+  try { field.setSelectionRange(nextPos, nextPos); } catch { /* nic */ }
   field.dispatchEvent(new Event('input', { bubbles: true }));
 }
 
@@ -2053,29 +1972,24 @@ function validateCheckoutFieldLive(field) {
 
   if (field.id === 'checkoutName') {
     field.classList.toggle('checkout-field-error', value.length === 0);
-    field.classList.remove('checkout-field-valid');
     return;
   }
 
   if (field.id === 'checkoutContact') {
-    const valid = typeof isValidEmail === 'function'
-      ? isValidEmail(value)
-      : /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+    const valid = isValidEmail(value);
 
     field.classList.toggle('checkout-field-error', value.length > 0 && !valid);
-    field.classList.remove('checkout-field-valid');
     return;
   }
 
   if (field.id === 'checkoutIco') {
-    const ico = typeof normalizeIc === 'function' ? normalizeIc(value) : value.replace(/\D/g, '');
-    const valid = typeof isValidCzechIc === 'function' ? isValidCzechIc(ico) : ico.length === 8;
+    const ico = normalizeIc(value);
+    const valid = isValidCzechIc(ico);
     const aresButton = document.getElementById('loadAres');
 
     field.value = ico.slice(0, 8);
 
     field.classList.toggle('checkout-field-error', ico.length === 8 && !valid);
-    field.classList.remove('checkout-field-valid');
 
     if (aresButton) {
       aresButton.disabled = !(ico.length === 8 && valid);
@@ -2085,7 +1999,6 @@ function validateCheckoutFieldLive(field) {
 
   if (field.id === 'checkoutCompany' || field.id === 'checkoutCompanyAddress' || field.id === 'checkoutPhone') {
     field.classList.remove('checkout-field-error');
-    field.classList.remove('checkout-field-valid');
   }
 }
 
@@ -2102,15 +2015,6 @@ document.addEventListener('blur', (event) => {
 }, true);
 
 
-/* UX: odstraneni zeleneho stavu */
-document.addEventListener('input', (event) => {
-  const f = event.target;
-  if (f && f.classList) {
-    f.classList.remove('checkout-field-valid');
-  }
-}, true);
-
-
 function updateAresButtonState() {
   const icoField = document.getElementById('checkoutIco');
   const aresButton = document.getElementById('loadAres');
@@ -2119,13 +2023,6 @@ function updateAresButtonState() {
   const ico = normalizeIc(icoField.value);
   aresButton.disabled = !(ico.length === 8 && isValidCzechIc(ico));
 }
-
-
-const _renderCheckoutForAresButtonOriginal = renderCheckout;
-renderCheckout = function() {
-  _renderCheckoutForAresButtonOriginal();
-  updateAresButtonState();
-};
 
 
 function clearEmailWrapperValidation(field) {
@@ -2145,7 +2042,6 @@ document.addEventListener('input', (event) => {
 }, true);
 
 
-const CHECKOUT_DRAFT_KEY = 'kioskCheckoutDraft';
 let idleWarningTimer = null;
 let idleResetTimer = null;
 
@@ -2216,9 +2112,7 @@ function restoreCheckoutDraftIntoForm() {
     const field = document.getElementById(id);
     if (field && value !== undefined) {
       field.value = value;
-      if (typeof validateCheckoutFieldLive === 'function') {
-        validateCheckoutFieldLive(field);
-      }
+      validateCheckoutFieldLive(field);
     }
   });
 }
@@ -2345,7 +2239,7 @@ function resetKioskSession() {
   renderCart();
   renderCheckout();
   renderCartCount();
-  updateCheckoutButtons?.();
+  updateCheckoutButtons();
 
   window.scrollTo({ top: 0, behavior: 'smooth' });
   resetIdleTimers();
