@@ -18,5 +18,8 @@ return [
     'base_url' => 'http://ADRESA-API:PORT/v1',   // bez lomítka na konci
     'login'    => 'DOPLNIT',
     'password' => 'DOPLNIT',
+    // Objednávky (submit-order.php). Když chybí, použije se base_url.
+    // 8091 = cvičná DB (Jakub) - před ostrým provozem změnit!
+    'orders_base_url' => 'http://ADRESA-API:PORT/v1',
     'timeout'  => 6,                              // sekundy
 ];

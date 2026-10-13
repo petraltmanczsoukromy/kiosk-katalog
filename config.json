@@ -1,37 +1,59 @@
 {
-  "allowedRootCategories": [
-    "110",
-    "120",
-    "130",
-    "140",
-    "150",
-    "210"
-  ],
+  "_napoveda": "PŘEPÍNAČ: mode = kiosk (prodejní kiosek s objednávkou) nebo skladem (jen katalog). Společná nastavení jsou nahoře, rozdíly v sekci modes.",
+  "mode": "kiosk",
+
+  "allowedRootCategories": ["110", "120", "130", "140", "150", "210"],
   "showZeroAvailable": false,
   "maxRenderedProducts": 1500,
   "headerMode": "fixed",
   "showPrices": true,
   "showManufacturer": true,
-  "showWebButton": false,
-  "idleWarningSeconds": 90,
-  "idleResetSeconds": 30,
-  "banner": {
-    "enabled": false
-  },
-  "data": {
-    "catalogUrl": "products_test.json",
-    "refreshIntervalMs": 0,
-    "apiSyncIntervalMs": 3600000,
-    "apiSyncLookbackMs": 3600000
-  },
-  "order": {
-    "documentSeries": "420",
-    "warehouse": "20000010",
-    "source": "kiosek",
-    "vatRate": 21,
-    "defaultUnit": "ks",
-    "shippingMethodCode": "OSOBNE-PRAHA",
-    "paymentMethodCode": "HOTOVE",
-    "testMode": false
+
+  "modes": {
+    "kiosk": {
+      "title": "VERKON prodejní kiosek – objednávka",
+      "catalogOnly": false,
+      "detailEnabled": true,
+      "soundEnabled": true,
+      "showWebButton": false,
+      "idleWarningSeconds": 90,
+      "idleResetSeconds": 30,
+      "banner": { "enabled": false },
+      "data": {
+        "catalogUrl": "products_test.json",
+        "refreshIntervalMs": 0,
+        "apiSyncIntervalMs": 3600000,
+        "apiSyncLookbackMs": 3600000
+      },
+      "order": {
+        "documentSeries": "420",
+        "warehouse": "20000010",
+        "source": "kiosek",
+        "vatRate": 21,
+        "defaultUnit": "ks",
+        "shippingMethodCode": "OSOBNE-PRAHA",
+        "paymentMethodCode": "HOTOVE",
+        "testMode": false
+      }
+    },
+
+    "skladem": {
+      "title": "VERKON – skladová zásoba",
+      "catalogOnly": true,
+      "detailEnabled": false,
+      "soundEnabled": false,
+      "showWebButton": true,
+      "idleWarningSeconds": 0,
+      "idleResetSeconds": 0,
+      "banner": { "enabled": true, "file": "banner-skladem.html" },
+      "data": {
+        "catalogUrl": "../kiosk/products.json",
+        "refreshIntervalMs": 3600000,
+        "apiSyncIntervalMs": 0,
+        "apiSyncLookbackMs": 3600000
+      },
+      "stockDisplay": "interval",
+      "stockIntervals": [1, 2, 3, 4, 10]
+    }
   }
 }

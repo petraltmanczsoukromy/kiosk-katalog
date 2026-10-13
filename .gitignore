@@ -6,6 +6,7 @@
 # Velká/často se měnící datová úložiště produktů - řešeno mimo git
 /data/
 products.json
+products_test.json
 product-images.json
 
 # Systémové/editor soubory
@@ -19,6 +20,8 @@ Thumbs.db
 # Testovací skripty s natvrdo zapsaným API heslem - nepatří do gitu
 test-*.php
 sync-*.php
+# ...ale sync-catalog.php je součást aplikace, ten verzujeme
+!sync-catalog.php
 
 # Výstupy testovacích synchronizačních skriptů
 /sync-output/

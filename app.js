@@ -198,7 +198,8 @@ async function init() {
   render();
   updateHeaderHeight();
   restoreCheckoutDraft();
-  installIdleWatcher();
+  // idleWarningSeconds: 0 = hlídání nečinnosti vypnuto (režim skladem)
+  if (Number(APP_CONFIG.idleWarningSeconds) > 0) installIdleWatcher();
   startDataRefreshTimers();
   setLoadingState(false);
 
@@ -287,7 +288,9 @@ function getCacheAgeMinutes(cache) {
 
 async function loadConfig() {
   try {
-    const config = await fetchJson('config.json');
+    // index.php vloží hotovou konfiguraci pro zvolený režim (kiosk / skladem).
+    // fetch config.json je jen záloha, kdyby stránka běžela bez PHP.
+    const config = window.KIOSK_CONFIG || await fetchJson('config.json');
 
     APP_CONFIG = {
       ...APP_CONFIG,
@@ -349,9 +352,7 @@ async function loadCatalog(options = {}) {
     // (musí být AŽ PO applyCatalogData, která by přepsala state.updatedAt)
     try {
       const catalogUrl = getDataConfig().catalogUrl || 'products.json';
-      const infoUrl = catalogUrl !== 'products.json'
-        ? `catalog-info.php?file=${encodeURIComponent(catalogUrl)}`
-        : 'catalog-info.php';
+      const infoUrl = `catalog-info.php?file=${encodeURIComponent(catalogUrl)}`;
       const infoRes = await fetch(infoUrl);
       const info = await infoRes.json();
       if (info.ok && info.updated_at) {
@@ -895,7 +896,7 @@ function renderDetail() {
   document.getElementById('qtyPlus').addEventListener('click', () => setQty(getQty() + 1));
   qtyInput.addEventListener('input', () => clampQtyInput());
   qtyInput.addEventListener('blur', () => clampQtyInput(true));
-  document.getElementById('addToCart').addEventListener('click', () => addToCart(product, getQty()));
+  document.getElementById('addToCart')?.addEventListener('click', () => addToCart(product, getQty()));
   document.getElementById('showCart').addEventListener('click', openCart);
 
   const openWeb = document.getElementById('openWeb');

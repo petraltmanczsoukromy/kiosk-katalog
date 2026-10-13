@@ -1,5 +1,12 @@
 <?php
-$config = json_decode(file_get_contents(__DIR__ . '/config.json'), true);
+require __DIR__ . '/config-loader.php';
+$config = kiosk_load_config();   // config.json + nastavení zvoleného režimu
+
+// Přidá k souboru ?v=čas_změny, aby prohlížeč po nahrání nové verze
+// nepoužil starou kopii z cache (style.css?v=1791921807)
+function asset(string $file): string {
+    return $file . '?v=' . @filemtime(__DIR__ . '/' . $file);
+}
 $bannerFile = '';
 if (!empty($config['banner']['enabled']) && !empty($config['banner']['file'])) {
     $bannerFile = __DIR__ . '/' . $config['banner']['file'];
@@ -12,8 +19,8 @@ $noDetail = (isset($config['detailEnabled']) && $config['detailEnabled'] === fal
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>VERKON prodejní kiosek – objednávka</title>
-  <link rel="stylesheet" href="style.css" />
+  <title><?= htmlspecialchars($config['title'] ?? 'VERKON kiosek') ?></title>
+  <link rel="stylesheet" href="<?= asset('style.css') ?>" />
 </head>
 <body class="<?= $noDetail ?>">
   <div id="app">
@@ -110,7 +117,11 @@ $noDetail = (isset($config['detailEnabled']) && $config['detailEnabled'] === fal
     </div>
   </div>
 
-<script src="sfx.js"></script>
-<script src="app.js"></script>
+<script>
+  // Hotová konfigurace pro zvolený režim - app.js ji použije místo config.json
+  window.KIOSK_CONFIG = <?= json_encode($config, JSON_UNESCAPED_UNICODE | JSON_HEX_TAG | JSON_HEX_AMP) ?>;
+</script>
+<script src="<?= asset('sfx.js') ?>"></script>
+<script src="<?= asset('app.js') ?>"></script>
 </body>
 </html>
